@@ -894,9 +894,18 @@
           "onClick": "HMDCM_CreateBackup($id);"
         },
         {
-          "type": "Button",
+          "type": "PopupButton",
           "caption": "Restore configuration",
-          "onClick": "HMDCM_RestoreConfiguration($id);"
+          "popup": {
+            "caption": "Really restore configuration?",
+            "items": [
+              {
+                "type": "Button",
+                "caption": "Restore configuration",
+                "onClick": "HMDCM_RestoreConfiguration($id);"
+              }
+            ]
+          }
         }
       ]
     }

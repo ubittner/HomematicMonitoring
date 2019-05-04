@@ -95,6 +95,7 @@
       "Create variable links": "Variablenverknüpfungen erstellen",
       "Create backup": "Sicherung erstellen",
       "Restore configuration": "Konfiguration wiederherstellen",
+      "Really restore configuration?": "Konfiguration wirklich wiederherstellen?",
       "Homematic Channel Parameter Monitoring will be created": "Homematic Channel Parameter Überwachung wird erstellt",
       "Homematic Channel Parameter Monitoring is active": "Homematic Channel Parameter Überwachung ist aktiv",
       "Homematic Channel Parameter Monitoring will be deleted": "Homematic Channel Parameter Überwachung wird gelöscht",
