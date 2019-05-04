@@ -1,0 +1,13 @@
+{
+  "id": "{027455D4-AD7F-446C-A00E-34ED01081A67}",
+  "author": "Ulrich Bittner",
+  "name": "Homematic Monitoring",
+  "url": "https://www.eq-3.de/startseite.html",
+  "compatibility": {
+    "version": "5.1",
+    "date": 1554076800
+  },
+  "version": "1.00",
+  "build": 1,
+  "date": 1554076800
+}

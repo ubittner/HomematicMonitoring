@@ -1,0 +1,13 @@
+{
+  "id": "{27124868-9BA0-46F4-A5A2-20EB14111657}",
+  "name": "ChannelParameter",
+  "type": 3,
+  "vendor": "Homematic",
+  "aliases": [
+    "Homematic Channel Parameter Monitoring"
+  ],
+  "parentRequirements": [],
+  "childRequirements": [],
+  "implemented": [],
+  "prefix": "HMCPM"
+}
