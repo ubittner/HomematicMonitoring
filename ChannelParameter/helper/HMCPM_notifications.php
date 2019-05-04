@@ -213,9 +213,9 @@ trait HMCPM_notifications
         }
         // Create text
         if (!empty($locationDesignation)) {
-            $text = $locationDesignation . ', ' . $variableName . ', ' . $value . "\n\n" . $timeStamp . ', ' . $variableName . ', ' . $this->Translate('Address') . ': ' . $address . ', ' . $statusText;
+            $text = $locationDesignation . ', ' . $variableName . ', ' . $value . "\n\n" . $timeStamp . ', ID' . $VariableID . ', ' . $variableName . ', ' . $this->Translate('Address') . ': ' . $address . ', ' . $statusText;
         } else {
-            $text = $variableName . ', ' . $value . "\n\n" . $timeStamp . ', ' . $variableName . ', ' . $this->Translate('Address') . ': ' . $address . ', ' . $statusText;
+            $text = $variableName . ', ' . $value . "\n\n" . $timeStamp . ', ID' . $VariableID . ', ' . $variableName . ', ' . $this->Translate('Address') . ': ' . $address . ', ' . $statusText;
         }
         // Push notification
         $webFronts = json_decode($this->ReadPropertyString('WebFronts'));
@@ -278,9 +278,9 @@ trait HMCPM_notifications
         }
         // Create text
         if (!empty($locationDesignation)) {
-            $text = $timeStamp . ', ' . $locationDesignation . ', ' . $variableName . ', ' . $this->Translate('Address') . ': ' . $address . ', ' . $statusText;
+            $text = $timeStamp . ', ' . $locationDesignation . ', ID' . $VariableID . ', ' . $variableName . ', ' . $this->Translate('Address') . ': ' . $address . ', ' . $statusText;
         } else {
-            $text = $timeStamp . ', ' . $locationDesignation . ', ' . $variableName . ', ' . $this->Translate('Address') . ': ' . $address . ', ' . $statusText;
+            $text = $timeStamp . ', ID' . $VariableID. ', ' . $variableName . ', ' . $this->Translate('Address') . ': ' . $address . ', ' . $statusText;
         }
         $this->SetValue('LastMessage', $text);
     }

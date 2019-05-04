@@ -273,7 +273,7 @@ trait HMDCM_notifications
         if (!empty($locationDesignation)) {
             $text = $timeStamp . ', ' . $locationDesignation . ', ' . $variableName . ', ' . $this->Translate('Address') . ': ' . $address . ', ' . $statusText;
         } else {
-            $text = $timeStamp . ', ' . $locationDesignation . ', ' . $variableName . ', ' . $this->Translate('Address') . ': ' . $address . ', ' . $statusText;
+            $text = $timeStamp . ', ' . $variableName . ', ' . $this->Translate('Address') . ': ' . $address . ', ' . $statusText;
         }
         $this->SetValue('LastMessage', $text);
     }
