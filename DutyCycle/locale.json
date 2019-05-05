@@ -97,6 +97,7 @@
       "Create variable links": "Variablenverknüpfungen erstellen",
       "Create backup": "Sicherung erstellen",
       "Restore configuration": "Konfiguration wiederherstellen",
+      "Operation:": "Bedienung:",
       "Really restore configuration?": "Konfiguration wirklich wiederherstellen?",
       "Homematic Duty Cycle Monitoring will be created": "Homematic Duty Cycle Monitoring wird erstellt",
       "Homematic Duty Cycle Monitoring is active": "Homematic Duty Cycle Monitoring ist aktiv",

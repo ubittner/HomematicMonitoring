@@ -910,6 +910,14 @@
       ]
     },
     {
+      "type": "Label",
+      "caption": " "
+    },
+    {
+      "type": "Label",
+      "caption": "Operation:"
+    },
+    {
       "type": "TestCenter"
     }
   ],
