@@ -49,6 +49,9 @@ trait HMDCM_dutyCycles
     protected function GetData(): array
     {
         $results = [];
+        if (!$this->HasActiveParent()) {
+            return [];
+        }
         // Get parent
         $parentID = IPS_GetInstance($this->InstanceID)['ConnectionID'];
         if ($parentID != 0 && IPS_ObjectExists($parentID)) {

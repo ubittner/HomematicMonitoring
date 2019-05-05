@@ -59,7 +59,7 @@ class DutyCycle extends IPSModule
         $this->RegisterPropertyInteger('VirtualChannel', 0);
         $this->RegisterPropertyInteger('ThresholdValue', 80);
         // Monitored variables
-        $this->RegisterPropertyString('MonitoredVariables', '');
+        $this->RegisterPropertyString('MonitoredVariables', '[]');
         // Notification
         $this->RegisterPropertyBoolean('UseNotification', false);
         $this->RegisterPropertyString('TitleDescription', 'Homematic Monitoring');
@@ -71,12 +71,12 @@ class DutyCycle extends IPSModule
         $this->RegisterPropertyBoolean('AlwaysNotifyThresholdReached', false);
         $this->RegisterPropertyBoolean('NotifyOnceThresholdReached', true);
         $this->RegisterPropertyBoolean('UseMessageDayLimitThresholdReached', false);
-        $this->RegisterPropertyString('WebFronts', '');
-        $this->RegisterPropertyString('EmailRecipients', '');
+        $this->RegisterPropertyString('WebFronts', '[]');
+        $this->RegisterPropertyString('EmailRecipients', '[]');
         // Alerting
         $this->RegisterPropertyBoolean('UseAlerting', false);
-        $this->RegisterPropertyString('TargetVariables', '');
-        $this->RegisterPropertyString('TargetScripts', '');
+        $this->RegisterPropertyString('TargetVariables', '[]');
+        $this->RegisterPropertyString('TargetScripts', '[]');
         // Links
         $this->RegisterPropertyInteger('LinkCategory', 0);
         // Backup / Restore
