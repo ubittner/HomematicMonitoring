@@ -819,128 +819,6 @@
   "actions": [
     {
       "type": "Label",
-      "caption": "(0) Instance information"
-    },
-    {
-      "type": "Button",
-      "caption": "Manual",
-      "onClick": "echo 'https://git.ubittner.de/ubittner/HomematicMonitoring';"
-    },
-    {
-      "type": "Label",
-      "caption": "(2) Monitored variables"
-    },
-    {
-      "type": "RowLayout",
-      "items": [
-        {
-          "type": "Button",
-          "caption": "Determine and assign variables automatically",
-          "onClick": "HMCPM_DetermineVariables($id);"
-        },
-        {
-          "type": "Button",
-          "caption": "Display registered variables",
-          "onClick": "$variables = HMCPM_DisplayRegisteredVariables($id); print_r($variables);"
-        }
-      ]
-    },
-    {
-      "type": "RowLayout",
-      "items": [
-        {
-          "type": "Button",
-          "caption": "Assign missing variable profiles only",
-          "onClick": "HMCPM_AssignVariableProfile($id, false);"
-        },
-        {
-          "type": "Button",
-          "caption": "Overwrite variable profiles",
-          "onClick": "HMCPM_AssignVariableProfile($id, true);"
-        }
-      ]
-    },
-    {
-      "type": "Label",
-      "caption": "(3) Notification"
-    },
-    {
-      "type": "Label",
-      "caption": "Value is below threshold:"
-    },
-    {
-      "type": "RowLayout",
-      "items": [
-        {
-          "type": "Button",
-          "caption": "Display variables",
-          "onClick": "$variables = HMCPM_DisplayVariablesBelowThreshold($id); print_r($variables);"
-        },
-        {
-          "type": "Button",
-          "caption": "Display blocked variables for today",
-          "onClick": "$variables = HMCPM_DisplayBlockedVariablesForTodayBelowThreshold($id); print_r($variables);"
-        }
-      ]
-    },
-    {
-      "type": "Label",
-      "caption": "Threshold reached:"
-    },
-    {
-      "type": "RowLayout",
-      "items": [
-        {
-          "type": "Button",
-          "caption": "Display variables",
-          "onClick": "$variables = HMCPM_DisplayVariablesThresholdReached($id); print_r($variables);"
-        },
-        {
-          "type": "Button",
-          "caption": "Display blocked variables for today",
-          "onClick": "$variables = HMCPM_DisplayBlockedVariablesForTodayThresholdReached($id); print_r($variables);"
-        }
-      ]
-    },
-    {
-      "type": "Label",
-      "caption": "(5) Links"
-    },
-    {
-      "type": "Button",
-      "caption": "Create variable links",
-      "onClick": "HMCPM_CreateVariableLinks($id);"
-    },
-    {
-      "type": "Label",
-      "caption": "(6) Backup / Restore"
-    },
-    {
-      "type": "RowLayout",
-      "items": [
-        {
-          "type": "Button",
-          "caption": "Create backup",
-          "onClick": "HMCPM_CreateBackup($id);"
-        },
-        {
-          "type": "PopupButton",
-          "caption": "Restore configuration",
-          "popup": {
-            "caption": "Really restore configuration?",
-            "items": [
-              {
-                "type": "Button",
-                "caption": "Restore configuration",
-                "onClick": "HMCPM_RestoreConfiguration($id);"
-              }
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "type": "Label",
       "caption": " "
     },
     {
@@ -948,7 +826,131 @@
       "caption": "Operation:"
     },
     {
+      "type": "Button",
+      "caption": "Manual",
+      "onClick": "echo 'https://git.ubittner.de/ubittner/HomematicMonitoring';"
+    },
+    {
       "type": "TestCenter"
+    },
+    {
+      "type": "ExpansionPanel",
+      "caption": "Expert settings",
+      "items": [
+        {
+          "type": "Label",
+          "caption": "(2) Monitored variables"
+        },
+        {
+          "type": "RowLayout",
+          "items": [
+            {
+              "type": "Button",
+              "caption": "Determine and assign variables automatically",
+              "onClick": "HMCPM_DetermineVariables($id);"
+            },
+            {
+              "type": "Button",
+              "caption": "Display registered variables",
+              "onClick": "$variables = HMCPM_DisplayRegisteredVariables($id); print_r($variables);"
+            }
+          ]
+        },
+        {
+          "type": "RowLayout",
+          "items": [
+            {
+              "type": "Button",
+              "caption": "Assign missing variable profiles only",
+              "onClick": "HMCPM_AssignVariableProfile($id, false);"
+            },
+            {
+              "type": "Button",
+              "caption": "Overwrite variable profiles",
+              "onClick": "HMCPM_AssignVariableProfile($id, true);"
+            }
+          ]
+        },
+        {
+          "type": "Label",
+          "caption": "(3) Notification"
+        },
+        {
+          "type": "Label",
+          "caption": "Value is below threshold:"
+        },
+        {
+          "type": "RowLayout",
+          "items": [
+            {
+              "type": "Button",
+              "caption": "Display variables",
+              "onClick": "$variables = HMCPM_DisplayVariablesBelowThreshold($id); print_r($variables);"
+            },
+            {
+              "type": "Button",
+              "caption": "Display blocked variables for today",
+              "onClick": "$variables = HMCPM_DisplayBlockedVariablesForTodayBelowThreshold($id); print_r($variables);"
+            }
+          ]
+        },
+        {
+          "type": "Label",
+          "caption": "Threshold reached:"
+        },
+        {
+          "type": "RowLayout",
+          "items": [
+            {
+              "type": "Button",
+              "caption": "Display variables",
+              "onClick": "$variables = HMCPM_DisplayVariablesThresholdReached($id); print_r($variables);"
+            },
+            {
+              "type": "Button",
+              "caption": "Display blocked variables for today",
+              "onClick": "$variables = HMCPM_DisplayBlockedVariablesForTodayThresholdReached($id); print_r($variables);"
+            }
+          ]
+        },
+        {
+          "type": "Label",
+          "caption": "(5) Links"
+        },
+        {
+          "type": "Button",
+          "caption": "Create variable links",
+          "onClick": "HMCPM_CreateVariableLinks($id);"
+        },
+        {
+          "type": "Label",
+          "caption": "(6) Backup / Restore"
+        },
+        {
+          "type": "RowLayout",
+          "items": [
+            {
+              "type": "Button",
+              "caption": "Create backup",
+              "onClick": "HMCPM_CreateBackup($id);"
+            },
+            {
+              "type": "PopupButton",
+              "caption": "Restore configuration",
+              "popup": {
+                "caption": "Really restore configuration?",
+                "items": [
+                  {
+                    "type": "Button",
+                    "caption": "Restore configuration",
+                    "onClick": "HMCPM_RestoreConfiguration($id);"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
     }
   ],
   "status": [
