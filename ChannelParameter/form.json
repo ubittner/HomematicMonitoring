@@ -231,10 +231,10 @@
               }
             },
             {
-              "name": "Date",
-              "caption": "Date",
+              "name": "LastMaintenance",
+              "caption": "Last maintenance",
               "width": "200px",
-              "add": 0,
+              "add": "{\"year\":0,\"month\":0,\"day\":0,\"hour\":0,\"minute\":0,\"second\":0}\"}",
               "edit": {
                 "type": "SelectDateTime"
               }
