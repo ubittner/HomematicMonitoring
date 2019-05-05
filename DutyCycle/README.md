@@ -32,7 +32,7 @@ Der Nutzer stimmt den o.a. Bedingungen, sowie den Lizenzbedingungen ausdrücklic
 
 ### 1. Funktionsumfang
 
-* DutyCycle Überwachung durch eine Variable
+* DutyCycle Überwachung (Variablenüberwachung)
 * Bei Auslösung können individuelle Aktionen festgesetzt werden:
   * Push-Nachrichten verschicken
   * E-Mail Nachrichten verschicken
@@ -42,32 +42,35 @@ Der Nutzer stimmt den o.a. Bedingungen, sowie den Lizenzbedingungen ausdrücklic
 ### 2. Voraussetzungen
 
 - IP-Symcon ab Version 5.1
+- Homematic CCU
 
 ### 3. Software-Installation
 
-- Über das Modul-Control folgende URL hinzufügen: `https://github.com/ubittner/SymconHomematicMonitoring.git`
+- Sie benötigen vom Entwickler entsprechende Zugangsdaten zur Nutzung des Moduls.  
+
+- Über das Modul-Control folgende URL hinzufügen: `https://git.ubittner.de/ubittner/HomematicMonitoring.git`
 
 ### 4. Einrichten der Instanzen in IP-Symcon
 
-- Unter "Instanz hinzufügen" ist das 'Homematic DutyCycle Monitoring'-Modul unter dem Hersteller 'HomeMatic' aufgeführt
+- In IP-Symcon an beliebiger Stelle `Instanz hinzufügen` auswählen und `Homematic Duty Cycle Monitoring` auswählen, welches unter dem Hersteller `Homematic` aufgeführt ist. Es wird eine Instanz angelegt, in der die Eigenschaften zur Überwachung festgelegt werden können.
 
 __Konfigurationsseite__:
 
 Name                                | Beschreibung
 ----------------------------------- | ---------------------------------
-(0) Instanzinformationen            | Informationen zu der Instanz.
+(0) Instanzinformationen            | Informationen zu der Instanz
 (1) DutyCycle                       | Konfigurationsmöglichkeiten für den DutyCycle
-(2) Überwachte Variablen            | Diese Liste beinhaltet die Variablen, welche überwacht werden sollen.
-(3) Benachrichtigung                | Legen Sie die Benachrichtigungsvarianten fest.
-(4) Alarmierung                     | Wenn sich der allgemeine Status ändert, können Variablen geschaltet werden oder Skripte ausgeführt werden.
-(5) Verknüpfungen                   | Sie können Verknüpfungen der überwachten Variablen erstellen. 
-(6) Sicherung / Wiederherstellung   | Die Instanzkonfiguration kann in einem Skript gespeichert werden und wiederhergestellt werden.
+(2) Überwachte Variablen            | Diese Liste beinhaltet die Variablen, welche überwacht werden sollen
+(3) Benachrichtigungen              | Legen Sie die Benachrichtigungsvarianten fest
+(4) Alarmierungen                   | Wenn sich der allgemeine Status ändert, können Variablen geschaltet oder Skripte ausgeführt werden
+(5) Verknüpfungen                   | Sie können Verknüpfungen der überwachten Variablen erstellen
+(6) Sicherung / Wiederherstellung   | Die Instanzkonfiguration kann in einem Skript gespeichert und wiederhergestellt werden
 
-___Skript___: Wenn Sie unter (6) Alarmierung ein Skript angebenen haben können während des Aufrufs folgende Systemvariablen verwendet werden:
+___Skript___: Wenn Sie unter (6) Alarmierung ein Skript angebenen haben, so können während des Aufrufs folgende Systemvariablen verwendet werden:
 
 Name                                | Beschreibung
 ----------------------------------- | ---------------------------------
-$_IPS['Status']                     | Übergibt den Status der Gesamtstatusvariable.
+$_IPS['Status']                     | Übergibt den Status der Gesamtstatusvariable
 
 ### 5. Statusvariablen und Profile
 
@@ -77,13 +80,15 @@ Die Statusvariablen/Kategorien werden automatisch angelegt. Das Löschen einzeln
 
 Name         | Typ       | Beschreibung
 ------------ | --------- | ----------------
-Monitoring   | Boolean   | De-/Aktiviert die Überwachung. 
-Status       | Boolean   | Zeigt den Gesamtstatus der überwachten Variablen (OK/Alarm) an.
+Monitoring   | Boolean   | De-/Aktiviert die Überwachung
+Status       | Boolean   | Zeigt den Gesamtstatus der überwachten Variablen (OK/Alarm) an
+LastMessage  | String    | Zeigt die letzte Meldung an
 
 ##### Profile:
 
 Es werden zusätzliche Profile hinzugefügt, welche beim Löschen der Instanz automatisch entfernt werden.
 
+Der Profilname beginnt mit `HMDCM` gefolgt von der InstanzID und dem Profilnamen.
 
 ### 6. WebFront
 
