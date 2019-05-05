@@ -945,7 +945,7 @@
     },
     {
       "type": "Label",
-      "caption": "Test Center"
+      "caption": "Operation:"
     },
     {
       "type": "TestCenter"

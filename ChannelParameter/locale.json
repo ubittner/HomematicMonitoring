@@ -96,6 +96,7 @@
       "Create backup": "Sicherung erstellen",
       "Restore configuration": "Konfiguration wiederherstellen",
       "Really restore configuration?": "Konfiguration wirklich wiederherstellen?",
+      "Operation:": "Bedienung",
       "Homematic Channel Parameter Monitoring will be created": "Homematic Channel Parameter Monitoring wird erstellt",
       "Homematic Channel Parameter Monitoring is active": "Homematic Channel Parameter Monitoring ist aktiv",
       "Homematic Channel Parameter Monitoring will be deleted": "Homematic Channel Parameter Monitoring wird gelöscht",
