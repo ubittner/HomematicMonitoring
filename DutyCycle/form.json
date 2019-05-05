@@ -161,7 +161,7 @@
         },
         {
           "type": "Label",
-          "caption": "You can automatically determine and assign the variables to be monitored to this instance. After accepting any CHANGES, press the button (2) DETERMINE AND ASSIGN VARIABLES AUTOMATICALLY!"
+          "caption": "You can automatically determine and assign the variables to be monitored to this instance. After accepting any CHANGES, press under functions the button (2) DETERMINE AND ASSIGN VARIABLES AUTOMATICALLY!"
         },
         {
           "type": "Label",
@@ -578,7 +578,7 @@
     },
     {
       "type": "ExpansionPanel",
-      "caption": "(4) Alertings",
+      "caption": "(4) Alerting",
       "items": [
         {
           "type": "Label",
@@ -744,7 +744,7 @@
         },
         {
           "type": "Label",
-          "caption": "You can automatically create links of the monitored variables. After accepting any CHANGES, press the button (5) CREATE VARIABLES LINK!"
+          "caption": "You can automatically create links of the monitored variables. After accepting any CHANGES, press under functions the button (5) CREATE VARIABLES LINK!"
         }
       ]
     },
@@ -771,7 +771,7 @@
         },
         {
           "type": "Label",
-          "caption": "After accepting any CHANGES, press the button (6) CREATE BACKUP!"
+          "caption": "After accepting any CHANGES, press under functions the button (6) CREATE BACKUP!"
         },
         {
           "type": "Label",
@@ -796,116 +796,113 @@
         },
         {
           "type": "Label",
-          "caption": "After accepting any CHANGES, press the button (6) RESTORE CONFIGURATION!"
+          "caption": "After accepting any CHANGES, press under functions the button (6) RESTORE CONFIGURATION!"
         }
       ]
     }
   ],
   "actions": [
     {
-      "type": "Label",
-      "caption": "(0) Instance information"
-    },
-    {
-      "type": "Button",
-      "caption": "Manual",
-      "onClick": "echo 'https://git.ubittner.de/ubittner/HomematicMonitoring';"
-    },
-    {
-      "type": "Label",
-      "caption": "(2) Monitored variables"
-    },
-    {
-      "type": "RowLayout",
+      "type": "ExpansionPanel",
+      "caption": "Functions",
       "items": [
         {
-          "type": "Button",
-          "caption": "Determine and assign variables automatically",
-          "onClick": "HMDCM_DetermineVariables($id);"
+          "type": "Label",
+          "caption": "(2) Monitored variables"
+        },
+        {
+          "type": "RowLayout",
+          "items": [
+            {
+              "type": "Button",
+              "caption": "Determine and assign variables automatically",
+              "onClick": "HMDCM_DetermineVariables($id);"
+            },
+            {
+              "type": "Button",
+              "caption": "Display registered variables",
+              "onClick": "$variables = HMDCM_DisplayRegisteredVariables($id); print_r($variables);"
+            }
+          ]
+        },
+        {
+          "type": "Label",
+          "caption": "(3) Notifications"
+        },
+        {
+          "type": "Label",
+          "caption": "Value is below threshold:"
+        },
+        {
+          "type": "RowLayout",
+          "items": [
+            {
+              "type": "Button",
+              "caption": "Display variables",
+              "onClick": "$variables = HMDCM_DisplayVariablesBelowThreshold($id); print_r($variables);"
+            },
+            {
+              "type": "Button",
+              "caption": "Display blocked variables for today",
+              "onClick": "$variables = HMDCM_DisplayBlockedVariablesForTodayBelowThreshold($id); print_r($variables);"
+            }
+          ]
+        },
+        {
+          "type": "Label",
+          "caption": "Threshold reached:"
+        },
+        {
+          "type": "RowLayout",
+          "items": [
+            {
+              "type": "Button",
+              "caption": "Display variables",
+              "onClick": "$variables = HMDCM_DisplayVariablesThresholdReached($id); print_r($variables);"
+            },
+            {
+              "type": "Button",
+              "caption": "Display blocked variables for today",
+              "onClick": "$variables = HMDCM_DisplayBlockedVariablesForTodayThresholdReached($id); print_r($variables);"
+            }
+          ]
+        },
+        {
+          "type": "Label",
+          "caption": "(5) Links"
         },
         {
           "type": "Button",
-          "caption": "Display registered variables",
-          "onClick": "$variables = HMDCM_DisplayRegisteredVariables($id); print_r($variables);"
-        }
-      ]
-    },
-    {
-      "type": "Label",
-      "caption": "(3) Notifications"
-    },
-    {
-      "type": "Label",
-      "caption": "Value is below threshold:"
-    },
-    {
-      "type": "RowLayout",
-      "items": [
-        {
-          "type": "Button",
-          "caption": "Display variables",
-          "onClick": "$variables = HMDCM_DisplayVariablesBelowThreshold($id); print_r($variables);"
+          "caption": "Create variable links",
+          "onClick": "HMDCM_CreateVariableLinks($id);"
         },
         {
-          "type": "Button",
-          "caption": "Display blocked variables for today",
-          "onClick": "$variables = HMDCM_DisplayBlockedVariablesForTodayBelowThreshold($id); print_r($variables);"
-        }
-      ]
-    },
-    {
-      "type": "Label",
-      "caption": "Threshold reached:"
-    },
-    {
-      "type": "RowLayout",
-      "items": [
-        {
-          "type": "Button",
-          "caption": "Display variables",
-          "onClick": "$variables = HMDCM_DisplayVariablesThresholdReached($id); print_r($variables);"
+          "type": "Label",
+          "caption": "(6) Backup/Restore"
         },
         {
-          "type": "Button",
-          "caption": "Display blocked variables for today",
-          "onClick": "$variables = HMDCM_DisplayBlockedVariablesForTodayThresholdReached($id); print_r($variables);"
-        }
-      ]
-    },
-    {
-      "type": "Label",
-      "caption": "(5) Links"
-    },
-    {
-      "type": "Button",
-      "caption": "Create variable links",
-      "onClick": "HMDCM_CreateVariableLinks($id);"
-    },
-    {
-      "type": "Label",
-      "caption": "(6) Backup/Restore"
-    },
-    {
-      "type": "RowLayout",
-      "items": [
-        {
-          "type": "Button",
-          "caption": "Create backup",
-          "onClick": "HMDCM_CreateBackup($id);"
-        },
-        {
-          "type": "PopupButton",
-          "caption": "Restore configuration",
-          "popup": {
-            "caption": "Really restore configuration?",
-            "items": [
-              {
-                "type": "Button",
-                "caption": "Restore configuration",
-                "onClick": "HMDCM_RestoreConfiguration($id);"
+          "type": "RowLayout",
+          "items": [
+            {
+              "type": "Button",
+              "caption": "Create backup",
+              "onClick": "HMDCM_CreateBackup($id);"
+            },
+            {
+              "type": "PopupButton",
+              "caption": "Restore configuration",
+              "popup": {
+                "caption": "Really restore configuration?",
+                "items": [
+                  {
+                    "type": "Button",
+                    "caption": "Restore configuration",
+                    "onClick": "HMDCM_RestoreConfiguration($id);"
+                  }
+                ]
               }
-            ]
-          }
+            }
+          ]
         }
       ]
     },
@@ -914,8 +911,13 @@
       "caption": " "
     },
     {
+      "type": "Button",
+      "caption": "Manual",
+      "onClick": "echo 'https://git.ubittner.de/ubittner/HomematicMonitoring';"
+    },
+    {
       "type": "Label",
-      "caption": "Operation:"
+      "caption": " "
     },
     {
       "type": "TestCenter"
