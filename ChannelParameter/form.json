@@ -236,7 +236,7 @@
     },
     {
       "type": "ExpansionPanel",
-      "caption": "(3) Notification",
+      "caption": "(3) Notifications",
       "items": [
         {
           "type": "Label",
@@ -857,7 +857,7 @@
         },
         {
           "type": "Label",
-          "caption": "(3) Notification"
+          "caption": "(3) Notifications"
         },
         {
           "type": "Label",
