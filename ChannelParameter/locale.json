@@ -1,7 +1,7 @@
 {
   "translations": {
     "de": {
-      "Homematic Channel Parameter Monitoring": "Homematic Channel Parameter Überwachung",
+      "Homematic Channel Parameter Monitoring": "Homematic Channel Parameter Monitoring",
       "Description:": "Beschreibung:",
       "With this instance you can monitor a channel parameter (variable) of Homematic devices present in IP-Symcon.": "Mit dieser Instanz können Sie einen Kanalparameter (Variable) von in IP-Symcon vorhandenen Homematic Geräten überwachen.",
       "If the channel parameter is triggered, a notification and/or alarm can be initiated.": "Wenn der Kanalparameter ausgelöst wird, so kann eine Benachrichtigung und/oder Alarmierung erfolgen.",
@@ -96,10 +96,10 @@
       "Create backup": "Sicherung erstellen",
       "Restore configuration": "Konfiguration wiederherstellen",
       "Really restore configuration?": "Konfiguration wirklich wiederherstellen?",
-      "Homematic Channel Parameter Monitoring will be created": "Homematic Channel Parameter Überwachung wird erstellt",
-      "Homematic Channel Parameter Monitoring is active": "Homematic Channel Parameter Überwachung ist aktiv",
-      "Homematic Channel Parameter Monitoring will be deleted": "Homematic Channel Parameter Überwachung wird gelöscht",
-      "Homematic Channel Parameter Monitoring is inactive": "Homematic Channel Parameter Überwachung ist inaktiv",
+      "Homematic Channel Parameter Monitoring will be created": "Homematic Channel Parameter Monitoring wird erstellt",
+      "Homematic Channel Parameter Monitoring is active": "Homematic Channel Parameter Monitoring ist aktiv",
+      "Homematic Channel Parameter Monitoring will be deleted": "Homematic Channel Parameter Monitoring wird gelöscht",
+      "Homematic Channel Parameter Monitoring is inactive": "Homematic Channel Parameter Monitoring ist inaktiv",
       "Monitoring": "Überwachung",
       "Last message": "Letzte Meldung",
       "Overview": "Übersicht",

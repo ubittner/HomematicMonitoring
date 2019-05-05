@@ -37,7 +37,7 @@ declare(strict_types=1);
 // Include
 include_once __DIR__ . '/helper/HMDCM_autoload.php';
 
-class DutyCycleMonitoring extends IPSModule
+class DutyCycle extends IPSModule
 {
     // Helper
     use HMDCM_alerting;

@@ -1,7 +1,7 @@
 {
   "translations": {
     "de": {
-      "Homematic Duty Cycle Monitoring": "Homematic Duty Cycle Überwachung",
+      "Homematic Duty Cycle Monitoring": "Homematic Duty Cycle Monitoring",
       "Description:": "Beschreibung:",
       "With this instance you can monitor the DutyCycle of a Homematic CCU.": "Mit dieser Instanz können Sie den DutyCycle einer Homematic CCU überwachen.",
       "If the DutyCycle is reached or exceeded according to the defined threshold value, a notification and/or alarm can be initiated.": "Sollte der DutyCycle nach Vorgabe des definierten Schwellenwertes erreicht oder überschritten werden, so kann eine Benachrichtigung und/oder Alarmierung erfolgen.",
@@ -98,10 +98,10 @@
       "Create backup": "Sicherung erstellen",
       "Restore configuration": "Konfiguration wiederherstellen",
       "Really restore configuration?": "Konfiguration wirklich wiederherstellen?",
-      "Homematic Duty Cycle Monitoring will be created": "Homematic Duty Cycle Überwachung wird erstellt",
-      "Homematic Duty Cycle Monitoring is active": "Homematic Duty Cycle Überwachung ist aktiv",
-      "Homematic Duty Cycle Monitoring will be deleted": "Homematic Duty Cycle Überwachung wird gelöscht",
-      "Homematic Duty Cycle Monitoring is inactive": "Homematic Duty Cycle Überwachung ist inaktiv",
+      "Homematic Duty Cycle Monitoring will be created": "Homematic Duty Cycle Monitoring wird erstellt",
+      "Homematic Duty Cycle Monitoring is active": "Homematic Duty Cycle Monitoring ist aktiv",
+      "Homematic Duty Cycle Monitoring will be deleted": "Homematic Duty Cycle Monitoring wird gelöscht",
+      "Homematic Duty Cycle Monitoring is inactive": "Homematic Duty Cycle Monitoring ist inaktiv",
       "Homematic Monitoring": "Homematic Überwachung",
       "Monitoring": "Überwachung",
       "Last message": "Letzte Meldung",

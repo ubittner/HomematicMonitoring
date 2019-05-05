@@ -35,7 +35,7 @@ declare(strict_types=1);
 // Include
 include_once __DIR__ . '/helper/HMCPM_autoload.php';
 
-class ChannelParameterMonitoring extends IPSModule
+class ChannelParameter extends IPSModule
 {
     // Helper
     use HMCPM_alerting;
