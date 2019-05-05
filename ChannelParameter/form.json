@@ -938,6 +938,9 @@
           }
         }
       ]
+    },
+    {
+      "type": "TestCenter"
     }
   ],
   "status": [
