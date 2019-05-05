@@ -118,8 +118,8 @@
           "caption": " "
         },
         {
-        "type": "Label",
-        "caption": "Virtual channel:"
+          "type": "Label",
+          "caption": "Virtual channel:"
         },
         {
           "type": "CheckBox",
@@ -908,6 +908,9 @@
           }
         }
       ]
+    },
+    {
+      "type": "TestCenter"
     }
   ],
   "status": [
