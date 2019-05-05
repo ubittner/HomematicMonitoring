@@ -229,6 +229,17 @@
               "edit": {
                 "type": "CheckBox"
               }
+            },
+            {
+              "name": "Button",
+              "caption": "Button",
+              "width": "250px",
+              "add": "",
+              "edit": {
+                "type": "Button",
+                "caption": "Symcon",
+                "onClick": "echo 'https://www.symcon.de';"
+              }
             }
           ]
         }
