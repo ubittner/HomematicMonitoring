@@ -940,6 +940,14 @@
       ]
     },
     {
+      "type": "Label",
+      "caption": " "
+    },
+    {
+      "type": "Label",
+      "caption": "Test Center"
+    },
+    {
       "type": "TestCenter"
     }
   ],
