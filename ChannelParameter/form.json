@@ -229,6 +229,15 @@
               "edit": {
                 "type": "CheckBox"
               }
+            },
+            {
+              "name": "Date",
+              "caption": "Date",
+              "width": "200px",
+              "add": 0,
+              "edit": {
+                "type": "SelectDateTime"
+              }
             }
           ]
         }

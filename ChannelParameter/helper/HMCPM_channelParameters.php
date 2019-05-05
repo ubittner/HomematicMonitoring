@@ -309,7 +309,7 @@ trait HMCPM_channelParameters
         $useDisplayOverview = $this->ReadPropertyBoolean('UseOverview');
         if ($useDisplayOverview && $this->GetIDForIdent('Overview')) {
             $string = "<table width='90%' align='center'>";
-            $string .= $this->Translate("<tr><td><b>ID</b></td><td><b>Name</b></td><td><b>Address</b></td><td><b>State</b></td></tr>");
+            $string .= $this->Translate("<tr><td><b>ID</b></td><td><b>Name</b></td><td><b>Address</b></td><td><b>State</b></td><td><b>Date</b></td></tr>");
             $variables = json_decode($this->ReadPropertyString('MonitoredVariables'));
             if (!empty($variables)) {
                 foreach ($variables as $variable) {
@@ -329,7 +329,8 @@ trait HMCPM_channelParameters
                     if (!$deviceAddress) {
                         $deviceAddress = '-';
                     }
-                    $string .= "<tr><td>" . $variable->ID . "</td><td>" . $variable->Name . "</td><td>" . $deviceAddress . "</td><td>" . $text . "</td></tr>";
+                    $date = $variable->Date;
+                    $string .= "<tr><td>" . $variable->ID . "</td><td>" . $variable->Name . "</td><td>" . $deviceAddress . "</td><td>" . $text . "</td><td>" . $date . "</td></tr>";
                 }
                 $string .= "</table>";
                 $this->SetValue('Overview', $string);
