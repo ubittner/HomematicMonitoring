@@ -189,8 +189,9 @@ trait HMCPM_channelParameters
                 if (!empty($addVariables)) {
                     foreach ($addVariables as $addVariable) {
                         $name = strstr(IPS_GetName(IPS_GetParent($addVariable)), ':', true);
+                        $deviceAddress = @IPS_GetProperty(IPS_GetParent($addVariable), 'Address');
                         $lastMaintenance = '{"year":0,"month":0,"day":0}';
-                        array_push($listedVariables, array('ID' => $addVariable, 'Name' => $name, 'UseMonitoring' => true, 'LastMaintenance' => $lastMaintenance));
+                        array_push($listedVariables, array('ID' => $addVariable, 'Name' => $name, 'Address' => $deviceAddress, 'UseMonitoring' => true, 'LastMaintenance' => $lastMaintenance));
                     }
                 }
             } else {
