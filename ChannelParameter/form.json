@@ -163,7 +163,7 @@
         },
         {
           "type": "Label",
-          "caption": "You can automatically determine and assign the variables to be monitored to this instance. After accepting the CHANGES, press the (2) DETERMINE AND ASSIGN VARIABLES AUTOMATICALLY button!"
+          "caption": "You can automatically determine and assign the variables to be monitored to this instance. After accepting the CHANGES, press under functions the (2) DETERMINE AND ASSIGN VARIABLES AUTOMATICALLY button!"
         },
         {
           "type": "Label",
@@ -759,7 +759,7 @@
         },
         {
           "type": "Label",
-          "caption": "You can automatically create a link of the monitored variables. Accept the CHANGES now and then press the button (5) CREATE VARIABLES LINK!"
+          "caption": "You can automatically create a link of the monitored variables. Accept the CHANGES now and then press under functions the button (5) CREATE VARIABLES LINK!"
         }
       ]
     },
@@ -786,7 +786,7 @@
         },
         {
           "type": "Label",
-          "caption": "Accept the changes now and press the button (6) CREATE BACKUP!"
+          "caption": "Accept the changes now and press under functions the button (6) CREATE BACKUP!"
         },
         {
           "type": "Label",
@@ -811,7 +811,7 @@
         },
         {
           "type": "Label",
-          "caption": "Accept the changes now and press the button (6) RESTORE CONFIGURATION!"
+          "caption": "Accept the changes now and press under functions the button (6) RESTORE CONFIGURATION!"
         }
       ]
     }
@@ -944,6 +944,10 @@
       "type": "Button",
       "caption": "Manual",
       "onClick": "echo 'https://git.ubittner.de/ubittner/HomematicMonitoring';"
+    },
+    {
+      "type": "Label",
+      "caption": " "
     },
     {
       "type": "TestCenter"
