@@ -329,7 +329,14 @@ trait HMCPM_channelParameters
                     if (!$deviceAddress) {
                         $deviceAddress = '-';
                     }
-                    $lastMaintenance = '-';
+                    $lastMaintenance = '';
+                    $date = json_decode($variable->LastMaintenance);
+                    $year = $date->year;
+                    $month = $date->month;
+                    $day = $date->day;
+                    if ($year != 0) {
+                        $lastMaintenance = $day . '.' . $month . '.' . $year;
+                    }
                     $string .= "<tr><td>" . $variable->ID . "</td><td>" . $variable->Name . "</td><td>" . $deviceAddress . "</td><td>" . $lastMaintenance . "</td><td>" . $text . "</td></tr>";
                 }
                 $string .= "</table>";
