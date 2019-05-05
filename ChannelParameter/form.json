@@ -818,24 +818,8 @@
   ],
   "actions": [
     {
-      "type": "Label",
-      "caption": " "
-    },
-    {
-      "type": "Label",
-      "caption": "Operation:"
-    },
-    {
-      "type": "Button",
-      "caption": "Manual",
-      "onClick": "echo 'https://git.ubittner.de/ubittner/HomematicMonitoring';"
-    },
-    {
-      "type": "TestCenter"
-    },
-    {
       "type": "ExpansionPanel",
-      "caption": "Expert settings",
+      "caption": "Functions",
       "items": [
         {
           "type": "Label",
@@ -951,6 +935,18 @@
           ]
         }
       ]
+    },
+    {
+      "type": "Label",
+      "caption": " "
+    },
+    {
+      "type": "Button",
+      "caption": "Manual",
+      "onClick": "echo 'https://git.ubittner.de/ubittner/HomematicMonitoring';"
+    },
+    {
+      "type": "TestCenter"
     }
   ],
   "status": [
