@@ -55,7 +55,7 @@ class ChannelParameter extends IPSModule
         $this->RegisterPropertyString('UserDefinedParameters', '');
         $this->RegisterPropertyString('ThresholdValue', '');
         // Monitored variables
-        $this->RegisterPropertyString('MonitoredVariables', '');
+        $this->RegisterPropertyString('MonitoredVariables', '[]');
         // Notification
         $this->RegisterPropertyBoolean('UseNotification', false);
         $this->RegisterPropertyString('TitleDescription', 'Homematic Monitoring');
@@ -67,12 +67,12 @@ class ChannelParameter extends IPSModule
         $this->RegisterPropertyBoolean('AlwaysNotifyThresholdReached', false);
         $this->RegisterPropertyBoolean('NotifyOnceThresholdReached', true);
         $this->RegisterPropertyBoolean('UseMessageDayLimitThresholdReached', false);
-        $this->RegisterPropertyString('WebFronts', '');
-        $this->RegisterPropertyString('EmailRecipients', '');
+        $this->RegisterPropertyString('WebFronts', '[]');
+        $this->RegisterPropertyString('EmailRecipients', '[]');
         // Alerting
         $this->RegisterPropertyBoolean('UseAlerting', false);
-        $this->RegisterPropertyString('TargetVariables', '');
-        $this->RegisterPropertyString('TargetScripts', '');
+        $this->RegisterPropertyString('TargetVariables', '[]');
+        $this->RegisterPropertyString('TargetScripts', '[]');
         // Links
         $this->RegisterPropertyBoolean('UseOverview', false);
         $this->RegisterPropertyInteger('LinkCategory', 0);
