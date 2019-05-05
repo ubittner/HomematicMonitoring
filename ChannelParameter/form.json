@@ -234,9 +234,9 @@
               "name": "LastMaintenance",
               "caption": "Last maintenance",
               "width": "200px",
-              "add": "{\"year\":0,\"month\":0,\"day\":0,\"hour\":0,\"minute\":0,\"second\":0}\"}",
+              "add": "{'year': 0,'month': 0, 'day': 0}",
               "edit": {
-                "type": "SelectDateTime"
+                "type": "SelectDate"
               }
             }
           ]
