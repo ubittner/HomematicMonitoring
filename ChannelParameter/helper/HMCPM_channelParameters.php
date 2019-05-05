@@ -166,7 +166,8 @@ trait HMCPM_channelParameters
                         if ($object['ObjectType'] == 2) {
                             $name = strstr(IPS_GetName($instanceID), ':', true);
                             $deviceAddress = @IPS_GetProperty(IPS_GetParent($childrenID), 'Address');
-                            array_push($variables, array('ID' => $childrenID, 'Name' => $name, 'Address' => $deviceAddress, 'UseMonitoring' => true));
+                            $lastMaintenance = '{"year":0,"month":0,"day":0}';
+                            array_push($variables, array('ID' => $childrenID, 'Name' => $name, 'Address' => $deviceAddress, 'UseMonitoring' => true, 'LastMaintenance' => $lastMaintenance));
                         }
                     }
                 }
@@ -188,7 +189,8 @@ trait HMCPM_channelParameters
                 if (!empty($addVariables)) {
                     foreach ($addVariables as $addVariable) {
                         $name = strstr(IPS_GetName(IPS_GetParent($addVariable)), ':', true);
-                        array_push($listedVariables, array('ID' => $addVariable, 'Name' => $name, 'UseMonitoring' => true));
+                        $lastMaintenance = '{"year":0,"month":0,"day":0}';
+                        array_push($listedVariables, array('ID' => $addVariable, 'Name' => $name, 'UseMonitoring' => true, 'LastMaintenance' => $lastMaintenance));
                     }
                 }
             } else {
@@ -329,7 +331,7 @@ trait HMCPM_channelParameters
                     if (!$deviceAddress) {
                         $deviceAddress = '-';
                     }
-                    $lastMaintenance = '';
+                    $lastMaintenance = '-';
                     $date = json_decode($variable->LastMaintenance);
                     $year = $date->year;
                     $month = $date->month;
