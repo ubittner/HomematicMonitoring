@@ -124,7 +124,7 @@ class ChannelParameter extends IPSModule
         }
 
         // Maintain variables
-        $this->MaintainVariable ('LastMessage', $this->Translate("Last message"), 3, '~TextBox', 3, true);
+        $this->MaintainVariable ('LastMessage', $this->Translate("Last message"), 3, '~TextBox', 2, true);
         IPS_SetIcon($this->GetIDForIdent('LastMessage'), 'Database');
 
         // Set buffer
@@ -151,7 +151,7 @@ class ChannelParameter extends IPSModule
         // Check if overview is enabled
         if ($this->ReadPropertyBoolean('UseOverview')) {
             // Register variable
-            $this->RegisterVariableString('Overview', $this->Translate('Overview'), 'HTMLBox', 2);
+            $this->RegisterVariableString('Overview', $this->Translate('Overview'), 'HTMLBox', 3);
             IPS_SetIcon($this->GetIDForIdent('Overview'), 'Database');
             // Create overview
             $this->CreateOverview();
