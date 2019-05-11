@@ -165,6 +165,9 @@ trait HMCPM_channelParameters
                         // Check for variable
                         if ($object['ObjectType'] == 2) {
                             $name = strstr(IPS_GetName($instanceID), ':', true);
+                            if ($name == false) {
+                                $name = IPS_GetName($instanceID);
+                            }
                             $deviceAddress = @IPS_GetProperty(IPS_GetParent($childrenID), 'Address');
                             $lastMaintenance = '{"year":0,"month":0,"day":0}';
                             array_push($variables, array('ID' => $childrenID, 'Name' => $name, 'Address' => $deviceAddress, 'UseMonitoring' => true, 'LastMaintenance' => $lastMaintenance));
