@@ -319,7 +319,7 @@ trait HMCPM_channelParameters
             $variables = json_decode($this->ReadPropertyString('MonitoredVariables'));
             if (!empty($variables)) {
                 foreach ($variables as $variable) {
-                    if ($variable->UseMonitoring) {
+                    if (IPS_ObjectExists($variable->ID) && $variable->UseMonitoring) {
                         $actualStateName = '';
                         $profile = IPS_GetVariable($variable->ID)['VariableCustomProfile'];
                         if (!empty($profile)) {

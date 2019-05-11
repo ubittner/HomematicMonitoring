@@ -197,7 +197,7 @@
             {
               "name": "ID",
               "caption": "Variable ID",
-              "width": "350px",
+              "width": "400px",
               "add": 0,
               "edit": {
                 "type": "SelectVariable"
@@ -215,7 +215,7 @@
             {
               "name": "Address",
               "caption": "Address",
-              "width": "240px",
+              "width": "250px",
               "add": "",
               "edit": {
                 "type": "ValidationTextBox"
