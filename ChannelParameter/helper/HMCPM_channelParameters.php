@@ -319,31 +319,33 @@ trait HMCPM_channelParameters
             $variables = json_decode($this->ReadPropertyString('MonitoredVariables'));
             if (!empty($variables)) {
                 foreach ($variables as $variable) {
-                    $actualStateName = '';
-                    $profile = IPS_GetVariable($variable->ID)['VariableCustomProfile'];
-                    if (!empty($profile)) {
-                        $actualStateName = GetValueFormatted($variable->ID);
+                    if ($variable->UseMonitoring) {
+                        $actualStateName = '';
+                        $profile = IPS_GetVariable($variable->ID)['VariableCustomProfile'];
+                        if (!empty($profile)) {
+                            $actualStateName = GetValueFormatted($variable->ID);
+                        }
+                        $devices = json_decode($this->GetBuffer('VariablesThresholdReached'), true);
+                        $thresholdReached = in_array($variable->ID, $devices);
+                        if ($thresholdReached) {
+                            $text = '<span style="color:#FF0000"><b>' . $actualStateName . '</b></span>';
+                        } else {
+                            $text = $actualStateName;
+                        }
+                        $deviceAddress = @IPS_GetProperty(IPS_GetParent($variable->ID), 'Address');
+                        if (!$deviceAddress) {
+                            $deviceAddress = '-';
+                        }
+                        $lastMaintenance = '-';
+                        $date = json_decode($variable->LastMaintenance);
+                        $year = $date->year;
+                        $month = $date->month;
+                        $day = $date->day;
+                        if ($year != 0) {
+                            $lastMaintenance = $day . '.' . $month . '.' . $year;
+                        }
+                        $string .= "<tr><td>" . $variable->ID . "</td><td>" . $variable->Name . "</td><td>" . $deviceAddress . "</td><td>" . $lastMaintenance . "</td><td>" . $text . "</td></tr>";
                     }
-                    $devices = json_decode($this->GetBuffer('VariablesThresholdReached'), true);
-                    $thresholdReached = in_array($variable->ID, $devices);
-                    if ($thresholdReached) {
-                        $text = '<span style="color:#FF0000"><b>' . $actualStateName . '</b></span>';
-                    } else {
-                        $text = $actualStateName;
-                    }
-                    $deviceAddress = @IPS_GetProperty(IPS_GetParent($variable->ID), 'Address');
-                    if (!$deviceAddress) {
-                        $deviceAddress = '-';
-                    }
-                    $lastMaintenance = '-';
-                    $date = json_decode($variable->LastMaintenance);
-                    $year = $date->year;
-                    $month = $date->month;
-                    $day = $date->day;
-                    if ($year != 0) {
-                        $lastMaintenance = $day . '.' . $month . '.' . $year;
-                    }
-                    $string .= "<tr><td>" . $variable->ID . "</td><td>" . $variable->Name . "</td><td>" . $deviceAddress . "</td><td>" . $lastMaintenance . "</td><td>" . $text . "</td></tr>";
                 }
                 $string .= "</table>";
                 $this->SetValue('Overview', $string);

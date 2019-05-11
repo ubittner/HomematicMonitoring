@@ -197,7 +197,7 @@
             {
               "name": "ID",
               "caption": "Variable ID",
-              "width": "auto",
+              "width": "350px",
               "add": 0,
               "edit": {
                 "type": "SelectVariable"
