@@ -53,7 +53,7 @@ trait HMSCM_connection
                 if ($notification) {
                     $this->SendNotification($actualSocketState);
                 }
-                $this->ExecuteAlerting($actualSocketState);
+                $this->ExecuteAlerting(!$actualSocketState);
                 $this->UpdateLastMessage($actualSocketState);
             }
         }
