@@ -122,7 +122,7 @@ class DutyCycle extends IPSModule
         //#################### Connect parent
 
         // Connect to Homematic socket
-        $this->RegisterHomematicProperties('XXX9999990');
+        $this->RegisterHomematicProperties('XXX9999991');
         $this->SetReceiveDataFilter(".*9999999999.*");
         $this->RegisterPropertyBoolean("EmulateStatus", false);
         $this->ConnectParent('{A151ECE9-D733-4FB9-AA15-7F7DD10C58AF}');

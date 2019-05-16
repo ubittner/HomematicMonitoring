@@ -708,7 +708,7 @@
               "width": "auto",
               "add": 0,
               "edit": {
-                "type": "SelectObject"
+                "type": "SelectScript"
               }
             },
             {
