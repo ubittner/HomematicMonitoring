@@ -59,7 +59,7 @@ class SocketConnection extends IPSModule
         // Notification
         $this->RegisterPropertyBoolean('UseNotification', false);
         $this->RegisterPropertyString('LocationDesignation', '');
-        $this->RegisterPropertyString('TitleDescription', 'Homematic Monitoring');
+        $this->RegisterPropertyString('TitleDescription', 'Homematic CCU Monitoring');
         $this->RegisterPropertyString('MessageTexts', '[{"Status":false,"MessageText":"' . $this->Translate('Lost CCU connection, please check') . '"},{"Status":true,"MessageText":"' . $this->Translate('CCU Connection established') . '"}]');
         $this->RegisterPropertyInteger('NotificationLimit', 3);
         $this->RegisterPropertyString('WebFronts', '[]');

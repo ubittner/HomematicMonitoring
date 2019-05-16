@@ -122,7 +122,7 @@
       "items": [
         {
           "type": "Label",
-          "caption": "(4.1) General settings"
+          "caption": "(2.1) General settings"
         },
         {
           "type": "Label",
@@ -633,7 +633,7 @@
         },
         {
           "type": "Button",
-          "caption": "Show state update cycle",
+          "caption": "Show amount of state updates",
           "onClick": "HMSCM_ShowStateUpdateCycle($id);"
         },
         {
@@ -647,7 +647,7 @@
         },
         {
           "type": "Button",
-          "caption": "Show notification cycles",
+          "caption": "Show amount of notifications",
           "onClick": "HMSCM_ShowNotificationCycles($id);"
         },
         {
