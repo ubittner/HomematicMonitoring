@@ -19,7 +19,6 @@ trait HMSCM_connection
             return;
         }
         $status = $this->GetValue('Status');
-
         // Check socket
         $parentID = IPS_GetInstance($this->InstanceID)['ConnectionID'];
         if ($parentID != 0 && IPS_ObjectExists($parentID)) {
@@ -29,9 +28,10 @@ trait HMSCM_connection
                 $actualSocketState = true;
                 $this->UpdateDeviceState();
             }
-            $this->SetValue('Status', $actualSocketState);
+            // Status: 0 = OK, 1 = Alarm | Socket: 0 = lost connection, 1 = established connection
+            $this->SetValue('Status', !$actualSocketState);
             // Notification and alerting, only if state is different
-            if ($actualSocketState != $status) {
+            if (!$actualSocketState != $status) {
                 $notification = false;
                 $notificationLimit = $this->ReadPropertyInteger('NotificationLimit');
                 // Connection established
