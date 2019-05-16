@@ -137,6 +137,9 @@ class SocketConnection extends IPSModule
 
         // Set timer
         $this->SetResetDailyLimitsTimer();
+
+        // Reset limits
+        $this->ResetDailyLimits();
     }
 
     public function MessageSink($TimeStamp, $SenderID, $Message, $Data)
