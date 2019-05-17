@@ -130,8 +130,7 @@ class DutyCycle extends IPSModule
     public function ApplyChanges()
     {
         // Register messages
-
-        // Wait until IP-Symcon is started
+        // Base
         $this->RegisterMessage(0, IPS_KERNELSTARTED);
 
         // Never delete this line!

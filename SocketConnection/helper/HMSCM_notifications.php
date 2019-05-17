@@ -101,7 +101,7 @@ trait HMSCM_notifications
      */
     public function ShowNotificationCycles()
     {
-        echo $this->Translate('Connection lost: ') . $this->ReadAttributeInteger('ConnectionLostNotificationCycle') . "\n";
-        echo $this->Translate('Connection established: ') . $this->ReadAttributeInteger('ConnectionEstablishedNotificationCycle') . "\n";
+        echo $this->Translate("Connection lost: \n") . $this->ReadAttributeInteger('ConnectionLostNotificationCycle') . "\n";
+        echo $this->Translate("Connection established: \n") . $this->ReadAttributeInteger('ConnectionEstablishedNotificationCycle') . "\n";
     }
 }
