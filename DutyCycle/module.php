@@ -61,7 +61,7 @@ class DutyCycle extends IPSModule
         $this->RegisterPropertyString('MonitoredVariables', '[]');
         // Notification
         $this->RegisterPropertyBoolean('UseNotification', false);
-        $this->RegisterPropertyString('TitleDescription', 'Homematic Monitoring');
+        $this->RegisterPropertyString('TitleDescription', $this->Translate('Homematic DC Monitoring'));
         $this->RegisterPropertyString('LocationDesignation', '');
         $this->RegisterPropertyString('MessageTexts', '[{"Status":false,"MessageText":"' . $this->Translate('Below threshold') . '"},{"Status":true,"MessageText":"' . $this->Translate('Threshold reached or exceeded') . '"}]');
         $this->RegisterPropertyBoolean('AlwaysNotifyBelowThreshold', false);

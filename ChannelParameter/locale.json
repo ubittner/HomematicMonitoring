@@ -84,6 +84,7 @@
       "Please select the category for the backup:": "Bitte wählen Sie die Kategorie für die Sicherung aus:",
       "Accept the changes now and press under actions the button (6) CREATE BACKUP!": "Akzeptieren Sie die Änderungen jetzt und drücken Sie dann unter Aktionen die Schaltfläche (6) SICHERUNG ERSTELLEN!",
       "Please select the saved configuration script for recovery:": "Bitte wählen Sie das gespeicherte Konfigurationsskript für die Wiederherstellung aus:",
+      "Script": "Skript",
       "Accept the changes now and press under actions the button (6) RESTORE CONFIGURATION!": "Akzeptieren Sie die Änderungen jetzt und drücken Sie dann unter Aktionen die Schaltfläche (6) KONFIGURATION WIEDERHERSTELLEN!",
       "Actions": "Aktionen",
       "Determine and assign variables automatically": "Variablen automatisch ermitteln und zuweisen",

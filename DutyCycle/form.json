@@ -26,11 +26,11 @@
     },
     {
       "type": "Label",
-      "caption": "With this instance you can monitor the DutyCycle of a Homematic CCU."
+      "caption": "With this instance you can monitor the Duty Cycle of a Homematic CCU."
     },
     {
       "type": "Label",
-      "caption": "If the DutyCycle is reached or exceeded according to the defined threshold value, a notification and/or alarm can be initiated."
+      "caption": "If the Duty Cycle is reached or exceeded according to the defined threshold value, a notification and/or alarm can be initiated."
     },
     {
       "type": "Label",
@@ -38,7 +38,7 @@
     },
     {
       "type": "Label",
-      "caption": "If you want to monitor the DutyCycle of Homematic devices, please use the ChannelParameter Monitoring module."
+      "caption": "If you want to monitor the Duty Cycle of Homematic devices, please use the Channel Parameter Monitoring module."
     },
     {
       "type": "Label",
