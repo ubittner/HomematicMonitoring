@@ -78,11 +78,12 @@ trait HMSCM_connection
                         $children = IPS_GetChildrenIDs($device);
                         foreach ($children as $child) {
                             $object = IPS_GetObject($child);
-                            if ($object['ObjectIdent'] != '') {
-                                if (@HM_RequestStatus($device, $object['ObjectIdent']) === false) {
+                            if ($object['ObjectIdent'] == 'STATE' || $object['ObjectIdent'] == 'LEVEL' ) {
+                                if (@HM_RequestStatus($device, $object['ObjectIdent']) == true) {
+                                    $this->SendDebug('UpdateDeviceState',  IPS_GetLocation($device), 0);
+                                } else {
                                     $this->LogMessage($this->Translate('Homematic device status, Error: ') . IPS_GetLocation($device), KL_WARNING);
                                 }
-                                break;
                             }
                         }
                     }
