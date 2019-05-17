@@ -98,8 +98,6 @@ trait HMSCM_connection
 
     public function ShowStateUpdateCycle()
     {
-        echo $this->Translate("State update: \n") . $this->ReadAttributeInteger('StateUpdateCycle');
+        echo $this->Translate('State update: ') . "\n" . $this->ReadAttributeInteger('StateUpdateCycle');
     }
-
-
 }
