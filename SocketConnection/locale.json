@@ -88,6 +88,7 @@
       "Configuration": "Konfiguration",
       "The configuration was successfully saved!": "Die Konfiguration wurde erfolgreich gesichert!",
       "The configuration was successfully restored!": "Die Konfiguration wurde erfolgreich wiederhergestellt!",
+      "Homematic device status update, Error: ": "Homematic Gerätestatusaktualisierung, Fehler: ",
       "The status of all Homematic devices has been updated": "Der Status aller Homematic Geräte wurde aktualisiert",
       "State update: ": "Zustandsaktualisierungen: ",
       "The limit for status update of all Homematic devices has been reached": "Das Limit zur Statusaktualisierung aller Homematic Geräte wurde erreicht",
