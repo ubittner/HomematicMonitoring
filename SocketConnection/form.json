@@ -660,7 +660,7 @@
             {
               "type": "Button",
               "caption": "Create backup",
-              "onClick": "HMDCM_CreateBackup($id);"
+              "onClick": "HMSCM_CreateBackup($id);"
             },
             {
               "type": "PopupButton",
@@ -671,7 +671,7 @@
                   {
                     "type": "Button",
                     "caption": "Restore configuration",
-                    "onClick": "HMDCM_RestoreConfiguration($id);"
+                    "onClick": "HMSCM_RestoreConfiguration($id);"
                   }
                 ]
               }
