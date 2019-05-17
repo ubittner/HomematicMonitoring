@@ -3,8 +3,6 @@
 /*
  * @module      Homematic Duty Cycle Monitoring
  *
- * @description Monitors the duty cycles of a Homematic CCU
- *
  * @prefix      HMDCM
  *
  * @file        module.php
@@ -15,9 +13,9 @@
  * @license     CC BY-NC-SA 4.0
  *              https://creativecommons.org/licenses/by-nc-sa/4.0/
  *
- * @version     1.00-1
+ * @version     1.01-2
  * @date        2019-01-11, 09:00
- * @lastchange  2019-01-11, 09:00
+ * @lastchange  2019-05-17, 18:00
  *
  * @see         https://git.ubittner.de/ubittner/HomematicMonitoring
  *
@@ -27,7 +25,8 @@
  *              Homematic DutyCycle Monitoring
  *             	{40589A8F-E978-4C18-B18D-3346CA80E850}
  *
- * @changelog   2019-01-11, 09:00, initial version 1.00-1
+ * @changelog   2019-05-17, 18:00, update to version 1.01-2
+ *              2019-01-11, 09:00, initial version 1.00-1
  *
  */
 
@@ -62,7 +61,7 @@ class DutyCycle extends IPSModule
         $this->RegisterPropertyString('MonitoredVariables', '[]');
         // Notification
         $this->RegisterPropertyBoolean('UseNotification', false);
-        $this->RegisterPropertyString('TitleDescription', 'Homematic Monitoring');
+        $this->RegisterPropertyString('TitleDescription', $this->Translate('Homematic DC Monitoring'));
         $this->RegisterPropertyString('LocationDesignation', '');
         $this->RegisterPropertyString('MessageTexts', '[{"Status":false,"MessageText":"' . $this->Translate('Below threshold') . '"},{"Status":true,"MessageText":"' . $this->Translate('Threshold reached or exceeded') . '"}]');
         $this->RegisterPropertyBoolean('AlwaysNotifyBelowThreshold', false);
@@ -106,8 +105,8 @@ class DutyCycle extends IPSModule
         //################### Register variables
 
         // Monitoring
-        $this->RegisterVariableBoolean("Monitoring", $this->Translate("Monitoring"), "~Switch");
-        $this->EnableAction("Monitoring");
+        $this->RegisterVariableBoolean('Monitoring', $this->Translate('Monitoring'), '~Switch');
+        $this->EnableAction('Monitoring');
         IPS_SetPosition($this->GetIDForIdent('Monitoring'), 0);
 
         // Status
@@ -122,29 +121,28 @@ class DutyCycle extends IPSModule
         //#################### Connect parent
 
         // Connect to Homematic socket
-        $this->RegisterHomematicProperties('XXX9999990');
-        $this->SetReceiveDataFilter(".*9999999999.*");
-        $this->RegisterPropertyBoolean("EmulateStatus", false);
+        $this->RegisterHomematicProperties('XXX9999991');
+        $this->SetReceiveDataFilter('.*9999999999.*');
+        $this->RegisterPropertyBoolean('EmulateStatus', false);
         $this->ConnectParent('{A151ECE9-D733-4FB9-AA15-7F7DD10C58AF}');
     }
 
     public function ApplyChanges()
     {
         // Register messages
-
-        // Wait until IP-Symcon is started
+        // Base
         $this->RegisterMessage(0, IPS_KERNELSTARTED);
 
         // Never delete this line!
         parent::ApplyChanges();
 
         // Check kernel runlevel
-        if (IPS_GetKernelRunlevel() <> KR_READY) {
+        if (IPS_GetKernelRunlevel() != KR_READY) {
             return;
         }
 
         // Maintain variables
-        $this->MaintainVariable ('LastMessage', $this->Translate("Last message"), 3, '~TextBox', 10, true);
+        $this->MaintainVariable('LastMessage', $this->Translate('Last message'), 3, '~TextBox', 10, true);
         IPS_SetIcon($this->GetIDForIdent('LastMessage'), 'Database');
 
         // Check for changes of the monitored variables
@@ -177,7 +175,7 @@ class DutyCycle extends IPSModule
 
     public function MessageSink($TimeStamp, $SenderID, $Message, $Data)
     {
-        $this->SendDebug("MessageSink", "SenderID: " . $SenderID . ", Message: " . $Message, 0);
+        $this->SendDebug('MessageSink', 'SenderID: ' . $SenderID . ', Message: ' . $Message, 0);
         switch ($Message) {
             case IPS_KERNELSTARTED:
                 $this->KernelReady();
@@ -262,13 +260,12 @@ class DutyCycle extends IPSModule
      */
     protected function RegisterHomematicProperties(string $Address)
     {
-        $this->RegisterPropertyInteger("Protocol", 0);
-        $count = @IPS_GetInstanceListByModuleID(IPS_GetInstance($this->InstanceID)["ModuleInfo"]["ModuleID"]);
+        $this->RegisterPropertyInteger('Protocol', 0);
+        $count = @IPS_GetInstanceListByModuleID(IPS_GetInstance($this->InstanceID)['ModuleInfo']['ModuleID']);
         if (is_array($count)) {
-            $this->RegisterPropertyString("Address", $Address . ":" . count($count));
+            $this->RegisterPropertyString('Address', $Address . ':' . count($count));
         } else {
-            $this->RegisterPropertyString("Address", $Address . ":0");
+            $this->RegisterPropertyString('Address', $Address . ':0');
         }
     }
 }
-

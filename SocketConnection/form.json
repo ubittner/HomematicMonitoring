@@ -14,7 +14,7 @@
     },
     {
       "type": "Label",
-      "caption": "Homematic Duty Cycle Monitoring"
+      "caption": "Homematic Socket Connection Monitoring"
     },
     {
       "type": "Label",
@@ -26,19 +26,15 @@
     },
     {
       "type": "Label",
-      "caption": "With this instance you can monitor the Duty Cycle of a Homematic CCU."
+      "caption": "With this instance you can monitor the connection to a Homematic CCU."
     },
     {
       "type": "Label",
-      "caption": "If the Duty Cycle is reached or exceeded according to the defined threshold value, a notification and/or alarm can be initiated."
+      "caption": "If the connection is lost a notification and/or alarm can be initiated."
     },
     {
       "type": "Label",
       "caption": "In case of an alarm you can switch further variables and/or execute scripts."
-    },
-    {
-      "type": "Label",
-      "caption": "If you want to monitor the Duty Cycle of Homematic devices, please use the Channel Parameter Monitoring module."
     },
     {
       "type": "Label",
@@ -78,40 +74,22 @@
         },
         {
           "type": "Label",
-          "caption": "Prefix:\t\t\tHMDCM"
+          "caption": "Prefix:\t\t\tHMSCM"
         }
       ]
     },
     {
       "type": "ExpansionPanel",
-      "caption": "(1) CCU DutyCycle",
+      "caption": "(1) Socket Connection",
       "items": [
         {
           "type": "Label",
-          "caption": "You can use an update interval or choose a virtual channel (variable)."
-        },
-        {
-          "type": "Label",
-          "caption": " "
-        },
-        {
-          "type": "Label",
-          "caption": "Update interval:"
+          "caption": "Please select whether the connection to the Homematic CCU should be monitored:"
         },
         {
           "type": "CheckBox",
-          "name": "UseUpdateInterval",
-          "caption": "Use update interval"
-        },
-        {
-          "type": "Label",
-          "caption": "Please enter the update interval in minutes:"
-        },
-        {
-          "type": "NumberSpinner",
-          "name": "UpdateInterval",
-          "caption": "Interval",
-          "suffix": "Minutes"
+          "name": "UseSocketMonitoring",
+          "caption": "Use monitoring"
         },
         {
           "type": "Label",
@@ -119,126 +97,32 @@
         },
         {
           "type": "Label",
-          "caption": "Virtual channel:"
+          "caption": "Please specify whether the status of the devices should be updated after a successful connection to the Homematic CCU:"
         },
         {
           "type": "CheckBox",
-          "name": "UseVirtualChannel",
-          "caption": "Use virtual channel"
+          "name": "UseStateUpdate",
+          "caption": "Use update"
         },
         {
           "type": "Label",
-          "caption": "Please select the virtual channel (variable):"
-        },
-        {
-          "type": "SelectVariable",
-          "name": "VirtualChannel",
-          "caption": "Virtual channel"
-        },
-        {
-          "type": "Label",
-          "caption": " "
-        },
-        {
-          "type": "Label",
-          "caption": "Please set the threshold value. When the threshold value is reached or exceeded, a notification/alerting can be triggered:"
+          "caption": "Please specify the maximum number of updates per day:"
         },
         {
           "type": "NumberSpinner",
-          "name": "ThresholdValue",
-          "caption": "Threshold",
-          "suffix": "%"
+          "name": "UpdateLimit",
+          "caption": "Updates",
+          "suffix": "per day"
         }
       ]
     },
     {
       "type": "ExpansionPanel",
-      "caption": "(2) Monitored variables",
+      "caption": "(2) Notifications",
       "items": [
         {
           "type": "Label",
-          "caption": "Hint:"
-        },
-        {
-          "type": "Label",
-          "caption": "You can automatically determine and assign the variables to be monitored to this instance. After accepting any CHANGES, press under actions the button (2) DETERMINE AND ASSIGN VARIABLES AUTOMATICALLY!"
-        },
-        {
-          "type": "Label",
-          "caption": " "
-        },
-        {
-          "type": "Label",
-          "caption": "Please add the variables you want to monitor or delete entries you no longer need:"
-        },
-        {
-          "type": "List",
-          "name": "MonitoredVariables",
-          "caption": "Monitored variables",
-          "rowCount": 5,
-          "add": true,
-          "delete": true,
-          "sort": {
-            "column": "Position",
-            "direction": "ascending"
-          },
-          "columns": [
-            {
-              "name": "Position",
-              "caption": "Position",
-              "width": "100px",
-              "add": 1,
-              "edit": {
-                "type": "NumberSpinner"
-              }
-            },
-            {
-              "name": "ID",
-              "caption": "Variable ID",
-              "width": "auto",
-              "add": 0,
-              "edit": {
-                "type": "SelectVariable"
-              }
-            },
-            {
-              "name": "Name",
-              "caption": "Name",
-              "width": "200px",
-              "add": "",
-              "edit": {
-                "type": "ValidationTextBox"
-              }
-            },
-            {
-              "name": "Address",
-              "caption": "Address",
-              "width": "240px",
-              "add": "",
-              "edit": {
-                "type": "ValidationTextBox"
-              }
-            },
-            {
-              "name": "UseMonitoring",
-              "caption": "Use monitoring",
-              "width": "195px",
-              "add": true,
-              "edit": {
-                "type": "CheckBox"
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "ExpansionPanel",
-      "caption": "(3) Notifications",
-      "items": [
-        {
-          "type": "Label",
-          "caption": "(3.1) General settings"
+          "caption": "(2.1) General settings"
         },
         {
           "type": "Label",
@@ -304,11 +188,11 @@
                     "value": "PLEASE_SELECT"
                   },
                   {
-                    "caption": "Below threshold",
+                    "caption": "Lost connection",
                     "value": false
                   },
                   {
-                    "caption": "Threshold reached or exceeded",
+                    "caption": "Connection established",
                     "value": true
                   }
                 ]
@@ -418,45 +302,13 @@
         },
         {
           "type": "Label",
-          "caption": "Please select a notification variant."
+          "caption": "Please specify the maximum number of notifications per day:"
         },
         {
-          "type": "Label",
-          "caption": "The value falls below the threshold value:"
-        },
-        {
-          "type": "CheckBox",
-          "name": "AlwaysNotifyBelowThreshold",
-          "caption": "Always, even during updates"
-        },
-        {
-          "type": "CheckBox",
-          "name": "NotifyOnceBelowThreshold",
-          "caption": "Once"
-        },
-        {
-          "type": "CheckBox",
-          "name": "UseMessageDayLimitBelowThreshold",
-          "caption": "Maximum one notification per day"
-        },
-        {
-          "type": "Label",
-          "caption": "The threshold value is reached or exceeded:"
-        },
-        {
-          "type": "CheckBox",
-          "name": "AlwaysNotifyThresholdReached",
-          "caption": "Always, even during updates"
-        },
-        {
-          "type": "CheckBox",
-          "name": "NotifyOnceThresholdReached",
-          "caption": "Once"
-        },
-        {
-          "type": "CheckBox",
-          "name": "UseMessageDayLimitThresholdReached",
-          "caption": "Maximum one notification per day"
+          "type": "NumberSpinner",
+          "name": "NotificationLimit",
+          "caption": "Notifications",
+          "suffix": "per day"
         },
         {
           "type": "Label",
@@ -464,7 +316,7 @@
         },
         {
           "type": "Label",
-          "caption": "(3.2) Push notification"
+          "caption": "(2.2) Push notification"
         },
         {
           "type": "Label",
@@ -513,7 +365,7 @@
         },
         {
           "type": "Label",
-          "caption": "(3.3) E-mail notification"
+          "caption": "(2.3) E-mail notification"
         },
         {
           "type": "Label",
@@ -582,7 +434,7 @@
     },
     {
       "type": "ExpansionPanel",
-      "caption": "(4) Alerting",
+      "caption": "(3) Alerting",
       "items": [
         {
           "type": "Label",
@@ -719,42 +571,7 @@
     },
     {
       "type": "ExpansionPanel",
-      "caption": "(5) Links",
-      "items": [
-        {
-          "type": "Label",
-          "caption": "You can create links for the variables to be monitored."
-        },
-        {
-          "type": "Label",
-          "caption": " "
-        },
-        {
-          "type": "Label",
-          "caption": "Please select the category for the links:"
-        },
-        {
-          "type": "SelectCategory",
-          "name": "LinkCategory",
-          "caption": "Category"
-        },
-        {
-          "type": "Label",
-          "caption": " "
-        },
-        {
-          "type": "Label",
-          "caption": "Hint:"
-        },
-        {
-          "type": "Label",
-          "caption": "You can automatically create links of the monitored variables. After accepting any CHANGES, press under actions the button (5) CREATE VARIABLES LINK!"
-        }
-      ]
-    },
-    {
-      "type": "ExpansionPanel",
-      "caption": "(6) Backup/Restore",
+      "caption": "(4) Backup/Restore",
       "items": [
         {
           "type": "Label",
@@ -775,7 +592,7 @@
         },
         {
           "type": "Label",
-          "caption": "After accepting any CHANGES, press under actions the button (6) CREATE BACKUP!"
+          "caption": "After accepting any CHANGES, press under actions the button (4) CREATE BACKUP!"
         },
         {
           "type": "Label",
@@ -800,7 +617,7 @@
         },
         {
           "type": "Label",
-          "caption": "After accepting any CHANGES, press under actions the button (6) RESTORE CONFIGURATION!"
+          "caption": "After accepting any CHANGES, press under actions the button (4) RESTORE CONFIGURATION!"
         }
       ]
     }
@@ -812,77 +629,30 @@
       "items": [
         {
           "type": "Label",
-          "caption": "(2) Monitored variables"
-        },
-        {
-          "type": "RowLayout",
-          "items": [
-            {
-              "type": "Button",
-              "caption": "Determine and assign variables automatically",
-              "onClick": "HMDCM_DetermineVariables($id);"
-            },
-            {
-              "type": "Button",
-              "caption": "Display registered variables",
-              "onClick": "$variables = HMDCM_DisplayRegisteredVariables($id); print_r($variables);"
-            }
-          ]
-        },
-        {
-          "type": "Label",
-          "caption": "(3) Notifications"
-        },
-        {
-          "type": "Label",
-          "caption": "Value is below threshold:"
-        },
-        {
-          "type": "RowLayout",
-          "items": [
-            {
-              "type": "Button",
-              "caption": "Display variables",
-              "onClick": "$variables = HMDCM_DisplayVariablesBelowThreshold($id); print_r($variables);"
-            },
-            {
-              "type": "Button",
-              "caption": "Display blocked variables for today",
-              "onClick": "$variables = HMDCM_DisplayBlockedVariablesForTodayBelowThreshold($id); print_r($variables);"
-            }
-          ]
-        },
-        {
-          "type": "Label",
-          "caption": "Threshold reached:"
-        },
-        {
-          "type": "RowLayout",
-          "items": [
-            {
-              "type": "Button",
-              "caption": "Display variables",
-              "onClick": "$variables = HMDCM_DisplayVariablesThresholdReached($id); print_r($variables);"
-            },
-            {
-              "type": "Button",
-              "caption": "Display blocked variables for today",
-              "onClick": "$variables = HMDCM_DisplayBlockedVariablesForTodayThresholdReached($id); print_r($variables);"
-            }
-          ]
-        },
-        {
-          "type": "Label",
-          "caption": "(5) Links"
+          "caption": "(1) Socket Connection"
         },
         {
           "type": "Button",
-          "caption": "Create variable links",
-          "onClick": "HMDCM_CreateVariableLinks($id);"
+          "caption": "Show amount of state updates",
+          "onClick": "HMSCM_ShowStateUpdateCycle($id);"
+        },
+        {
+          "type": "Button",
+          "caption": "Manual update",
+          "onClick": "HMSCM_CheckSocketConnection($id);"
         },
         {
           "type": "Label",
-          "caption": "(6) Backup/Restore"
+          "caption": "(2) Notifications"
+        },
+        {
+          "type": "Button",
+          "caption": "Show amount of notifications",
+          "onClick": "HMSCM_ShowNotificationCycles($id);"
+        },
+        {
+          "type": "Label",
+          "caption": "(4) Backup/Restore"
         },
         {
           "type": "RowLayout",
@@ -931,22 +701,22 @@
     {
       "code": 101,
       "icon": "active",
-      "caption": "Homematic Duty Cycle Monitoring will be created"
+      "caption": "Homematic Socket Connection Monitoring will be created"
     },
     {
       "code": 102,
       "icon": "active",
-      "caption": "Homematic Duty Cycle Monitoring is active"
+      "caption": "Homematic Socket Connection Monitoring is active"
     },
     {
       "code": 103,
       "icon": "active",
-      "caption": "Homematic Duty Cycle Monitoring will be deleted"
+      "caption": "Homematic Socket Connection Monitoring will be deleted"
     },
     {
       "code": 104,
       "icon": "inactive",
-      "caption": "Homematic Duty Cycle is inactive"
+      "caption": "Homematic Socket Connection is inactive"
     }
   ]
 }

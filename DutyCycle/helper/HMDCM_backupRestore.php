@@ -11,7 +11,7 @@ trait HMDCM_backupRestore
     public function CreateBackup()
     {
         if (IPS_GetInstance($this->InstanceID)['InstanceStatus'] == 102) {
-            $name = $this->Translate('Configuration') . '_' . $this->InstanceID . "_" . date('d.m.Y_H:i:s');;
+            $name = $this->Translate('Configuration') . '_' . $this->InstanceID . '_' . date('d.m.Y_H:i:s');
             $category = $this->ReadPropertyInteger('BackupCategory');
             $config = IPS_GetConfiguration($this->InstanceID);
             // Create backup

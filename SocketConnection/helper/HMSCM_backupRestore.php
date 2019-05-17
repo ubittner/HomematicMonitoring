@@ -3,7 +3,7 @@
 // Declare
 declare(strict_types=1);
 
-trait HMCPM_backupRestore
+trait HMSCM_backupRestore
 {
     /**
      * Creates a backup of the actual configuration into a script.

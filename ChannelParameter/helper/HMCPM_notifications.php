@@ -224,7 +224,7 @@ trait HMCPM_notifications
                 if ($webFront->UseNotification) {
                     $moduleID = IPS_GetInstance($webFront->ID)['ModuleInfo']['ModuleID'];
                     if ($webFront->ID != 0 && IPS_ObjectExists($webFront->ID) && $moduleID == WEBFRONT_GUID) {
-                        WFC_PushNotification($webFront->ID, $title, "\n" . $text, (string)$sound, 0);
+                        WFC_PushNotification($webFront->ID, $title, "\n" . $text, (string) $sound, 0);
                     }
                 }
             }
@@ -246,7 +246,7 @@ trait HMCPM_notifications
     /**
      * Updates the last message.
      *
-     * @param int $VariableID
+     * @param int  $VariableID
      * @param bool $Threshold
      */
     protected function UpdateLastMessage(int $VariableID, bool $Threshold)
@@ -280,7 +280,7 @@ trait HMCPM_notifications
         if (!empty($locationDesignation)) {
             $text = $timeStamp . ', ' . $locationDesignation . ', ID: ' . $VariableID . ', ' . $variableName . ', ' . $this->Translate('Address') . ': ' . $address . ', ' . $statusText;
         } else {
-            $text = $timeStamp . ', ID: ' . $VariableID. ', ' . $variableName . ', ' . $this->Translate('Address') . ': ' . $address . ', ' . $statusText;
+            $text = $timeStamp . ', ID: ' . $VariableID . ', ' . $variableName . ', ' . $this->Translate('Address') . ': ' . $address . ', ' . $statusText;
         }
         $this->SetValue('LastMessage', $text);
     }

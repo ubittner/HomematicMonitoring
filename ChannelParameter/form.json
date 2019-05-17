@@ -58,15 +58,15 @@
         },
         {
           "type": "Label",
-          "caption": "Module version:\t1.00-1"
+          "caption": "Module version:\t1.01-2"
         },
         {
           "type": "Label",
-          "caption": "Date:\t\t\tJanuary 11, 2019"
+          "caption": "Date:\t\t\tMay 17, 2019"
         },
         {
           "type": "Label",
-          "caption": "Time:\t\t\t09:00"
+          "caption": "Time:\t\t\t18:00"
         },
         {
           "type": "Label",
@@ -249,6 +249,10 @@
       "items": [
         {
           "type": "Label",
+          "caption": "(3.1) General settings"
+        },
+        {
+          "type": "Label",
           "caption": "Please select whether a notification should be used:"
         },
         {
@@ -262,12 +266,12 @@
         },
         {
           "type": "Label",
-          "caption": "Please enter a title description (max. 32 characters):"
+          "caption": "Please enter a location designation:"
         },
         {
           "type": "ValidationTextBox",
-          "name": "TitleDescription",
-          "caption": "Title description"
+          "name": "LocationDesignation",
+          "caption": "Location designation"
         },
         {
           "type": "Label",
@@ -275,12 +279,12 @@
         },
         {
           "type": "Label",
-          "caption": "Please enter a location designation optionally:"
+          "caption": "Please enter a title description (max. 32 characters):"
         },
         {
           "type": "ValidationTextBox",
-          "name": "LocationDesignation",
-          "caption": "Location designation"
+          "name": "TitleDescription",
+          "caption": "Title description"
         },
         {
           "type": "Label",
@@ -425,7 +429,7 @@
         },
         {
           "type": "Label",
-          "caption": "Please select the notification variants."
+          "caption": "Please select a notification variant."
         },
         {
           "type": "Label",
@@ -444,7 +448,7 @@
         {
           "type": "CheckBox",
           "name": "UseMessageDayLimitBelowThreshold",
-          "caption": "Maximum one variable notification per day"
+          "caption": "Maximum one notification per day"
         },
         {
           "type": "Label",
@@ -463,7 +467,7 @@
         {
           "type": "CheckBox",
           "name": "UseMessageDayLimitThresholdReached",
-          "caption": "Maximum one variable notification per day"
+          "caption": "Maximum one notification per day"
         },
         {
           "type": "Label",
@@ -471,7 +475,7 @@
         },
         {
           "type": "Label",
-          "caption": "(3.1) Push notification"
+          "caption": "(3.2) Push notification"
         },
         {
           "type": "Label",
@@ -520,7 +524,7 @@
         },
         {
           "type": "Label",
-          "caption": "(3.2) E-mail notification"
+          "caption": "(3.3) E-mail notification"
         },
         {
           "type": "Label",
@@ -708,7 +712,7 @@
               "width": "auto",
               "add": 0,
               "edit": {
-                "type": "SelectObject"
+                "type": "SelectScript"
               }
             },
             {

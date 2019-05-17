@@ -13,9 +13,9 @@
  * @license    	CC BY-NC-SA 4.0
  *              https://creativecommons.org/licenses/by-nc-sa/4.0/
  *
- * @version     1.00-1
+ * @version     1.01-2
  * @date        2019-01-11, 09:00
- * @lastchange  2019-01-11, 09:00
+ * @lastchange  2019-05-17, 09:00
  *
  * @see         https://git.ubittner.de/ubittner/HomematicMonitoring
  *
@@ -25,7 +25,8 @@
  *              Homematic Channel Parameter Monitoring
  *             	{27124868-9BA0-46F4-A5A2-20EB14111657}
  *
- * @changelog   2019-01-11, 09:00, initial version 1.00-1
+ * @changelog   2019-05-17, 18:00, update to version 1.01-2
+ *              2019-01-11, 09:00, initial version 1.00-1
  *
  */
 
@@ -58,7 +59,7 @@ class ChannelParameter extends IPSModule
         $this->RegisterPropertyString('MonitoredVariables', '[]');
         // Notification
         $this->RegisterPropertyBoolean('UseNotification', false);
-        $this->RegisterPropertyString('TitleDescription', 'Homematic Monitoring');
+        $this->RegisterPropertyString('TitleDescription', $this->Translate('Homematic Monitoring'));
         $this->RegisterPropertyString('LocationDesignation', '');
         $this->RegisterPropertyString('MessageTexts', '[{"Status":false,"MessageText":"' . $this->Translate('Below threshold') . '"},{"Status":true,"MessageText":"' . $this->Translate('Threshold reached or exceeded') . '"}]');
         $this->RegisterPropertyBoolean('AlwaysNotifyBelowThreshold', false);
@@ -80,7 +81,6 @@ class ChannelParameter extends IPSModule
         $this->RegisterPropertyInteger('BackupCategory', 0);
         $this->RegisterPropertyInteger('Configuration', 0);
 
-
         //#################### Create profiles
 
         // Status
@@ -94,8 +94,8 @@ class ChannelParameter extends IPSModule
         //#################### Register variables
 
         // Monitoring
-        $this->RegisterVariableBoolean("Monitoring", $this->Translate("Monitoring"), "~Switch");
-        $this->EnableAction("Monitoring");
+        $this->RegisterVariableBoolean('Monitoring', $this->Translate('Monitoring'), '~Switch');
+        $this->EnableAction('Monitoring');
         IPS_SetPosition($this->GetIDForIdent('Monitoring'), 0);
 
         // Status
@@ -111,8 +111,7 @@ class ChannelParameter extends IPSModule
     public function ApplyChanges()
     {
         // Register messages
-
-        // Wait until IP-Symcon is started
+        // Base
         $this->RegisterMessage(0, IPS_KERNELSTARTED);
 
         // Never delete this line!
@@ -124,7 +123,7 @@ class ChannelParameter extends IPSModule
         }
 
         // Maintain variables
-        $this->MaintainVariable ('LastMessage', $this->Translate("Last message"), 3, '~TextBox', 2, true);
+        $this->MaintainVariable('LastMessage', $this->Translate('Last message'), 3, '~TextBox', 2, true);
         IPS_SetIcon($this->GetIDForIdent('LastMessage'), 'Database');
 
         // Set buffer
@@ -165,7 +164,7 @@ class ChannelParameter extends IPSModule
 
     public function MessageSink($TimeStamp, $SenderID, $Message, $Data)
     {
-        $this->SendDebug("MessageSink", "SenderID: " . $SenderID . ", Message: " . $Message, 0);
+        $this->SendDebug('MessageSink', 'SenderID: ' . $SenderID . ', Message: ' . $Message, 0);
         switch ($Message) {
             case IPS_KERNELSTARTED:
                 $this->KernelReady();

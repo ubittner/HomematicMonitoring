@@ -3,10 +3,10 @@
 // Declare
 declare(strict_types=1);
 
-trait HMCPM_alerting
+trait HMSCM_alerting
 {
     /**
-     *  monitoring is activated, a variable will be switched and/or a script will be executed.
+     * If monitoring is activated, a variable will be switched and/or a script will be executed.
      *
      * @param bool $State
      */

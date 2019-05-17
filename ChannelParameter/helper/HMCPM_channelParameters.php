@@ -23,7 +23,7 @@ trait HMCPM_channelParameters
             }
         }
         // Register variables to be monitored
-        $variables = json_decode($this->ReadPropertyString("MonitoredVariables"));
+        $variables = json_decode($this->ReadPropertyString('MonitoredVariables'));
         if (!empty($variables)) {
             foreach ($variables as $variable) {
                 if ($variable->ID != 0 && IPS_ObjectExists($variable->ID) && $variable->UseMonitoring) {
@@ -170,7 +170,7 @@ trait HMCPM_channelParameters
                             }
                             $deviceAddress = @IPS_GetProperty(IPS_GetParent($childrenID), 'Address');
                             $lastMaintenance = '{"year":0,"month":0,"day":0}';
-                            array_push($variables, array('ID' => $childrenID, 'Name' => $name, 'Address' => $deviceAddress, 'UseMonitoring' => true, 'LastMaintenance' => $lastMaintenance));
+                            array_push($variables, ['ID' => $childrenID, 'Name' => $name, 'Address' => $deviceAddress, 'UseMonitoring' => true, 'LastMaintenance' => $lastMaintenance]);
                         }
                     }
                 }
@@ -194,7 +194,7 @@ trait HMCPM_channelParameters
                         $name = strstr(IPS_GetName(IPS_GetParent($addVariable)), ':', true);
                         $deviceAddress = @IPS_GetProperty(IPS_GetParent($addVariable), 'Address');
                         $lastMaintenance = '{"year":0,"month":0,"day":0}';
-                        array_push($listedVariables, array('ID' => $addVariable, 'Name' => $name, 'Address' => $deviceAddress, 'UseMonitoring' => true, 'LastMaintenance' => $lastMaintenance));
+                        array_push($listedVariables, ['ID' => $addVariable, 'Name' => $name, 'Address' => $deviceAddress, 'UseMonitoring' => true, 'LastMaintenance' => $lastMaintenance]);
                     }
                 }
             } else {
@@ -229,7 +229,6 @@ trait HMCPM_channelParameters
      *
      * If $Override is false, only variables with no existing profiles will be assigned.
      * If $Override is true, existing profiles will be overwritten.
-     *
      */
     public function AssignVariableProfile(bool $Override)
     {
@@ -315,7 +314,7 @@ trait HMCPM_channelParameters
         $useDisplayOverview = $this->ReadPropertyBoolean('UseOverview');
         if ($useDisplayOverview && $this->GetIDForIdent('Overview')) {
             $string = "<table width='90%' align='center'>";
-            $string .= $this->Translate("<tr><td><b>ID</b></td><td><b>Name</b></td><td><b>Address</b></td><td><b>Last Maintenance</b></td><td><b>State</b></td></tr>");
+            $string .= $this->Translate('<tr><td><b>ID</b></td><td><b>Name</b></td><td><b>Address</b></td><td><b>Last Maintenance</b></td><td><b>State</b></td></tr>');
             $variables = json_decode($this->ReadPropertyString('MonitoredVariables'));
             if (!empty($variables)) {
                 foreach ($variables as $variable) {
@@ -344,10 +343,10 @@ trait HMCPM_channelParameters
                         if ($year != 0) {
                             $lastMaintenance = $day . '.' . $month . '.' . $year;
                         }
-                        $string .= "<tr><td>" . $variable->ID . "</td><td>" . $variable->Name . "</td><td>" . $deviceAddress . "</td><td>" . $lastMaintenance . "</td><td>" . $text . "</td></tr>";
+                        $string .= '<tr><td>' . $variable->ID . '</td><td>' . $variable->Name . '</td><td>' . $deviceAddress . '</td><td>' . $lastMaintenance . '</td><td>' . $text . '</td></tr>';
                     }
                 }
-                $string .= "</table>";
+                $string .= '</table>';
                 $this->SetValue('Overview', $string);
             }
         }
@@ -483,7 +482,7 @@ trait HMCPM_channelParameters
                 case 'LOWBAT/LOW_BAT':
                 case 'SABOTAGE/ERROR_SABOTAGE':
                 case 'UNREACH/STICKY_UNREACH':
-                    $value = (bool)GetValue($VariableID);
+                    $value = (bool) GetValue($VariableID);
                     // Value is false
                     if (!$value) {
                         $notification = $this->CheckNotificationBelowThreshold($VariableID);
@@ -496,8 +495,8 @@ trait HMCPM_channelParameters
                     break;
                 case 'RSSI_DEVICE':
                 case 'RSSI_PEER':
-                    $thresholdValue = (integer)abs($this->ReadPropertyString('ThresholdValue'));
-                    $value = (integer)abs(GetValue($VariableID));
+                    $thresholdValue = (int) abs($this->ReadPropertyString('ThresholdValue'));
+                    $value = (int) abs(GetValue($VariableID));
                     // Value below threshold
                     if ($value < $thresholdValue) {
                         $notification = $this->CheckNotificationBelowThreshold($VariableID);
@@ -514,8 +513,8 @@ trait HMCPM_channelParameters
                     switch ($variableType) {
                         case 0:
                             // Boolean
-                            $value = (bool)GetValue($VariableID);
-                            $thresholdValue = (bool)$this->ReadPropertyString('ThresholdValue');
+                            $value = (bool) GetValue($VariableID);
+                            $thresholdValue = (bool) $this->ReadPropertyString('ThresholdValue');
                             if ($value != $thresholdValue) {
                                 $notification = $this->CheckNotificationBelowThreshold($VariableID);
                             }
@@ -526,8 +525,8 @@ trait HMCPM_channelParameters
                             break;
                         case 1:
                             // Integer
-                            $value = (integer)abs(GetValue($VariableID));
-                            $thresholdValue = (integer)abs($this->ReadPropertyString('ThresholdValue'));
+                            $value = (int) abs(GetValue($VariableID));
+                            $thresholdValue = (int) abs($this->ReadPropertyString('ThresholdValue'));
                             if ($value < $thresholdValue) {
                                 $notification = $this->CheckNotificationBelowThreshold($VariableID);
                             }
@@ -538,8 +537,8 @@ trait HMCPM_channelParameters
                             break;
                         case 2:
                             // Float
-                            $value = (float)abs(GetValue($VariableID));
-                            $thresholdValue = (float)abs($this->ReadPropertyString('ThresholdValue'));
+                            $value = (float) abs(GetValue($VariableID));
+                            $thresholdValue = (float) abs($this->ReadPropertyString('ThresholdValue'));
                             if ($value < $thresholdValue) {
                                 $notification = $this->CheckNotificationBelowThreshold($VariableID);
                             }
@@ -550,8 +549,8 @@ trait HMCPM_channelParameters
                             break;
                         case 3:
                             // String
-                            $value = (string)GetValue($VariableID);
-                            $thresholdValue = (string)$this->ReadPropertyString('ThresholdValue');
+                            $value = (string) GetValue($VariableID);
+                            $thresholdValue = (string) $this->ReadPropertyString('ThresholdValue');
                             if ($value != $thresholdValue) {
                                 $notification = $this->CheckNotificationBelowThreshold($VariableID);
                             }
@@ -623,15 +622,15 @@ trait HMCPM_channelParameters
                         case 'LOWBAT/LOW_BAT':
                         case 'SABOTAGE/ERROR_SABOTAGE':
                         case 'UNREACH/STICKY_UNREACH':
-                            $value = (bool)GetValue($variable->ID);
+                            $value = (bool) GetValue($variable->ID);
                             if ($value) {
                                 $actualStatus = true;
                             }
                             break;
                         case 'RSSI_DEVICE':
                         case 'RSSI_PEER':
-                            $thresholdValue = (integer)abs($this->ReadPropertyString('ThresholdValue'));
-                            $value = (integer)abs(GetValue($variable->ID));
+                            $thresholdValue = (int) abs($this->ReadPropertyString('ThresholdValue'));
+                            $value = (int) abs(GetValue($variable->ID));
                             if ($value >= $thresholdValue) {
                                 $actualStatus = true;
                             }
@@ -642,32 +641,32 @@ trait HMCPM_channelParameters
                             switch ($variableType) {
                                 case 0:
                                     // Boolean
-                                    $value = (bool)GetValue($variable->ID);
-                                    $thresholdValue = (bool)$this->ReadPropertyString('ThresholdValue');
+                                    $value = (bool) GetValue($variable->ID);
+                                    $thresholdValue = (bool) $this->ReadPropertyString('ThresholdValue');
                                     if ($value == $thresholdValue) {
                                         $actualStatus = true;
                                     }
                                     break;
                                 case 1:
                                     // Integer
-                                    $value = (integer)abs(GetValue($variable->ID));
-                                    $thresholdValue = (integer)abs($this->ReadPropertyString('ThresholdValue'));
+                                    $value = (int) abs(GetValue($variable->ID));
+                                    $thresholdValue = (int) abs($this->ReadPropertyString('ThresholdValue'));
                                     if ($value >= $thresholdValue) {
                                         $actualStatus = true;
                                     }
                                     break;
                                 case 2:
                                     // Float
-                                    $value = (float)abs(GetValue($variable->ID));
-                                    $thresholdValue = (float)abs($this->ReadPropertyString('ThresholdValue'));
+                                    $value = (float) abs(GetValue($variable->ID));
+                                    $thresholdValue = (float) abs($this->ReadPropertyString('ThresholdValue'));
                                     if ($value >= $thresholdValue) {
                                         $actualStatus = true;
                                     }
                                     break;
                                 case 3:
                                     // String
-                                    $value = (string)GetValue($variable->ID);
-                                    $thresholdValue = (string)$this->ReadPropertyString('ThresholdValue');
+                                    $value = (string) GetValue($variable->ID);
+                                    $thresholdValue = (string) $this->ReadPropertyString('ThresholdValue');
                                     if ($value == $thresholdValue) {
                                         $actualStatus = true;
                                     }

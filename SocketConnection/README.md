@@ -1,4 +1,4 @@
-# DutyCycle
+# SocketConnection
 
 [![Version](https://img.shields.io/badge/Symcon_Version-5.1>-red.svg)](https://www.symcon.de/service/dokumentation/entwicklerbereich/sdk-tools/sdk-php/)
 ![Version](https://img.shields.io/badge/Modul_Version-1.01-blue.svg)
@@ -10,7 +10,7 @@
 
 Ein Projekt von Ulrich Bittner - Smart System Solutions  
 
-Dieses Modul überwacht den Duty Cycle einer [HomeMatic](https://www.homematic.com/) CCU in [IP-Symcon](https://www.symcon.de).
+Dieses Modul überwacht die Erreichbarkeit einer [HomeMatic](https://www.homematic.com/) CCU in [IP-Symcon](https://www.symcon.de).
 
 Für dieses Modul besteht kein Anspruch auf Fehlerfreiheit, Weiterentwicklung, sonstige Unterstützung oder Support.
 
@@ -32,12 +32,13 @@ Der Nutzer stimmt den o.a. Bedingungen, sowie den Lizenzbedingungen ausdrücklic
 
 ### 1. Funktionsumfang
 
-* Überwacht den Duty Cycle einer Homematic CCU (Variablenüberwachung)
+* Überwacht die Erreichbarkeit einer Homematic CCU
 * Bei Auslösung können individuelle Aktionen festgesetzt werden:
   * Push-Nachrichten verschicken
   * E-Mail Nachrichten verschicken
   * Variablen schalten
   * Skripte ausführen
+* Aktualisiert den Status von Homematic / Homematic IP Geräten bei Systemstart und bei Wiederverbindung 
   
 ### 2. Voraussetzungen
 
@@ -52,21 +53,19 @@ Der Nutzer stimmt den o.a. Bedingungen, sowie den Lizenzbedingungen ausdrücklic
 
 ### 4. Einrichten der Instanzen in IP-Symcon
 
-- In IP-Symcon an beliebiger Stelle `Instanz hinzufügen` auswählen und `Homematic Duty Cycle Monitoring` auswählen, welches unter dem Hersteller `Homematic` aufgeführt ist. Es wird eine Instanz angelegt, in der die Eigenschaften zur Überwachung festgelegt werden können.
+- In IP-Symcon an beliebiger Stelle `Instanz hinzufügen` auswählen und `Homematic Socket Connection Monitoring` auswählen, welches unter dem Hersteller `Homematic` aufgeführt ist. Es wird eine Instanz angelegt, in der die Eigenschaften zur Überwachung festgelegt werden können.
 
 __Konfigurationsseite__:
 
 Name                                | Beschreibung
 ----------------------------------- | ---------------------------------
 (0) Instanzinformationen            | Informationen zu der Instanz
-(1) DutyCycle                       | Konfigurationsmöglichkeiten zur Überwachung des Duty Cycles
-(2) Überwachte Variablen            | Diese Liste beinhaltet die Variablen, welche überwacht werden sollen
-(3) Benachrichtigungen              | Legen Sie die Benachrichtigungsvarianten fest
-(4) Alarmierungen                   | Wenn sich der allgemeine Status ändert, können Variablen geschaltet oder Skripte ausgeführt werden
-(5) Verknüpfungen                   | Sie können Verknüpfungen der überwachten Variablen erstellen
-(6) Sicherung / Wiederherstellung   | Die Instanzkonfiguration kann in einem Skript gespeichert und wiederhergestellt werden
+(1) Socket Verbindung               | Konfigurationsmöglichkeiten zur Überwachung der Socket Verbindung
+(2) Benachrichtigungen              | Legen Sie die Benachrichtigungsvarianten fest
+(3) Alarmierungen                   | Wenn sich der allgemeine Status ändert, können Variablen geschaltet oder Skripte ausgeführt werden
+(4) Sicherung / Wiederherstellung   | Die Instanzkonfiguration kann in einem Skript gespeichert und wiederhergestellt werden
 
-___Skript___: Wenn Sie unter (4) Alarmierungen ein Skript angebenen haben, so können während des Aufrufs folgende Systemvariablen verwendet werden:
+___Skript___: Wenn Sie unter (3) Alarmierungen ein Skript angebenen haben, so können während des Aufrufs folgende Systemvariablen verwendet werden:
 
 Name                                | Beschreibung
 ----------------------------------- | ---------------------------------
@@ -88,7 +87,7 @@ LastMessage  | String    | Zeigt die letzte Meldung an
 
 Es werden zusätzliche Profile hinzugefügt, welche beim Löschen der Instanz automatisch entfernt werden.
 
-Der Profilname beginnt mit `HMDCM` gefolgt von der InstanzID und dem Profilnamen.
+Der Profilname beginnt mit `HMSCM` gefolgt von der InstanzID und dem Profilnamen.
 
 ### 6. WebFront
 
@@ -97,18 +96,6 @@ Der aktuelle Status der Überwachung wird angezeigt.
 
 ### 7. PHP-Befehlsreferenz
 
-`HMDCM_ToggleMonitoring(integer $InstanzID, bool $Status);`  
+`HMSCM_ToggleMonitoring(integer $InstanzID, bool $Status);`  
 De- und aktivert die Überwachung.  
-`HMDCM_ToggleMonitoring(12345, true);`
-
-`HMDCM_DisplayRegisteredVariables(integer $InstanzID);`  
-Listet die registrierten Variablen auf.  
-`HMDCM_DisplayRegisteredVariables(12345);`
-
-`HMDCM_ DisplayVariablesBelowThreshold(integer $InstanzID);`  
-Listet die Variablen auf, deren aktueller Wert unterhalb dem Schwellenwert liegt.  
-`HMDCM_ DisplayVariablesBelowThreshold(12345);`
-
-`HMDCM_DisplayVariablesThresholdReached(integer $InstanzID);`  
-Listet die Variablen auf, deren aktueller Wert den Schwellenwert erreicht, bzw. überschritten hat.  
-`HMDCM_DisplayVariablesThresholdReached(12345);`
+`HMSCM_ToggleMonitoring(12345, true);`

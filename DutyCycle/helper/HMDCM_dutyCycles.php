@@ -59,21 +59,21 @@ trait HMDCM_dutyCycles
             $status = IPS_GetInstance($parentID)['InstanceStatus'];
             if ($status == 102) {
                 // Get activated Homematic protocols
-                $protocols = array();
+                $protocols = [];
                 if (IPS_GetProperty($parentID, 'RFOpen') === true) {
                     $protocols[] = 0;
                 }
                 if (IPS_GetProperty($parentID, 'IPOpen') === true) {
                     $protocols[] = 2;
                 }
-                $data = array();
-                $parentData = array(
-                    'DataID' => '{75B6B237-A7B0-46B9-BBCE-8DF0CFE6FA52}',
-                    'Protocol' => 0,
+                $data = [];
+                $parentData = [
+                    'DataID'     => '{75B6B237-A7B0-46B9-BBCE-8DF0CFE6FA52}',
+                    'Protocol'   => 0,
                     'MethodName' => 'listBidcosInterfaces',
-                    'WaitTime' => 5000,
-                    'Data' => $data
-                );
+                    'WaitTime'   => 5000,
+                    'Data'       => $data
+                ];
                 foreach ($protocols as $protocol) {
                     $parentData['Protocol'] = $protocol;
                     $dataEncoded = json_encode($parentData);
@@ -110,7 +110,7 @@ trait HMDCM_dutyCycles
             $this->RegisterMessage($virtualChannel, VM_UPDATE);
         }
         // Register variables to be monitored
-        $variables = json_decode($this->ReadPropertyString("MonitoredVariables"));
+        $variables = json_decode($this->ReadPropertyString('MonitoredVariables'));
         if (!empty($variables)) {
             foreach ($variables as $variable) {
                 if ($variable->ID != 0 && IPS_ObjectExists($variable->ID) && $variable->UseMonitoring) {
@@ -207,12 +207,12 @@ trait HMDCM_dutyCycles
                         $this->RegisterVariableInteger('DutyCycle' . $address, $data->TYPE . ' ' . $address, $profileName, $i);
                     }
                     $this->SetValue('DutyCycle' . $address, $data->DUTY_CYCLE);
-                    array_push($variables, array(
-                            'Position' => $j,
-                            'ID' => $this->GetIDForIdent('DutyCycle' . $address),
-                            'Name' => $data->TYPE,
-                            'Address' => $address,
-                            'UseMonitoring' => true)
+                    array_push($variables, [
+                            'Position'      => $j,
+                            'ID'            => $this->GetIDForIdent('DutyCycle' . $address),
+                            'Name'          => $data->TYPE,
+                            'Address'       => $address,
+                            'UseMonitoring' => true]
                     );
                     $i++;
                     $j++;
@@ -248,7 +248,7 @@ trait HMDCM_dutyCycles
                 $ident = $object['ObjectIdent'];
                 if ($ident !== 'Monitoring' && $ident !== 'Status' && $ident !== 'LastMessage') {
                     $name = IPS_GetName($child);
-                    array_push($variables, array('ID' => $child, 'Name' => $name, 'UseMonitoring' => true));
+                    array_push($variables, ['ID' => $child, 'Name' => $name, 'UseMonitoring' => true]);
                 }
             }
         }
@@ -299,7 +299,7 @@ trait HMDCM_dutyCycles
         if (!empty($monitoredVariables)) {
             foreach ($monitoredVariables as $variable) {
                 if ($variable->UseMonitoring) {
-                    $value = (integer)GetValue($variable->ID);
+                    $value = (int) GetValue($variable->ID);
                     if ($value >= $thresholdValue) {
                         $actualStatus = true;
                     }
@@ -309,8 +309,8 @@ trait HMDCM_dutyCycles
         $status = $this->GetValue('Status');
         $this->SetValue('Status', $actualStatus);
         if ($actualStatus != $status) {
-           // Execute Alerting
-           $this->ExecuteAlerting($actualStatus);
+            // Execute Alerting
+            $this->ExecuteAlerting($actualStatus);
         }
     }
 
@@ -407,8 +407,8 @@ trait HMDCM_dutyCycles
         if ($this->GetValue('Monitoring')) {
             $notification = false;
             $threshold = false;
-            $value = (integer)abs(GetValue($VariableID));
-            $thresholdValue = (integer)abs($this->ReadPropertyInteger('ThresholdValue'));
+            $value = (int) abs(GetValue($VariableID));
+            $thresholdValue = (int) abs($this->ReadPropertyInteger('ThresholdValue'));
             if ($value < $thresholdValue) {
                 $notification = $this->CheckNotificationBelowThreshold($VariableID);
             }
