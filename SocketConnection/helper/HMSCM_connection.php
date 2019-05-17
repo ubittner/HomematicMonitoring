@@ -82,7 +82,7 @@ trait HMSCM_connection
                                 if (@HM_RequestStatus($device, $object['ObjectIdent']) == true) {
                                     $this->SendDebug('UpdateDeviceState',  IPS_GetLocation($device), 0);
                                 } else {
-                                    $this->LogMessage($this->Translate('Homematic device status, Error: ') . IPS_GetLocation($device), KL_WARNING);
+                                    $this->LogMessage($this->Translate('Homematic device status update, Error: ') . IPS_GetLocation($device), KL_WARNING);
                                 }
                             }
                         }
