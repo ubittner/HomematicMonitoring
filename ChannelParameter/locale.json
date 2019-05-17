@@ -51,7 +51,7 @@
       "The value is or falls below the threshold value:": "Der Schwellenwert ist, bzw. wird unterschritten:",
       "Always, even during updates": "Immer, auch bei Aktualisierungen",
       "Once": "Einmalig",
-      "Maximum one notification per day": "Maximal eine Benachrichtigung pro Tag",
+      "Maximum one notification per day (additional option)": "Maximal eine Benachrichtigung pro Tag (Zusatzoption)",
       "The threshold value is reached or exceeded:": "Der Schwellenwert ist erreicht, bzw. überschritten:",
       "(3.2) Push notification": "(3.2) Push Benachrichtigung",
       "Please add the WebFronts that should be used for push notification or delete entries that are no longer needed:": "Bitte fügen Sie die WebFronts hinzu, welche zur Push Benachrichtigung verwendet werden sollen oder löschen Sie nicht mehr benötigte Einträge:",

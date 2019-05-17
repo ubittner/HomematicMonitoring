@@ -448,7 +448,7 @@
         {
           "type": "CheckBox",
           "name": "UseMessageDayLimitBelowThreshold",
-          "caption": "Maximum one notification per day"
+          "caption": "Maximum one notification per day (additional option)"
         },
         {
           "type": "Label",
@@ -467,7 +467,7 @@
         {
           "type": "CheckBox",
           "name": "UseMessageDayLimitThresholdReached",
-          "caption": "Maximum one notification per day"
+          "caption": "Maximum one notification per day (additional option)"
         },
         {
           "type": "Label",
