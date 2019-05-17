@@ -5,7 +5,6 @@ declare(strict_types=1);
 
 trait HMSCM_notifications
 {
-
     //#################### Send notification
 
     /**
@@ -48,7 +47,7 @@ trait HMSCM_notifications
                 if ($webFront->UseNotification) {
                     $moduleID = IPS_GetInstance($webFront->ID)['ModuleInfo']['ModuleID'];
                     if ($webFront->ID != 0 && IPS_ObjectExists($webFront->ID) && $moduleID == WEBFRONT_GUID) {
-                        WFC_PushNotification($webFront->ID, $title, "\n" . $text, (string)$sound, 0);
+                        WFC_PushNotification($webFront->ID, $title, "\n" . $text, (string) $sound, 0);
                     }
                 }
             }

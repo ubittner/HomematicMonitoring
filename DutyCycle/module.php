@@ -105,8 +105,8 @@ class DutyCycle extends IPSModule
         //################### Register variables
 
         // Monitoring
-        $this->RegisterVariableBoolean("Monitoring", $this->Translate("Monitoring"), "~Switch");
-        $this->EnableAction("Monitoring");
+        $this->RegisterVariableBoolean('Monitoring', $this->Translate('Monitoring'), '~Switch');
+        $this->EnableAction('Monitoring');
         IPS_SetPosition($this->GetIDForIdent('Monitoring'), 0);
 
         // Status
@@ -122,8 +122,8 @@ class DutyCycle extends IPSModule
 
         // Connect to Homematic socket
         $this->RegisterHomematicProperties('XXX9999991');
-        $this->SetReceiveDataFilter(".*9999999999.*");
-        $this->RegisterPropertyBoolean("EmulateStatus", false);
+        $this->SetReceiveDataFilter('.*9999999999.*');
+        $this->RegisterPropertyBoolean('EmulateStatus', false);
         $this->ConnectParent('{A151ECE9-D733-4FB9-AA15-7F7DD10C58AF}');
     }
 
@@ -137,12 +137,12 @@ class DutyCycle extends IPSModule
         parent::ApplyChanges();
 
         // Check kernel runlevel
-        if (IPS_GetKernelRunlevel() <> KR_READY) {
+        if (IPS_GetKernelRunlevel() != KR_READY) {
             return;
         }
 
         // Maintain variables
-        $this->MaintainVariable ('LastMessage', $this->Translate("Last message"), 3, '~TextBox', 10, true);
+        $this->MaintainVariable('LastMessage', $this->Translate('Last message'), 3, '~TextBox', 10, true);
         IPS_SetIcon($this->GetIDForIdent('LastMessage'), 'Database');
 
         // Check for changes of the monitored variables
@@ -175,7 +175,7 @@ class DutyCycle extends IPSModule
 
     public function MessageSink($TimeStamp, $SenderID, $Message, $Data)
     {
-        $this->SendDebug("MessageSink", "SenderID: " . $SenderID . ", Message: " . $Message, 0);
+        $this->SendDebug('MessageSink', 'SenderID: ' . $SenderID . ', Message: ' . $Message, 0);
         switch ($Message) {
             case IPS_KERNELSTARTED:
                 $this->KernelReady();
@@ -260,13 +260,12 @@ class DutyCycle extends IPSModule
      */
     protected function RegisterHomematicProperties(string $Address)
     {
-        $this->RegisterPropertyInteger("Protocol", 0);
-        $count = @IPS_GetInstanceListByModuleID(IPS_GetInstance($this->InstanceID)["ModuleInfo"]["ModuleID"]);
+        $this->RegisterPropertyInteger('Protocol', 0);
+        $count = @IPS_GetInstanceListByModuleID(IPS_GetInstance($this->InstanceID)['ModuleInfo']['ModuleID']);
         if (is_array($count)) {
-            $this->RegisterPropertyString("Address", $Address . ":" . count($count));
+            $this->RegisterPropertyString('Address', $Address . ':' . count($count));
         } else {
-            $this->RegisterPropertyString("Address", $Address . ":0");
+            $this->RegisterPropertyString('Address', $Address . ':0');
         }
     }
 }
-

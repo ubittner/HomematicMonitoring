@@ -73,7 +73,7 @@ trait HMSCM_connection
                 $updateLimit = $this->ReadPropertyInteger('UpdateLimit') - 1;
                 $stateUpdateCycle = $this->ReadAttributeInteger('StateUpdateCycle');
                 if ($stateUpdateCycle <= $updateLimit) {
-                    $devices = IPS_GetInstanceListByModuleID("{EE4A81C6-5C90-4DB7-AD2F-F6BBD521412E}");
+                    $devices = IPS_GetInstanceListByModuleID('{EE4A81C6-5C90-4DB7-AD2F-F6BBD521412E}');
                     foreach ($devices as $device) {
                         $children = IPS_GetChildrenIDs($device);
                         foreach ($children as $child) {

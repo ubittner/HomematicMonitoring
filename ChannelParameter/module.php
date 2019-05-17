@@ -81,7 +81,6 @@ class ChannelParameter extends IPSModule
         $this->RegisterPropertyInteger('BackupCategory', 0);
         $this->RegisterPropertyInteger('Configuration', 0);
 
-
         //#################### Create profiles
 
         // Status
@@ -95,8 +94,8 @@ class ChannelParameter extends IPSModule
         //#################### Register variables
 
         // Monitoring
-        $this->RegisterVariableBoolean("Monitoring", $this->Translate("Monitoring"), "~Switch");
-        $this->EnableAction("Monitoring");
+        $this->RegisterVariableBoolean('Monitoring', $this->Translate('Monitoring'), '~Switch');
+        $this->EnableAction('Monitoring');
         IPS_SetPosition($this->GetIDForIdent('Monitoring'), 0);
 
         // Status
@@ -124,7 +123,7 @@ class ChannelParameter extends IPSModule
         }
 
         // Maintain variables
-        $this->MaintainVariable ('LastMessage', $this->Translate("Last message"), 3, '~TextBox', 2, true);
+        $this->MaintainVariable('LastMessage', $this->Translate('Last message'), 3, '~TextBox', 2, true);
         IPS_SetIcon($this->GetIDForIdent('LastMessage'), 'Database');
 
         // Set buffer
@@ -165,7 +164,7 @@ class ChannelParameter extends IPSModule
 
     public function MessageSink($TimeStamp, $SenderID, $Message, $Data)
     {
-        $this->SendDebug("MessageSink", "SenderID: " . $SenderID . ", Message: " . $Message, 0);
+        $this->SendDebug('MessageSink', 'SenderID: ' . $SenderID . ', Message: ' . $Message, 0);
         switch ($Message) {
             case IPS_KERNELSTARTED:
                 $this->KernelReady();

@@ -166,7 +166,7 @@ trait HMDCM_notifications
     /**
      * Sends a push or an e-mail notification.
      *
-     * @param int $VariableID
+     * @param int  $VariableID
      * @param bool $Threshold
      */
     protected function SendNotification(int $VariableID, bool $Threshold)
@@ -217,7 +217,7 @@ trait HMDCM_notifications
                 if ($webFront->UseNotification) {
                     $moduleID = IPS_GetInstance($webFront->ID)['ModuleInfo']['ModuleID'];
                     if ($webFront->ID != 0 && IPS_ObjectExists($webFront->ID) && $moduleID == WEBFRONT_GUID) {
-                        WFC_PushNotification($webFront->ID, $title, "\n" . $text, (string)$sound, 0);
+                        WFC_PushNotification($webFront->ID, $title, "\n" . $text, (string) $sound, 0);
                     }
                 }
             }
@@ -239,7 +239,7 @@ trait HMDCM_notifications
     /**
      * Updates the last message.
      *
-     * @param int $VariableID
+     * @param int  $VariableID
      * @param bool $Threshold
      */
     protected function UpdateLastMessage(int $VariableID, bool $Threshold)

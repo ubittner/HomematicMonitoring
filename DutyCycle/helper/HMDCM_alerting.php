@@ -36,7 +36,7 @@ trait HMDCM_alerting
                         $object = IPS_GetObject($script->ID);
                         if ($object['ObjectType'] == 3) {
                             if ($script->UseScript) {
-                                IPS_RunScriptEx($script->ID, array('Status' => $State));
+                                IPS_RunScriptEx($script->ID, ['Status' => $State]);
                             }
                         }
                     }
