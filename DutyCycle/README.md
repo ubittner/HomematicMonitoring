@@ -1,8 +1,8 @@
 # DutyCycle
 
 [![Version](https://img.shields.io/badge/Symcon_Version-5.1>-red.svg)](https://www.symcon.de/service/dokumentation/entwicklerbereich/sdk-tools/sdk-php/)
-![Version](https://img.shields.io/badge/Modul_Version-1.00-blue.svg)
-![Version](https://img.shields.io/badge/Modul_Build-1-blue.svg)
+![Version](https://img.shields.io/badge/Modul_Version-1.01-blue.svg)
+![Version](https://img.shields.io/badge/Modul_Build-2-blue.svg)
 ![Version](https://img.shields.io/badge/Code-PHP-blue.svg)
 [![License](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-green.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)  
 
@@ -10,7 +10,7 @@
 
 Ein Projekt von Ulrich Bittner - Smart System Solutions  
 
-Dieses Modul ermöglicht eine Überwachung des DutyCycles einer [HomeMatic](https://www.homematic.com/) CCU in [IP-Symcon](https://www.symcon.de).
+Dieses Modul überwacht den Duty Cycle einer [HomeMatic](https://www.homematic.com/) CCU in [IP-Symcon](https://www.symcon.de).
 
 Für dieses Modul besteht kein Anspruch auf Fehlerfreiheit, Weiterentwicklung, sonstige Unterstützung oder Support.
 
@@ -32,7 +32,7 @@ Der Nutzer stimmt den o.a. Bedingungen, sowie den Lizenzbedingungen ausdrücklic
 
 ### 1. Funktionsumfang
 
-* DutyCycle Überwachung (Variablenüberwachung)
+* Überwacht den Duty Cycle einer Homematic CCU (Variablenüberwachung)
 * Bei Auslösung können individuelle Aktionen festgesetzt werden:
   * Push-Nachrichten verschicken
   * E-Mail Nachrichten verschicken
@@ -59,29 +59,29 @@ __Konfigurationsseite__:
 Name                                | Beschreibung
 ----------------------------------- | ---------------------------------
 (0) Instanzinformationen            | Informationen zu der Instanz
-(1) DutyCycle                       | Konfigurationsmöglichkeiten für den DutyCycle
+(1) DutyCycle                       | Konfigurationsmöglichkeiten zur Überwachung des Duty Cycles
 (2) Überwachte Variablen            | Diese Liste beinhaltet die Variablen, welche überwacht werden sollen
 (3) Benachrichtigungen              | Legen Sie die Benachrichtigungsvarianten fest
 (4) Alarmierungen                   | Wenn sich der allgemeine Status ändert, können Variablen geschaltet oder Skripte ausgeführt werden
 (5) Verknüpfungen                   | Sie können Verknüpfungen der überwachten Variablen erstellen
 (6) Sicherung / Wiederherstellung   | Die Instanzkonfiguration kann in einem Skript gespeichert und wiederhergestellt werden
 
-___Skript___: Wenn Sie unter (6) Alarmierung ein Skript angebenen haben, so können während des Aufrufs folgende Systemvariablen verwendet werden:
+___Skript___: Wenn Sie unter (4) Alarmierungen ein Skript angebenen haben, so können während des Aufrufs folgende Systemvariablen verwendet werden:
 
 Name                                | Beschreibung
 ----------------------------------- | ---------------------------------
-$_IPS['Status']                     | Übergibt den Status der Gesamtstatusvariable
+$_IPS['Status']                     | Übergibt den Status der `Status` Variable, false = OK, true = Alarm
 
 ### 5. Statusvariablen und Profile
 
-Die Statusvariablen/Kategorien werden automatisch angelegt. Das Löschen einzelner kann zu Fehlfunktionen führen.
+Die Statusvariablen / Kategorien werden automatisch angelegt. Das Löschen einzelner kann zu Fehlfunktionen führen.
 
 ##### Statusvariablen
 
 Name         | Typ       | Beschreibung
 ------------ | --------- | ----------------
-Monitoring   | Boolean   | De-/Aktiviert die Überwachung
-Status       | Boolean   | Zeigt den Gesamtstatus der überwachten Variablen (OK/Alarm) an
+Monitoring   | Boolean   | De- / Aktiviert die Überwachung
+Status       | Boolean   | Zeigt den Status der Überwachung an (`OK` / `Alarm`)
 LastMessage  | String    | Zeigt die letzte Meldung an
 
 ##### Profile:
@@ -93,7 +93,7 @@ Der Profilname beginnt mit `HMDCM` gefolgt von der InstanzID und dem Profilnamen
 ### 6. WebFront
 
 Über das WebFront kann die Überwachung de- und aktiviert werden.  
-Der aktuelle Gesamtstatus wird angezeigt.
+Der aktuelle Status der Überwachung wird angezeigt.
 
 ### 7. PHP-Befehlsreferenz
 

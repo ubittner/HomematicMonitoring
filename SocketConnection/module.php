@@ -3,8 +3,6 @@
 /*
  * @module      Homematic Socket Connection Monitoring
  *
- * @description Monitors the connection of the Homematic socket
- *
  * @prefix      HMSCM
  *
  * @file        module.php
@@ -15,9 +13,9 @@
  * @license     CC BY-NC-SA 4.0
  *              https://creativecommons.org/licenses/by-nc-sa/4.0/
  *
- * @version     1.00-1
- * @date        2019-01-11, 09:00
- * @lastchange  2019-01-11, 09:00
+ * @version     1.01-2
+ * @date        2019-05-17, 18:00
+ * @lastchange  2019-05-17, 18:00
  *
  * @see         https://git.ubittner.de/ubittner/HomematicMonitoring
  *
@@ -27,7 +25,7 @@
  *              Homematic Socket Connection Monitoring
  *             	{590AB9CB-F3EE-466E-97E0-75FF966489C0}
  *
- * @changelog   2019-01-11, 09:00, initial version 1.00-1
+ * @changelog   2019-05-17, 18:00, initial version 1.01-2
  *
  */
 

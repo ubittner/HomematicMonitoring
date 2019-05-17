@@ -13,9 +13,9 @@
  * @license    	CC BY-NC-SA 4.0
  *              https://creativecommons.org/licenses/by-nc-sa/4.0/
  *
- * @version     1.00-1
+ * @version     1.01-2
  * @date        2019-01-11, 09:00
- * @lastchange  2019-01-11, 09:00
+ * @lastchange  2019-05-17, 09:00
  *
  * @see         https://git.ubittner.de/ubittner/HomematicMonitoring
  *
@@ -25,7 +25,8 @@
  *              Homematic Channel Parameter Monitoring
  *             	{27124868-9BA0-46F4-A5A2-20EB14111657}
  *
- * @changelog   2019-01-11, 09:00, initial version 1.00-1
+ * @changelog   2019-05-17, 18:00, update to version 1.01-2
+ *              2019-01-11, 09:00, initial version 1.00-1
  *
  */
 

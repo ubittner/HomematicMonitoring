@@ -70,7 +70,7 @@ trait HMSCM_connection
         if ($parentID != 0 && IPS_ObjectExists($parentID)) {
             $state = IPS_GetInstance($parentID)['InstanceStatus'];
             if ($state == 102) {
-                $updateLimit = $this->ReadPropertyInteger('UpdateLimit');
+                $updateLimit = $this->ReadPropertyInteger('UpdateLimit') - 1;
                 $stateUpdateCycle = $this->ReadAttributeInteger('StateUpdateCycle');
                 if ($stateUpdateCycle <= $updateLimit) {
                     $devices = IPS_GetInstanceListByModuleID("{EE4A81C6-5C90-4DB7-AD2F-F6BBD521412E}");

@@ -3,8 +3,6 @@
 /*
  * @module      Homematic Duty Cycle Monitoring
  *
- * @description Monitors the duty cycles of a Homematic CCU
- *
  * @prefix      HMDCM
  *
  * @file        module.php
@@ -15,9 +13,9 @@
  * @license     CC BY-NC-SA 4.0
  *              https://creativecommons.org/licenses/by-nc-sa/4.0/
  *
- * @version     1.00-1
+ * @version     1.01-2
  * @date        2019-01-11, 09:00
- * @lastchange  2019-01-11, 09:00
+ * @lastchange  2019-05-17, 18:00
  *
  * @see         https://git.ubittner.de/ubittner/HomematicMonitoring
  *
@@ -27,7 +25,8 @@
  *              Homematic DutyCycle Monitoring
  *             	{40589A8F-E978-4C18-B18D-3346CA80E850}
  *
- * @changelog   2019-01-11, 09:00, initial version 1.00-1
+ * @changelog   2019-05-17, 18:00, update to version 1.01-2
+ *              2019-01-11, 09:00, initial version 1.00-1
  *
  */
 
