@@ -220,6 +220,23 @@ trait HMCPM_channelParameters
         echo $this->Translate('Variables were determined and assigned automatically!');
     }
 
+    //#################### Delete variables
+
+    /**
+     * Deletes all assigned variables.
+     */
+    public function DeleteAssignedVariables()
+    {
+        $variables = [];
+        $json = json_encode($variables);
+        IPS_SetProperty($this->InstanceID, 'MonitoredVariables', $json);
+        if (IPS_HasChanges($this->InstanceID)) {
+            IPS_ApplyChanges($this->InstanceID);
+        }
+        echo $this->Translate('All assigned variables were deleted!');
+
+    }
+
     //################### Assign variable profile
 
     /**
@@ -327,8 +344,12 @@ trait HMCPM_channelParameters
                         $devices = json_decode($this->GetBuffer('VariablesThresholdReached'), true);
                         $thresholdReached = in_array($variable->ID, $devices);
                         if ($thresholdReached) {
+                            $id = '<span style="color:#FF0000"><b>' . $variable->ID . '</b></span>';
+                            $name = '<span style="color:#FF0000"><b>' . $variable->Name . '</b></span>';
                             $text = '<span style="color:#FF0000"><b>' . $actualStateName . '</b></span>';
                         } else {
+                            $id = $variable->ID;
+                            $name =  $variable->Name;
                             $text = $actualStateName;
                         }
                         $deviceAddress = @IPS_GetProperty(IPS_GetParent($variable->ID), 'Address');
@@ -343,7 +364,7 @@ trait HMCPM_channelParameters
                         if ($year != 0) {
                             $lastMaintenance = $day . '.' . $month . '.' . $year;
                         }
-                        $string .= '<tr><td>' . $variable->ID . '</td><td>' . $variable->Name . '</td><td>' . $deviceAddress . '</td><td>' . $lastMaintenance . '</td><td>' . $text . '</td></tr>';
+                        $string .= '<tr><td>' . $id . '</td><td>' . $name . '</td><td>' . $deviceAddress . '</td><td>' . $lastMaintenance . '</td><td>' . $text . '</td></tr>';
                     }
                 }
                 $string .= '</table>';

@@ -850,6 +850,20 @@
               "type": "Button",
               "caption": "Display registered variables",
               "onClick": "$variables = HMCPM_DisplayRegisteredVariables($id); print_r($variables);"
+            },
+            {
+              "type": "PopupButton",
+              "caption": "Delete assigned variables",
+              "popup": {
+                "caption": "Really delete assigned variables?",
+                "items": [
+                  {
+                    "type": "Button",
+                    "caption": "Delete assigned variables",
+                    "onClick": "HMCPM_DeleteAssignedVariables($id);"
+                  }
+                ]
+              }
             }
           ]
         },
