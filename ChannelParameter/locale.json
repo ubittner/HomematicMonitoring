@@ -89,8 +89,10 @@
       "Actions": "Aktionen",
       "Determine and assign variables automatically": "Variablen automatisch ermitteln und zuweisen",
       "Display registered variables": "Registrierte Variablen anzeigen",
+      "Delete assigned variables": "Zugewiesene Variablen löschen",
+      "Really delete assigned variables?": "Zugewiesene Variablen wirklich löschen?",
       "Assign missing variable profiles only": "Nur fehlende Variablenprofile zuweisen",
-      "Overwrite variable profiles": "Variablenprofilen überschreiben",
+      "Overwrite variable profiles": "Variablenprofile überschreiben",
       "Value is below threshold:": "Schwellenwert unterschritten:",
       "Display variables": "Variablen anzeigen",
       "Display blocked variables for today": "Für heute blockierte Variablen anzeigen",
@@ -114,6 +116,7 @@
       "Low battery": "Batterie schwach",
       "Variable profiles were assigned automatically!":  "Variablenprofile wurden automatisch zugewiesen!",
       "Variables were determined and assigned automatically!": "Variablen wurden automatisch ermittelt und zugewiesen!",
+      "All assigned variables were deleted!": "Alle zugewiesenen Variablen wurden gelöscht!",
       "Links were successfully created!": "Verknüpfungen wurden erfolgreich erstellt!",
       "<tr><td><b>ID</b></td><td><b>Name</b></td><td><b>Address</b></td><td><b>Last Maintenance</b></td><td><b>State</b></td></tr>": "<tr><td><b>ID</b></td><td><b>Name</b></td><td><b>Adresse</b></td><td><b>Letzte Wartung</b></td><td><b>Status</b></td></tr>"
     }
