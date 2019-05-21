@@ -79,6 +79,7 @@
       "Determine and assign variables automatically": "Variablen automatisch ermitteln und zuweisen",
       "Show assigned variables": "Zugewiesene Variablen anzeigen",
       "Delete assigned variables": "Zugewiesene Variablen löschen",
+      "Re-index variable position": "Variablen Position neu indizieren",
       "Really delete assigned variables?": "Zugewiesene Variablen wirklich löschen?",
       "Display variables": "Variablen anzeigen",
       "Display blocked variables for today": "Für heute blockierte Variablen anzeigen",
@@ -100,6 +101,7 @@
       "The configuration was successfully saved!": "Die Konfiguration wurde erfolgreich gesichert!",
       "The configuration was successfully restored!": "Die Konfiguration wurde erfolgreich wiederhergestellt!",
       "Variables were determined and assigned automatically!": "Variablen wurden automatisch ermittelt und zugewiesen!",
+      "The position was successfully re-indexed!": "Die Position wurde erfolgreich neu indiziert.",
       "All assigned variables were deleted!": "Alle zugewiesenen Variablen wurden gelöscht!",
       "<td style='padding: 5px; font-weight: bold;'>Last update</td>": "<td style='padding: 5px; font-weight: bold;'>Letzte Aktualisierung</td>",
       "<td style='padding: 5px; font-weight: bold;'>Overdue since</td>": "<td style='padding: 5px; font-weight: bold;'>Überfällig seit</td>"

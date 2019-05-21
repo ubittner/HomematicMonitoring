@@ -5,52 +5,6 @@ declare(strict_types=1);
 
 trait HMWDG_variables
 {
-    //#################### Buffer
-
-    /**
-     * Displays the variables which are below the defined threshold value.
-     *
-     * @return array
-     */
-    public function DisplayVariablesBelowThreshold(): array
-    {
-        $variables = json_decode($this->GetBuffer('VariablesBelowThreshold'));
-        return $variables;
-    }
-
-    /**
-     * Displays the blocked variables below the defined threshold value for today.
-     *
-     * @return array
-     */
-    public function DisplayBlockedVariablesForTodayBelowThreshold(): array
-    {
-        $blockedVariables = json_decode($this->GetBuffer('BlockedVariablesForTodayBelowThreshold'));
-        return $blockedVariables;
-    }
-
-    /**
-     * Displays the variables which have reached or exceeded the defined threshold value.
-     *
-     * @return array
-     */
-    public function DisplayVariablesThresholdReached(): array
-    {
-        $variables = json_decode($this->GetBuffer('VariablesThresholdReached'));
-        return $variables;
-    }
-
-    /**
-     * Displays the blocked variables which have reached or exceeded the defined threshold value for today.
-     *
-     * @return array
-     */
-    public function DisplayBlockedVariablesForTodayThresholdReached(): array
-    {
-        $blockedVariables = json_decode($this->GetBuffer('BlockedVariablesForTodayThresholdReached'));
-        return $blockedVariables;
-    }
-
     //#################### Determine variables
 
     /**
@@ -129,6 +83,29 @@ trait HMWDG_variables
         echo $this->Translate('Variables were determined and assigned automatically!');
     }
 
+    //#################### Reindex variables
+
+    public function ReindexVariablePosition()
+    {
+        $monitoredVariables = json_decode($this->ReadPropertyString('MonitoredVariables'));
+        if (!empty($monitoredVariables)) {
+            $variables = [];
+            $i = 1;
+            foreach ($monitoredVariables as $monitoredVariable) {
+                $variables[] = ['Position' => $i, 'ID' => $monitoredVariable->ID, 'Name' => $monitoredVariable->Name, 'Address' => $monitoredVariable->Address, 'UseMonitoring' => $monitoredVariable->UseMonitoring, 'LastMaintenance' => $monitoredVariable->LastMaintenance];
+                $i++;
+            }
+            // Update variable list
+            $json = json_encode($variables);
+            IPS_SetProperty($this->InstanceID, 'MonitoredVariables', $json);
+            if (IPS_HasChanges($this->InstanceID)) {
+                IPS_ApplyChanges($this->InstanceID);
+            }
+            echo $this->Translate('The position was successfully re-indexed!');
+
+        }
+    }
+
     //#################### Get assigned variables
 
     /**
@@ -164,7 +141,7 @@ trait HMWDG_variables
     /**
      * Checks the monitored variables.
      */
-    public function CheckMonitoredVariables()
+    public function CheckVariables()
     {
         $status = $this->GetValue('Status');
         $alertVariables = $this->GetAlertVariables();
@@ -297,29 +274,5 @@ trait HMWDG_variables
         }
         $html .= "</table>";
         SetValue($this->GetIDForIdent("AlertView"), $html);
-    }
-
-    //#################### Reset message limit
-
-    /**
-     * Sets the reset limit timer to next day.
-     */
-    private function SetResetMessageLimitTimer()
-    {
-        $timestamp = strtotime('next day midnight');
-        $now = time();
-        $interval = ($timestamp - $now) * 1000;
-        $this->SetTimerInterval('ResetMessageLimit', $interval);
-    }
-
-    /**
-     * Resets the daily message limit.
-     */
-    public function ResetMessageLimit()
-    {
-        // Reset limit
-        $this->SetBuffer('BlockedVariablesForTodayBelowThreshold', json_encode([]));
-        $this->SetBuffer('BlockedVariablesForTodayThresholdReached', json_encode([]));
-        $this->SetResetMessageLimitTimer();
     }
 }

@@ -106,22 +106,25 @@ class Watchdog extends IPSModule
         IPS_SetPosition($this->GetIDForIdent('LastCheck'), 2);
         IPS_SetIcon($this->GetIDForIdent('LastCheck'), 'Clock');
 
-        // Last message
-        $this->RegisterVariableString('LastMessage',  $this->Translate('Last message'), '~TextBox');
-        IPS_SetPosition($this->GetIDForIdent('LastMessage'), 3);
-        IPS_SetIcon($this->GetIDForIdent('LastMessage'), 'Database');
-
         // Alert view
         $this->RegisterVariableString("AlertView", $this->Translate('Active alarms'), '~HTMLBox');
-        IPS_SetPosition($this->GetIDForIdent('AlertView'), 4);
+        IPS_SetPosition($this->GetIDForIdent('AlertView'), 3);
         IPS_SetIcon($this->GetIDForIdent('AlertView'), 'Database');
+
+        // Last message
+        $this->RegisterVariableString('LastMessage',  $this->Translate('Last message'), '~TextBox');
+        IPS_SetPosition($this->GetIDForIdent('LastMessage'), 4);
+        IPS_SetIcon($this->GetIDForIdent('LastMessage'), 'Database');
+
+        //#################### Register attribute
+
+        // Blacklist
+        $this->RegisterAttributeString('Blacklist', '[]');
 
         //#################### Register timer
 
         // Timer
-        $this->RegisterTimer("CheckVariablesTimer", 0, 'HMWDG_CheckMonitoredVariables($_IPS[\'TARGET\']);');
-        // Reset limit
-        $this->RegisterTimer('ResetMessageLimit', 0, 'HMWDG_ResetMessageLimit($_IPS[\'TARGET\']);');
+        $this->RegisterTimer("CheckVariablesTimer", 0, 'HMWDG_CheckVariables($_IPS[\'TARGET\']);');
     }
 
     public function Destroy()
@@ -149,28 +152,8 @@ class Watchdog extends IPSModule
 
         if (GetValue($this->GetIDForIdent('Monitoring'))) {
             $this->SetTimerInterval("CheckVariablesTimer", $this->ReadPropertyInteger("MonitoringInterval") * 1000);
+            $this->CheckVariables();
         }
-
-        // Set buffer
-        $monitoredVariables = [];
-        $variables = json_decode($this->ReadPropertyString('MonitoredVariables'));
-        if (!empty($variables)) {
-            foreach ($variables as $variable) {
-                if ($variable->UseMonitoring) {
-                    array_push($monitoredVariables, $variable->ID);
-                }
-            }
-        }
-        $this->SetBuffer('VariablesBelowThreshold', json_encode($monitoredVariables));
-        $this->SetBuffer('VariablesThresholdReached', json_encode([]));
-        $this->SetBuffer('BlockedVariablesForTodayBelowThreshold', json_encode([]));
-        $this->SetBuffer('BlockedVariablesForTodayThresholdReached', json_encode([]));
-
-        // Reset message limit
-        $this->SetResetMessageLimitTimer();
-
-        // Check actual status
-        $this->CheckMonitoredVariables();
     }
 
     public function MessageSink($TimeStamp, $SenderID, $Message, $Data)
@@ -180,7 +163,14 @@ class Watchdog extends IPSModule
             case IPS_KERNELSTARTED:
                 $this->KernelReady();
                 break;
-            default:
+        }
+    }
+
+    public function RequestAction($Ident, $Value)
+    {
+        switch ($Ident) {
+            case 'Monitoring':
+                $this->ToggleMonitoring($Value);
                 break;
         }
     }
@@ -207,17 +197,6 @@ class Watchdog extends IPSModule
         }
     }
 
-    //#################### Request action
-
-    public function RequestAction($Ident, $Value)
-    {
-        switch ($Ident) {
-            case 'Monitoring':
-                $this->ToggleMonitoring($Value);
-                break;
-        }
-    }
-
     /**
      * Toggles the monitoring switch.
      *
@@ -227,7 +206,7 @@ class Watchdog extends IPSModule
     {
         if ($State) {
             // When activating the simulation, fetch actual data for a day and activate timer for updating variables
-            $this->CheckMonitoredVariables();
+            $this->CheckVariables();
             $this->SetTimerInterval("CheckVariablesTimer", $this->ReadPropertyInteger("MonitoringInterval") * 1000);
         } else {
             // When deactivating the simulation, kill data for simulation and deactivate timer for updating variables
