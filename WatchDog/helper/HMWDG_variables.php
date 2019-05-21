@@ -282,8 +282,8 @@ trait HMWDG_variables
         $html .= "</tr>";
         // Content
         $monitoredVariables = json_decode($this->ReadPropertyString('MonitoredVariables'), true);
+        $id = array_column($monitoredVariables, 'ID');
         foreach ($AlertVariables as $alertVariable) {
-            $id = array_column($monitoredVariables, 'ID');
             $key = array_search($alertVariable, $id);
             $name = $monitoredVariables[$key]['Name'];
             IPS_LogMessage('TestName', $name);
