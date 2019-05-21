@@ -112,7 +112,7 @@ class Watchdog extends IPSModule
         IPS_SetIcon($this->GetIDForIdent('LastMessage'), 'Database');
 
         // Alert view
-        $this->RegisterVariableString("AlertView", $this->Translate('Active alarms', '~HTMLBox'));
+        $this->RegisterVariableString("AlertView", $this->Translate('Active alarms'), '~HTMLBox');
         IPS_SetPosition($this->GetIDForIdent('AlertView'), 4);
         IPS_SetIcon($this->GetIDForIdent('AlertView'), 'Database');
 
