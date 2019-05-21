@@ -1,0 +1,13 @@
+{
+  "id": "{C828CCD4-009E-412F-B8F3-3032ECB2E1A9}",
+  "name": "Watchdog",
+  "type": 3,
+  "vendor": "Homematic",
+  "aliases": [
+    "Homematic Watchdog"
+  ],
+  "parentRequirements": [],
+  "childRequirements": [],
+  "implemented": [],
+  "prefix": "HMWDG"
+}

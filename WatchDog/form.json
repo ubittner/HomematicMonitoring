@@ -1,0 +1,898 @@
+{
+  "elements": [
+    {
+      "type": "Image",
+      "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAAA2CAYAAACocCdYAAAAAXNSR0IArs4c6QAAAAlwSFlzAAAuIwAALiMBeKU/dgAABCdpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IlhNUCBDb3JlIDUuNC4wIj4KICAgPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICAgICAgPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIKICAgICAgICAgICAgeG1sbnM6dGlmZj0iaHR0cDovL25zLmFkb2JlLmNvbS90aWZmLzEuMC8iCiAgICAgICAgICAgIHhtbG5zOmV4aWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vZXhpZi8xLjAvIgogICAgICAgICAgICB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iCiAgICAgICAgICAgIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyI+CiAgICAgICAgIDx0aWZmOlJlc29sdXRpb25Vbml0PjI8L3RpZmY6UmVzb2x1dGlvblVuaXQ+CiAgICAgICAgIDx0aWZmOkNvbXByZXNzaW9uPjU8L3RpZmY6Q29tcHJlc3Npb24+CiAgICAgICAgIDx0aWZmOlhSZXNvbHV0aW9uPjMwMDwvdGlmZjpYUmVzb2x1dGlvbj4KICAgICAgICAgPHRpZmY6T3JpZW50YXRpb24+MTwvdGlmZjpPcmllbnRhdGlvbj4KICAgICAgICAgPHRpZmY6WVJlc29sdXRpb24+MzAwPC90aWZmOllSZXNvbHV0aW9uPgogICAgICAgICA8ZXhpZjpQaXhlbFhEaW1lbnNpb24+MjIyPC9leGlmOlBpeGVsWERpbWVuc2lvbj4KICAgICAgICAgPGV4aWY6Q29sb3JTcGFjZT4xPC9leGlmOkNvbG9yU3BhY2U+CiAgICAgICAgIDxleGlmOlBpeGVsWURpbWVuc2lvbj41NDwvZXhpZjpQaXhlbFlEaW1lbnNpb24+CiAgICAgICAgIDxkYzpzdWJqZWN0PgogICAgICAgICAgICA8cmRmOkJhZy8+CiAgICAgICAgIDwvZGM6c3ViamVjdD4KICAgICAgICAgPHhtcDpNb2RpZnlEYXRlPjIwMTktMDUtMDNUMDc6MDU6ODY8L3htcDpNb2RpZnlEYXRlPgogICAgICAgICA8eG1wOkNyZWF0b3JUb29sPlBpeGVsbWF0b3IgMy44LjI8L3htcDpDcmVhdG9yVG9vbD4KICAgICAgPC9yZGY6RGVzY3JpcHRpb24+CiAgIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+CnXpmFwAAARqSURBVHgB7V07jtswEHU+RYpUAXIBIe22e6EAOUQad2lyggC5UOogqTZHiNukSzgLWJLXHEFPnuGQ1CNALE2RM++90UCydmwfDmxUoA0FhgTza+rfUv+d+r9GumAVzIJdOLBRgWYU+JCQ/km9lWTTcAoH4cJGBapXQK4SPSTdORmFy/CietkJcO8KfE4C3HckwsvE5fXzjgiRSp8K3HVI6+5Zh6RIqS8F5OHEm74oHU5MvM4i2iEdeW/UXeOtZnchJaEWFGDitRAlYuxOASZedyEloRYUYOK1ECVi7E4BJl53ISWhVhQ4/0f96V8r/E/tnl9b2UftnP17/a21Nm9IQpWsdUTjoq1H46TZ8Z6HcWobrIB620dxang85mupzYuodUTjoq1H46LZ8Z6HcWobrIB620dxani85h9r81CQhuvlShdR62hFAY2LlV/UDoST7/FQefH1r9KWj/g2sx3iWzCwVaQAE69MMCLrDSN9l1G3QS9MvDJBe1fGTdZLpO8sIE4eDlKrKfemuWZVx+ltP4d9ac4bj7f9JW65Y7XhyWFcmtPwL+3xPKblBYSTVzzPENE2FVAUYOIpwnCaCngqwMTzVJe2qYCiABNPEYbTVMBTASaep7q0TQUUBZh4kzDyVMqiTxan0c9pWHx0UjxacBUbtdWmylNHz67IiU9rAcAt5Xd428971Wc1PJ7zRx2O+xH5MlVPbnPbHrWpc/trxu6CKg7WYJuvUYOi2Ien587mY9iQ0YY5Bu/xj4T5mPpbI+xbzMgnErx5zu1b16bOba8Zb9HIYs8abOMa3mpaSF63jU8J3t+CEKNrUwtSvc3VmIXJzHx8m9Vp99zmfDytKDuaYyg1PpaleOWt9MeC5PbWqqExsvKL2oFxahtQx9p6b/uaX21ew+M5L7ec0W1IAEp9EFYeuFg1NC5WflE7EE55+iMbck2rScutXZrztr/kO3fMG4+3/RynyDlvvpr9KM5aXkA4+R4vKnz0u2sFmHi7Dj/JRynAxItSnn53rQATb9fhJ/koBZh4UcrT764VkB/Jk1q+3M8gQU9pQBW1+kHQjOnyXvl68tICEBlf7amjhtViPpc/i3blivewuMLnYIRPHybrrJLvOp1aXQV/r40k3vcAthE+A2iOLsl3lKLLwaZvchuSFCW/8NS6iBaNpNx6lezki0bocj0aq8vd/q+kNvVX6ptwlqrlk5NQfEU2VKBb1pPv7ZFG9b/d43oLknRfUkcxyvqxyZXPo5avtg9KbhEJ2UO+4yllMkC0vzihTbxfG5EHKfepv099y5XukU/EE6BrKpyhAroCJZJJ9+50RB6usFEBKlBYASZeYcHpjgqIAkw8ngdUIEABJl6A6HRJBZh4PAeoQIACTLwA0ekSUiCy7hMCCiw+MfEAtbg0RIEe61wfmHgh5xKdAgr0WOfaIycgpFzaggJDAimld2gFS63ro2t3W4g5MVaiQKlaYu9kraF2t5KQEkYrCsiVz6OW2DvZsrW7/wG54UW2+HkJHwAAAABJRU5ErkJggg=="
+    },
+    {
+      "type": "Label",
+      "caption": "Ulrich Bittner - Smart System Solutions"
+    },
+    {
+      "type": "Label",
+      "caption": " "
+    },
+    {
+      "type": "Label",
+      "caption": "Homematic Watchdog"
+    },
+    {
+      "type": "Label",
+      "caption": " "
+    },
+    {
+      "type": "Label",
+      "caption": "Description:"
+    },
+    {
+      "type": "Label",
+      "caption": "With this instance you can monitor the status update (variable) of Homematic sensors present in IP-Symcon."
+    },
+    {
+      "type": "Label",
+      "caption": "If the status is not updated in a predefined time, a notification and/or alarm can be initiated."
+    },
+    {
+      "type": "Label",
+      "caption": "In case of an alarm you can switch further variables and/or execute scripts."
+    },
+    {
+      "type": "Label",
+      "caption": "For further information, please refer to the documentation or the notes here in the configuration."
+    },
+    {
+      "type": "Label",
+      "caption": " "
+    },
+    {
+      "type": "Label",
+      "caption": "Configuration:"
+    },
+    {
+      "type": "ExpansionPanel",
+      "caption": "(0) Instance information",
+      "items": [
+        {
+          "type": "Label",
+          "caption": "Symcon version:\t5.1>"
+        },
+        {
+          "type": "Label",
+          "caption": "Module version:\t1.02-3"
+        },
+        {
+          "type": "Label",
+          "caption": "Date:\t\t\tMay 20, 2019"
+        },
+        {
+          "type": "Label",
+          "caption": "Time:\t\t\t18:00"
+        },
+        {
+          "type": "Label",
+          "caption": "Developer:\t\tUlrich Bittner"
+        },
+        {
+          "type": "Label",
+          "caption": "Prefix:\t\t\tHMWDG"
+        }
+      ]
+    },
+    {
+      "type": "ExpansionPanel",
+      "caption": "(1) Monitoring parameters",
+      "items": [
+        {
+          "type": "Label",
+          "caption": "Time until a state update of a sensor is overdue and activates the alarm. The time is added to the time of the last state update."
+        },
+        {
+          "type": "Label",
+          "caption": "Please select the time base:"
+        },
+        {
+          "type": "Select",
+          "name": "TimeBase",
+          "caption": "Time base",
+          "options": [
+            {
+              "label": "Seconds",
+              "value": 0
+            },
+            {
+              "label": "Minutes",
+              "value": 1
+            },
+            {
+              "label": "Hours",
+              "value": 2
+            },
+            {
+              "label": "Days",
+              "value": 3
+            }
+          ]
+        },
+        {
+          "type": "Label",
+          "caption": "Please enter the time value:"
+        },
+        {
+          "type": "NumberSpinner",
+          "name": "TimeValue",
+          "caption": "Time value"
+        },
+        {
+          "type": "Label",
+          "label": "Please enter the monitoring interval in seconds:"
+        },
+        {
+          "type": "IntervalBox",
+          "name": "MonitoringInterval",
+          "caption": "Seconds",
+          "suffix": "s"
+        }
+      ]
+    },
+    {
+      "type": "ExpansionPanel",
+      "caption": "(2) Monitored variables",
+      "items": [
+        {
+          "type": "Label",
+          "caption": "Please add the status variables of the sensors you want to monitor or delete entries you no longer need:"
+        },
+        {
+          "type": "List",
+          "name": "MonitoredVariables",
+          "caption": "Monitored variables",
+          "rowCount": 25,
+          "add": true,
+          "delete": true,
+          "sort": {
+            "column": "Position",
+            "direction": "ascending"
+          },
+          "columns": [
+            {
+              "caption": "Position",
+              "name": "Position",
+              "width": "100px",
+              "add": 1,
+              "edit": {
+                "type": "NumberSpinner"
+              }
+            },
+            {
+              "name": "ID",
+              "caption": "Variable ID",
+              "width": "400px",
+              "add": 0,
+              "edit": {
+                "type": "SelectVariable"
+              }
+            },
+            {
+              "name": "Name",
+              "caption": "Name",
+              "width": "350px",
+              "add": "",
+              "edit": {
+                "type": "ValidationTextBox"
+              }
+            },
+            {
+              "name": "Address",
+              "caption": "Address",
+              "width": "250px",
+              "add": "",
+              "edit": {
+                "type": "ValidationTextBox"
+              }
+            },
+            {
+              "name": "UseMonitoring",
+              "caption": "Use monitoring",
+              "width": "250px",
+              "add": true,
+              "edit": {
+                "type": "CheckBox"
+              }
+            },
+            {
+              "name": "LastMaintenance",
+              "caption": "Last maintenance",
+              "width": "200px",
+              "add": "{\"year\":0,\"month\":0,\"day\":0}",
+              "edit": {
+                "type": "SelectDate"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "ExpansionPanel",
+      "caption": "(3) Notifications",
+      "items": [
+        {
+          "type": "Label",
+          "caption": "(3.1) General settings"
+        },
+        {
+          "type": "Label",
+          "caption": "Please select whether a notification should be used:"
+        },
+        {
+          "type": "CheckBox",
+          "name": "UseNotification",
+          "caption": "Use notification"
+        },
+        {
+          "type": "Label",
+          "caption": " "
+        },
+        {
+          "type": "Label",
+          "caption": "Please enter a location designation:"
+        },
+        {
+          "type": "ValidationTextBox",
+          "name": "LocationDesignation",
+          "caption": "Location designation"
+        },
+        {
+          "type": "Label",
+          "caption": " "
+        },
+        {
+          "type": "Label",
+          "caption": "Please enter a title description (max. 32 characters):"
+        },
+        {
+          "type": "ValidationTextBox",
+          "name": "TitleDescription",
+          "caption": "Title description"
+        },
+        {
+          "type": "Label",
+          "caption": " "
+        },
+        {
+          "type": "Label",
+          "caption": "Please enter your desired message texts:"
+        },
+        {
+          "type": "List",
+          "name": "MessageTexts",
+          "caption": "Message texts",
+          "rowCount": 2,
+          "add": true,
+          "delete": true,
+          "columns": [
+            {
+              "name": "Status",
+              "caption": "Status",
+              "width": "360px",
+              "add": "PLEASE_SELECT",
+              "edit": {
+                "type": "Select",
+                "options": [
+                  {
+                    "caption": "Please select",
+                    "value": "PLEASE_SELECT"
+                  },
+                  {
+                    "caption": "Status update ok",
+                    "value": false
+                  },
+                  {
+                    "caption": "Status update overdue",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sound",
+              "caption": "Sound",
+              "width": "230px",
+              "add": "",
+              "edit": {
+                "type": "Select",
+                "options": [
+                  {
+                    "caption": "Standard",
+                    "value": ""
+                  },
+                  {
+                    "caption": "Alarm",
+                    "value": "alarm"
+                  },
+                  {
+                    "caption": "Bell",
+                    "value": "bell"
+                  },
+                  {
+                    "caption": "Boom",
+                    "value": "boom"
+                  },
+                  {
+                    "caption": "Buzzer",
+                    "value": "buzzer"
+                  },
+                  {
+                    "caption": "Connected",
+                    "value": "connected"
+                  },
+                  {
+                    "caption": "Dark",
+                    "value": "dark"
+                  },
+                  {
+                    "caption": "Digital",
+                    "value": "digital"
+                  },
+                  {
+                    "caption": "Drums",
+                    "value": "drums"
+                  },
+                  {
+                    "caption": "Duck",
+                    "value": "duck"
+                  },
+                  {
+                    "caption": "Full",
+                    "value": "full"
+                  },
+                  {
+                    "caption": "Happy",
+                    "value": "happy"
+                  },
+                  {
+                    "caption": "Horn",
+                    "value": "horn"
+                  },
+                  {
+                    "caption": "Inception",
+                    "value": "inception"
+                  },
+                  {
+                    "caption": "Kazoo",
+                    "value": "kazoo"
+                  },
+                  {
+                    "caption": "Roll",
+                    "value": "roll"
+                  },
+                  {
+                    "caption": "Siren",
+                    "value": "siren"
+                  },
+                  {
+                    "caption": "Space",
+                    "value": "space"
+                  },
+                  {
+                    "caption": "Trickling",
+                    "value": "trickling"
+                  },
+                  {
+                    "caption": "Turn",
+                    "value": "turn"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "MessageText",
+              "caption": "Message text",
+              "width": "auto",
+              "add": "",
+              "edit": {
+                "type": "ValidationTextBox"
+              }
+            }
+          ]
+        },
+        {
+          "type": "Label",
+          "caption": "Please select a notification variant."
+        },
+        {
+          "type": "Label",
+          "caption": "The status update took place within the specified time:"
+        },
+        {
+          "type": "CheckBox",
+          "name": "AlwaysNotifyBelowThreshold",
+          "caption": "Always, even during updates"
+        },
+        {
+          "type": "CheckBox",
+          "name": "NotifyOnceBelowThreshold",
+          "caption": "Once"
+        },
+        {
+          "type": "CheckBox",
+          "name": "UseMessageDayLimitBelowThreshold",
+          "caption": "Maximum one notification per day (additional option)"
+        },
+        {
+          "type": "Label",
+          "caption": "The status update is overdue:"
+        },
+        {
+          "type": "CheckBox",
+          "name": "AlwaysNotifyThresholdReached",
+          "caption": "Always, even during updates"
+        },
+        {
+          "type": "CheckBox",
+          "name": "NotifyOnceThresholdReached",
+          "caption": "Once"
+        },
+        {
+          "type": "CheckBox",
+          "name": "UseMessageDayLimitThresholdReached",
+          "caption": "Maximum one notification per day (additional option)"
+        },
+        {
+          "type": "Label",
+          "caption": " "
+        },
+        {
+          "type": "Label",
+          "caption": "(3.2) Push notification"
+        },
+        {
+          "type": "Label",
+          "caption": "Please add the WebFronts that should be used for push notification or delete entries that are no longer needed:"
+        },
+        {
+          "type": "List",
+          "name": "WebFronts",
+          "caption": "WebFronts",
+          "rowCount": 5,
+          "add": true,
+          "delete": true,
+          "sort": {
+            "column": "Position",
+            "direction": "ascending"
+          },
+          "columns": [
+            {
+              "name": "Position",
+              "caption": "Position",
+              "width": "100px",
+              "add": 1,
+              "edit": {
+                "type": "NumberSpinner"
+              }
+            },
+            {
+              "name": "ID",
+              "caption": "WebFront ID",
+              "width": "auto",
+              "add": 0,
+              "edit": {
+                "type": "SelectInstance"
+              }
+            },
+            {
+              "name": "UseNotification",
+              "caption": "Use notification",
+              "width": "250px",
+              "add": true,
+              "edit": {
+                "type": "CheckBox"
+              }
+            }
+          ]
+        },
+        {
+          "type": "Label",
+          "caption": "(3.3) E-mail notification"
+        },
+        {
+          "type": "Label",
+          "caption": "Please add the e-mail recipients for notification or delete entries that are no longer needed:"
+        },
+        {
+          "type": "List",
+          "name": "EmailRecipients",
+          "caption": "E-mail recipients",
+          "rowCount": 5,
+          "add": true,
+          "delete": true,
+          "sort": {
+            "column": "Position",
+            "direction": "ascending"
+          },
+          "columns": [
+            {
+              "name": "Position",
+              "caption": "Position",
+              "width": "100px",
+              "add": 1,
+              "edit": {
+                "type": "NumberSpinner"
+              }
+            },
+            {
+              "name": "ID",
+              "caption": "E-mail (SMTP) instance ID",
+              "width": "auto",
+              "add": 0,
+              "edit": {
+                "type": "SelectInstance"
+              }
+            },
+            {
+              "name": "Name",
+              "caption": "Name",
+              "width": "300px",
+              "add": "",
+              "edit": {
+                "type": "ValidationTextBox"
+              }
+            },
+            {
+              "name": "Address",
+              "caption": "E-mail address",
+              "width": "300px",
+              "add": "@",
+              "edit": {
+                "type": "ValidationTextBox"
+              }
+            },
+            {
+              "name": "UseNotification",
+              "caption": "Use notification",
+              "width": "250px",
+              "add": true,
+              "edit": {
+                "type": "CheckBox"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "ExpansionPanel",
+      "caption": "(4) Alerting",
+      "items": [
+        {
+          "type": "Label",
+          "caption": "Please select whether a alerting should be used:"
+        },
+        {
+          "type": "CheckBox",
+          "name": "UseAlerting",
+          "caption": "Use alerting"
+        },
+        {
+          "type": "Label",
+          "caption": " "
+        },
+        {
+          "type": "Label",
+          "caption": "Hint:"
+        },
+        {
+          "type": "Label",
+          "caption": "If the status variable changes, the target variable is switched if the function is activated."
+        },
+        {
+          "type": "Label",
+          "caption": " "
+        },
+        {
+          "type": "Label",
+          "caption": "Please add the variables that should be used for the alerting or delete entries that are no longer needed:"
+        },
+        {
+          "type": "List",
+          "name": "TargetVariables",
+          "caption": "Variables",
+          "rowCount": 5,
+          "add": true,
+          "delete": true,
+          "sort": {
+            "column": "Position",
+            "direction": "ascending"
+          },
+          "columns": [
+            {
+              "name": "Position",
+              "caption": "Position",
+              "width": "100px",
+              "add": 1,
+              "edit": {
+                "type": "NumberSpinner"
+              }
+            },
+            {
+              "name": "ID",
+              "caption": "Variable ID",
+              "width": "auto",
+              "add": 0,
+              "edit": {
+                "type": "SelectVariable"
+              }
+            },
+            {
+              "name": "UseVariable",
+              "caption": "Use variable",
+              "width": "250px",
+              "add": true,
+              "edit": {
+                "type": "CheckBox"
+              }
+            }
+          ]
+        },
+        {
+          "type": "Label",
+          "caption": "Hint:"
+        },
+        {
+          "type": "Label",
+          "caption": "If the status variable changes, the target script will be executed if the function is activated."
+        },
+        {
+          "type": "Label",
+          "caption": "The status is passed to the script and can be used with $_IPS['Status'] in the script."
+        },
+        {
+          "type": "Label",
+          "caption": " "
+        },
+        {
+          "type": "Label",
+          "caption": "Please add the scripts that should be used for the alerting or delete entries that are no longer needed:"
+        },
+        {
+          "type": "List",
+          "name": "TargetScripts",
+          "caption": "Scripts",
+          "rowCount": 5,
+          "add": true,
+          "delete": true,
+          "sort": {
+            "column": "Position",
+            "direction": "ascending"
+          },
+          "columns": [
+            {
+              "name": "Position",
+              "caption": "Position",
+              "width": "100px",
+              "add": 1,
+              "edit": {
+                "type": "NumberSpinner"
+              }
+            },
+            {
+              "name": "ID",
+              "caption": "Script ID",
+              "width": "auto",
+              "add": 0,
+              "edit": {
+                "type": "SelectScript"
+              }
+            },
+            {
+              "name": "UseScript",
+              "caption": "Use script",
+              "width": "250px",
+              "add": true,
+              "edit": {
+                "type": "CheckBox"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "ExpansionPanel",
+      "caption": "(5) Backup / Restore",
+      "items": [
+        {
+          "type": "Label",
+          "caption": "Please select the category for the backup:"
+        },
+        {
+          "type": "SelectCategory",
+          "name": "BackupCategory",
+          "caption": "Category"
+        },
+        {
+          "type": "Label",
+          "caption": " "
+        },
+        {
+          "type": "Label",
+          "caption": "Hint:"
+        },
+        {
+          "type": "Label",
+          "caption": "Accept the changes now and press under actions the button (5) CREATE BACKUP!"
+        },
+        {
+          "type": "Label",
+          "caption": " "
+        },
+        {
+          "type": "Label",
+          "caption": "Please select the saved configuration script for recovery:"
+        },
+        {
+          "type": "SelectScript",
+          "name": "Configuration",
+          "caption": "Script"
+        },
+        {
+          "type": "Label",
+          "caption": " "
+        },
+        {
+          "type": "Label",
+          "caption": "Hint:"
+        },
+        {
+          "type": "Label",
+          "caption": "Accept the changes now and press under actions the button (5) RESTORE CONFIGURATION!"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "type": "ExpansionPanel",
+      "caption": "Actions",
+      "items": [
+        {
+          "type": "Label",
+          "caption": "(2) Monitored variables"
+        },
+        {
+          "type": "Button",
+          "caption": "Determine and assign variables automatically",
+          "onClick": "HMWDG_DetermineVariables($id);"
+        },
+        {
+          "type": "Button",
+          "caption": "Show assigned variables",
+          "onClick": "$variables = HMWDG_GetAssignedVariables($id); print_r($variables);"
+        },
+        {
+          "type": "PopupButton",
+          "caption": "Delete assigned variables",
+          "popup": {
+            "caption": "Really delete assigned variables?",
+            "items": [
+              {
+                "type": "Button",
+                "caption": "Delete assigned variables",
+                "onClick": "HMWDG_DeleteAssignedVariables($id);"
+              }
+            ]
+          }
+        },
+        {
+          "type": "Label",
+          "caption": "(3) Notifications"
+        },
+        {
+          "type": "Label",
+          "caption": "The status update took place within the specified time:"
+        },
+        {
+          "type": "RowLayout",
+          "items": [
+            {
+              "type": "Button",
+              "caption": "Display variables",
+              "onClick": "$variables = HMWDG_DisplayVariablesBelowThreshold($id); print_r($variables);"
+            },
+            {
+              "type": "Button",
+              "caption": "Display blocked variables for today",
+              "onClick": "$variables = HMWDG_DisplayBlockedVariablesForTodayBelowThreshold($id); print_r($variables);"
+            }
+          ]
+        },
+        {
+          "type": "Label",
+          "caption": "The status update is overdue:"
+        },
+        {
+          "type": "RowLayout",
+          "items": [
+            {
+              "type": "Button",
+              "caption": "Display variables",
+              "onClick": "$variables = HMWDG_DisplayVariablesThresholdReached($id); print_r($variables);"
+            },
+            {
+              "type": "Button",
+              "caption": "Display blocked variables for today",
+              "onClick": "$variables = HMWDG_DisplayBlockedVariablesForTodayThresholdReached($id); print_r($variables);"
+            }
+          ]
+        },
+        {
+          "type": "Label",
+          "caption": "(5) Backup / Restore"
+        },
+        {
+          "type": "RowLayout",
+          "items": [
+            {
+              "type": "Button",
+              "caption": "Create backup",
+              "onClick": "HMWDG_CreateBackup($id);"
+            },
+            {
+              "type": "PopupButton",
+              "caption": "Restore configuration",
+              "popup": {
+                "caption": "Really restore configuration?",
+                "items": [
+                  {
+                    "type": "Button",
+                    "caption": "Restore configuration",
+                    "onClick": "HMWDG_RestoreConfiguration($id);"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Label",
+      "caption": " "
+    },
+    {
+      "type": "Button",
+      "caption": "Manual",
+      "onClick": "echo 'https://git.ubittner.de/ubittner/HomematicMonitoring';"
+    },
+    {
+      "type": "Label",
+      "caption": " "
+    },
+    {
+      "type": "TestCenter"
+    }
+  ],
+  "status": [
+    {
+      "code": 101,
+      "icon": "active",
+      "caption": "Homematic Watchdog will be created"
+    },
+    {
+      "code": 102,
+      "icon": "active",
+      "caption": "Homematic Watchdog is active"
+    },
+    {
+      "code": 103,
+      "icon": "active",
+      "caption": "Homematic Watchdog will be deleted"
+    },
+    {
+      "code": 104,
+      "icon": "inactive",
+      "caption": "Homematic Watchdog is inactive"
+    }
+  ]
+}
+
