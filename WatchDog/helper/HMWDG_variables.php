@@ -225,12 +225,12 @@ trait HMWDG_variables
                 if ($variableID != 0 && IPS_ObjectExists($variableID) && $variable->UseMonitoring) {
                     $object = IPS_GetObject($variableID);
                     // Check for variable
-                    if ($object['ObjectType'] == 2) {
+                    //if ($object['ObjectType'] == 2) {
                         // Check ident
                         if ($object['ObjectIdent'] == 'STATE') {
                             $result[] = $variableID;
                         }
-                    }
+                    //}
                 }
             }
         }
