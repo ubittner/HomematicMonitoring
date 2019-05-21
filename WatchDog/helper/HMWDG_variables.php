@@ -286,6 +286,7 @@ trait HMWDG_variables
             $id = array_column($monitoredVariables, 'ID');
             $key = array_search($alertVariable, $id);
             $name = $monitoredVariables[$key]['Name'];
+            IPS_LogMessage('TestName', $name);
             $timediff = time() - $alertVariable['LastUpdate'];
             $timestring = sprintf("%02d:%02d:%02d", (int)($timediff / 3600), (int)($timediff / 60) % 60, ($timediff) % 60);
             $html .= "<tr style='border-top: 1px solid rgba(255,255,255,0.10);'>";
