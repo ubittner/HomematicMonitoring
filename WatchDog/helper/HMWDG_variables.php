@@ -195,7 +195,7 @@ trait HMWDG_variables
         foreach ($variableIDs as $variableID) {
             $variable = IPS_GetVariable($variableID);
             if ($variable['VariableUpdated'] < $watchTimeBorder) {
-                $alertVariables[] = ['LinkID' => $variableID, 'VariableID' => $variableID, 'LastUpdate' => $variable['VariableUpdated']];
+                $alertVariables[] = ['VariableID' => $variableID, 'LastUpdate' => $variable['VariableUpdated']];
                 $notification = $this->CheckNotificationThresholdReached($variableID);
                 $threshold = true;
             } else {
@@ -281,13 +281,11 @@ trait HMWDG_variables
         $html .= "<td style='padding: 5px; font-weight: bold;'>Überfällig seit</td>";
         $html .= "</tr>";
         // Content
-        $monitoredVariables = json_decode($this->ReadPropertyString('MonitoredVariables'), true);
-        $id = array_column($monitoredVariables, 'ID');
-        IPS_LogMessage('Test', json_encode($AlertVariables));
+        $monitoredVariables = $this->GetAssignedVariables();
         foreach ($AlertVariables as $alertVariable) {
-            $key = array_search($alertVariable, $id);
-            $name = $monitoredVariables[$key]['Name'];
-            IPS_LogMessage('TestName', $name);
+            $id = array_column($monitoredVariables, 'ID');
+            $key = array_search($alertVariable['VAriableID'], $id);
+            $name = $monitoredVariables[$key]->Name;
             $timediff = time() - $alertVariable['LastUpdate'];
             $timestring = sprintf("%02d:%02d:%02d", (int)($timediff / 3600), (int)($timediff / 60) % 60, ($timediff) % 60);
             $html .= "<tr style='border-top: 1px solid rgba(255,255,255,0.10);'>";
