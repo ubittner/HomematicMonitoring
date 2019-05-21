@@ -119,7 +119,7 @@ class Watchdog extends IPSModule
         //#################### Register timer
 
         // Timer
-        $this->RegisterTimer("CheckVariablesTimer", 0, 'HMWDG_CheckVariables($_IPS[\'TARGET\']);');
+        $this->RegisterTimer("CheckVariablesTimer", 0, 'HMWDG_CheckMonitoredVariables($_IPS[\'TARGET\']);');
         // Reset limit
         $this->RegisterTimer('ResetMessageLimit', 0, 'HMWDG_ResetMessageLimit($_IPS[\'TARGET\']);');
     }
