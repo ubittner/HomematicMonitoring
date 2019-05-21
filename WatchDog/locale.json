@@ -106,7 +106,6 @@
       "The configuration was successfully restored!": "Die Konfiguration wurde erfolgreich wiederhergestellt!",
       "Variables were determined and assigned automatically!": "Variablen wurden automatisch ermittelt und zugewiesen!",
       "All assigned variables were deleted!": "Alle zugewiesenen Variablen wurden gelöscht!",
-      "<td style='padding: 5px; font-weight: bold;'>Sensor - Actuator</td>": "<td style='padding: 5px; font-weight: bold;'>Sensor - Aktor</td>",
       "<td style='padding: 5px; font-weight: bold;'>Last update</td>": "<td style='padding: 5px; font-weight: bold;'>Letzte Aktualisierung</td>",
       "<td style='padding: 5px; font-weight: bold;'>Overdue since</td>": "<td style='padding: 5px; font-weight: bold;'>Überfällig seit</td>"
     }

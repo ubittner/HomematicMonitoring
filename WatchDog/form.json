@@ -760,28 +760,33 @@
           "caption": "(2) Monitored variables"
         },
         {
-          "type": "Button",
-          "caption": "Determine and assign variables automatically",
-          "onClick": "HMWDG_DetermineVariables($id);"
-        },
-        {
-          "type": "Button",
-          "caption": "Show assigned variables",
-          "onClick": "$variables = HMWDG_GetAssignedVariables($id); print_r($variables);"
-        },
-        {
-          "type": "PopupButton",
-          "caption": "Delete assigned variables",
-          "popup": {
-            "caption": "Really delete assigned variables?",
-            "items": [
-              {
-                "type": "Button",
-                "caption": "Delete assigned variables",
-                "onClick": "HMWDG_DeleteAssignedVariables($id);"
+          "type": "RowLayout",
+          "items": [
+            {
+              "type": "Button",
+              "caption": "Determine and assign variables automatically",
+              "onClick": "HMWDG_DetermineVariables($id);"
+            },
+            {
+              "type": "Button",
+              "caption": "Show assigned variables",
+              "onClick": "$variables = HMWDG_GetAssignedVariables($id); print_r($variables);"
+            },
+            {
+              "type": "PopupButton",
+              "caption": "Delete assigned variables",
+              "popup": {
+                "caption": "Really delete assigned variables?",
+                "items": [
+                  {
+                    "type": "Button",
+                    "caption": "Delete assigned variables",
+                    "onClick": "HMWDG_DeleteAssignedVariables($id);"
+                  }
+                ]
               }
-            ]
-          }
+            }
+          ]
         },
         {
           "type": "Label",

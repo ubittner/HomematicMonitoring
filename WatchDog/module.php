@@ -102,7 +102,7 @@ class Watchdog extends IPSModule
         IPS_SetPosition($this->GetIDForIdent('Status'), 1);
 
         // Last check
-        $this->RegisterVariableInteger("LastCheck", $this->Translate('Last check'), '~UnixTimestamp');
+        $this->RegisterVariableInteger('LastCheck', $this->Translate('Last check'), '~UnixTimestamp');
         IPS_SetPosition($this->GetIDForIdent('LastCheck'), 2);
         IPS_SetIcon($this->GetIDForIdent('LastCheck'), 'Clock');
 

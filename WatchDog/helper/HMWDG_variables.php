@@ -276,7 +276,7 @@ trait HMWDG_variables
         // Header
         $html = "<table style='width: 100%; border-collapse: collapse;'>";
         $html .= "<tr>";
-        $html .= "<td style='padding: 5px; font-weight: bold;'>Sensor - Actuator</td>";
+        $html .= "<td style='padding: 5px; font-weight: bold;'>Sensor</td>";
         $html .= "<td style='padding: 5px; font-weight: bold;'>Letzte Aktualisierung</td>";
         $html .= "<td style='padding: 5px; font-weight: bold;'>Überfällig seit</td>";
         $html .= "</tr>";
