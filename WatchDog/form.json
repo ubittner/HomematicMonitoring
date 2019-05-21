@@ -398,52 +398,6 @@
         },
         {
           "type": "Label",
-          "caption": "Please select a notification variant."
-        },
-        {
-          "type": "Label",
-          "caption": "The status update took place within the specified time:"
-        },
-        {
-          "type": "CheckBox",
-          "name": "AlwaysNotifyBelowThreshold",
-          "caption": "Always, even during updates"
-        },
-        {
-          "type": "CheckBox",
-          "name": "NotifyOnceBelowThreshold",
-          "caption": "Once"
-        },
-        {
-          "type": "CheckBox",
-          "name": "UseMessageDayLimitBelowThreshold",
-          "caption": "Maximum one notification per day (additional option)"
-        },
-        {
-          "type": "Label",
-          "caption": "The status update is overdue:"
-        },
-        {
-          "type": "CheckBox",
-          "name": "AlwaysNotifyThresholdReached",
-          "caption": "Always, even during updates"
-        },
-        {
-          "type": "CheckBox",
-          "name": "NotifyOnceThresholdReached",
-          "caption": "Once"
-        },
-        {
-          "type": "CheckBox",
-          "name": "UseMessageDayLimitThresholdReached",
-          "caption": "Maximum one notification per day (additional option)"
-        },
-        {
-          "type": "Label",
-          "caption": " "
-        },
-        {
-          "type": "Label",
           "caption": "(3.2) Push notification"
         },
         {
@@ -785,48 +739,6 @@
                   }
                 ]
               }
-            }
-          ]
-        },
-        {
-          "type": "Label",
-          "caption": "(3) Notifications"
-        },
-        {
-          "type": "Label",
-          "caption": "The status update took place within the specified time:"
-        },
-        {
-          "type": "RowLayout",
-          "items": [
-            {
-              "type": "Button",
-              "caption": "Display variables",
-              "onClick": "$variables = HMWDG_DisplayVariablesBelowThreshold($id); print_r($variables);"
-            },
-            {
-              "type": "Button",
-              "caption": "Display blocked variables for today",
-              "onClick": "$variables = HMWDG_DisplayBlockedVariablesForTodayBelowThreshold($id); print_r($variables);"
-            }
-          ]
-        },
-        {
-          "type": "Label",
-          "caption": "The status update is overdue:"
-        },
-        {
-          "type": "RowLayout",
-          "items": [
-            {
-              "type": "Button",
-              "caption": "Display variables",
-              "onClick": "$variables = HMWDG_DisplayVariablesThresholdReached($id); print_r($variables);"
-            },
-            {
-              "type": "Button",
-              "caption": "Display blocked variables for today",
-              "onClick": "$variables = HMWDG_DisplayBlockedVariablesForTodayThresholdReached($id); print_r($variables);"
             }
           ]
         },
