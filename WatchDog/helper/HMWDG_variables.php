@@ -134,9 +134,9 @@ trait HMWDG_variables
     /**
      * Get the assigned variables.
      *
-     * @return string
+     * @return array
      */
-    public function GetAssignedVariables(): string
+    public function GetAssignedVariables(): array
     {
         $variables = json_decode($this->ReadPropertyString('MonitoredVariables'));
         return $variables;
