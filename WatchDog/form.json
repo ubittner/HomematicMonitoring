@@ -722,11 +722,6 @@
               "onClick": "HMWDG_DetermineVariables($id);"
             },
             {
-              "type": "Button",
-              "caption": "Show assigned variables",
-              "onClick": "$variables = HMWDG_GetAssignedVariables($id); print_r($variables);"
-            },
-            {
               "type": "PopupButton",
               "caption": "Delete assigned variables",
               "popup": {
@@ -739,13 +734,18 @@
                   }
                 ]
               }
-            },
-            {
-              "type": "Button",
-              "caption": "Re-index variable position",
-              "onClick": "HMWDG_ReindexVariablePosition($id);"
             }
           ]
+        },
+        {
+          "type": "Button",
+          "caption": "Re-index variable position",
+          "onClick": "HMWDG_ReindexVariablePosition($id);"
+        },
+        {
+          "type": "Button",
+          "caption": "Show blacklist",
+          "onClick": "$blacklist = HMWDG_GetBlacklist($id); print_r($blacklist);"
         },
         {
           "type": "Label",

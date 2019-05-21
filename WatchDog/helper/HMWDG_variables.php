@@ -5,6 +5,18 @@ declare(strict_types=1);
 
 trait HMWDG_variables
 {
+    /**
+     * Gets the blacklist.
+     * The blacklist is used for variables with a status update overdue.
+     *
+     * @return mixed
+     */
+    public function GetBlacklist()
+    {
+        return json_decode($this->ReadAttributeString('Blacklist'), true);
+    }
+
+
     //#################### Determine variables
 
     /**
@@ -102,7 +114,6 @@ trait HMWDG_variables
                 IPS_ApplyChanges($this->InstanceID);
             }
             echo $this->Translate('The position was successfully re-indexed!');
-
         }
     }
 
@@ -173,16 +184,18 @@ trait HMWDG_variables
             $variable = IPS_GetVariable($variableID);
             if ($variable['VariableUpdated'] < $watchTimeBorder) {
                 $alertVariables[] = ['VariableID' => $variableID, 'LastUpdate' => $variable['VariableUpdated']];
-                $notification = $this->CheckNotificationThresholdReached($variableID);
+                //$notification = $this->CheckNotificationThresholdReached($variableID);
                 $threshold = true;
             } else {
-                $notification = $this->CheckNotificationBelowThreshold($variableID);
+                //$notification = $this->CheckNotificationBelowThreshold($variableID);
                 $threshold = false;
             }
+            /*
             if ($notification && $this->GetValue('Monitoring')) {
                 $this->UpdateLastMessage($variableID, $threshold);
                 $this->SendNotification($variableID, $threshold);
             }
+            */
         }
         return $alertVariables;
     }
