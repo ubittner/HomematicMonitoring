@@ -191,7 +191,7 @@ trait HMWDG_variables
             if ($variable['VariableUpdated'] < $watchTimeBorder) {
                 $alertVariables[] = ['VariableID' => $monitoredVariable, 'LastUpdate' => $variable['VariableUpdated']];
                 // Check notification
-                if (in_array($whitelist, $monitoredVariable) && !in_array($blacklist, $monitoredVariable)) {
+                if (in_array($monitoredVariable, $whitelist) && !in_array($monitoredVariable, $blacklist)) {
                     $notification = true;
                     $overdue = true;
                     array_unshift($whitelist, $monitoredVariable);
@@ -200,7 +200,7 @@ trait HMWDG_variables
             }
             // In time
             else {
-                if (!in_array($whitelist, $monitoredVariable) && in_array($blacklist, $monitoredVariable)) {
+                if (!in_array($monitoredVariable, $whitelist) && in_array($monitoredVariable, $blacklist)) {
                     $notification = true;
                     $overdue = false;
                     array_push($whitelist, $monitoredVariable);
@@ -276,7 +276,7 @@ trait HMWDG_variables
     /**
      * Updates the alert view.
      *
-     * @param $AlertVariables
+     * @param string $AlertVariables
      */
     public function UpdateAlertView(string $AlertVariables)
     {
