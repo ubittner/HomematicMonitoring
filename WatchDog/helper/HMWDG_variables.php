@@ -178,8 +178,10 @@ trait HMWDG_variables
     public function GetAlertVariables(): array
     {
         $blacklist = json_decode($this->ReadAttributeString('Blacklist'), true);
+        $this->SendDebug('Blacklist', json_encode($blacklist), 0);
         $newBlacklist = [];
         $whitelist = json_decode($this->ReadAttributeString('Whitelist'), true);
+        $this->SendDebug('Whitelist', json_encode($whitelist), 0);
         $newWhitelist = [];
         $monitoredVariables = array_column($this->GetMonitoredVariables(), 'ID');
         $this->SendDebug('MonitoredVariables', json_encode($monitoredVariables), 0);
@@ -192,6 +194,7 @@ trait HMWDG_variables
             $variable = IPS_GetVariable($monitoredVariable);
             // Overdue
             if ($variable['VariableUpdated'] < $watchTimeBorder) {
+                $this->SendDebug('Overdue', $monitoredVariable, 0);
                 $newBlacklist[] = $monitoredVariable;
                 $alertVariables[] = ['VariableID' => $monitoredVariable, 'LastUpdate' => $variable['VariableUpdated']];
                 // Check notification
@@ -202,6 +205,7 @@ trait HMWDG_variables
             }
             // In time
             if ($variable['VariableUpdated'] >= $watchTimeBorder) {
+                $this->SendDebug('In time', $monitoredVariable, 0);
                 $newWhitelist[] = $monitoredVariable;
                 // Check notification
                 if (in_array($monitoredVariable, $blacklist)) {
