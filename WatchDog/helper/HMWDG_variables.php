@@ -188,8 +188,6 @@ trait HMWDG_variables
         $this->SendDebug('MonitoredVariables', json_encode($monitoredVariables), 0);
         $watchTime = $this->GetWatchTime();
         $watchTimeBorder = time() - $watchTime;
-        $notification = false;
-        $overdue = false;
         $alertVariables = [];
         foreach ($monitoredVariables as $monitoredVariable) {
             $variable = IPS_GetVariable($monitoredVariable);
@@ -200,8 +198,9 @@ trait HMWDG_variables
                 $alertVariables[] = ['VariableID' => $monitoredVariable, 'LastUpdate' => $variable['VariableUpdated']];
                 // Check notification
                 if (in_array($monitoredVariable, $whitelist)) {
-                    $notification = true;
-                    $overdue = true;
+                    $this->SendDebug('Overdue', 'Notification and last message for: ' . $monitoredVariable, 0);
+                    $this->UpdateLastMessage($monitoredVariable, true);
+                    $this->SendNotification($monitoredVariable, true);
                 }
             }
             // In time
@@ -210,14 +209,10 @@ trait HMWDG_variables
                 $newWhitelist[] = $monitoredVariable;
                 // Check notification
                 if (in_array($monitoredVariable, $blacklist)) {
-                    $notification = true;
-                    $overdue = true;
+                    $this->SendDebug('In time', 'Notification and last message for: ' . $monitoredVariable, 0);
+                    $this->UpdateLastMessage($monitoredVariable, false);
+                    $this->SendNotification($monitoredVariable, false);
                 }
-            }
-            if ($notification) {
-                $this->SendDebug('SN+ULM', $monitoredVariable, 0);
-                $this->UpdateLastMessage($monitoredVariable, $overdue);
-                $this->SendNotification($monitoredVariable, $overdue);
             }
         }
         $this->WriteAttributeString('Blacklist', json_encode($newBlacklist));
