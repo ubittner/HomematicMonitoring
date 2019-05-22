@@ -97,7 +97,7 @@ class Watchdog extends IPSModule
         $this->EnableAction('Monitoring');
         IPS_SetPosition($this->GetIDForIdent('Monitoring'), 0);
         // Status
-        $this->RegisterVariableInteger('Status', 'Status', 'HMWDG.' . $this->InstanceID . '.Status');
+        $this->RegisterVariableBoolean('Status', 'Status', 'HMWDG.' . $this->InstanceID . '.Status');
         IPS_SetPosition($this->GetIDForIdent('Status'), 1);
         // Last check
         $this->RegisterVariableInteger('LastCheck', $this->Translate('Last check'), '~UnixTimestamp');
