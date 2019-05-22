@@ -157,18 +157,16 @@ trait HMWDG_variables
     {
         $status = $this->GetValue('Status');
         $alertVariables = $this->GetAlertVariables();
-        $actualStatus = 1;
-        $alertingStatus = false;
+        $actualStatus = true;
         if (empty($alertVariables)) {
-            $actualStatus = 0;
-            $alertingStatus = true;
+            $actualStatus = false;
         }
         $this->SetValue('Status', $actualStatus);
         $this->SetValue('LastCheck', time());
         $this->UpdateAlertView(json_encode($alertVariables));
         if ($actualStatus != $status) {
            // Execute Alerting
-            $this->ExecuteAlerting($alertingStatus);
+            $this->ExecuteAlerting($actualStatus);
         }
     }
 

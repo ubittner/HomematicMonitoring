@@ -85,11 +85,10 @@ class Watchdog extends IPSModule
         // Status
         $profileName = 'HMWDG.' . $this->InstanceID . '.Status';
         if (!IPS_VariableProfileExists($profileName)) {
-            IPS_CreateVariableProfile($profileName, 1);
+            IPS_CreateVariableProfile($profileName, 0);
         }
         IPS_SetVariableProfileAssociation($profileName, 0, 'OK', 'Information', 0x00FF00);
         IPS_SetVariableProfileAssociation($profileName, 1, 'Alarm', 'Warning', 0xFF0000);
-        IPS_SetVariableProfileAssociation($profileName, 2, $this->Translate('Unknown'), 'Warning', 0xFFFF00);
 
         //#################### Register variables
 
@@ -219,7 +218,6 @@ class Watchdog extends IPSModule
         } else {
             // When deactivating the simulation, kill data for simulation and deactivate timer for updating variables
             $this->SetTimerInterval("CheckMonitoredVariablesTimer", 0);
-            $this->SetValue('Status', 2);
             $this->SetValue('AlertView', $this->Translate('Watchdog is disabled!'));
         }
         $this->SetValue('Monitoring', $State);
