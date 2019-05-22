@@ -80,7 +80,7 @@
       "Show assigned variables": "Zugewiesene Variablen anzeigen",
       "Delete assigned variables": "Zugewiesene Variablen löschen",
       "Really delete assigned variables?": "Zugewiesene Variablen wirklich löschen?",
-      "Re-index variable position": "Variablen Position neu indizieren",
+      "Re-index position": "Position neu indizieren",
       "Show whitelist": "Unauffällige Variablen anzeigen",
       "Show blacklist": "Überfällige Variablen anzeigen",
       "Create backup": "Sicherung erstellen",

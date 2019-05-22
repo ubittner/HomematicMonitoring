@@ -149,7 +149,8 @@ class Watchdog extends IPSModule
         }
 
         // Set whitelist
-        $this->WriteAttributeString('Whitelist', json_encode($this->GetMonitoredVariables()));
+        $this->WriteAttributeString('Whitelist', json_encode(array_column($this->GetMonitoredVariables(), 'ID')));
+
 
         // Set blacklist
         $this->WriteAttributeString('Blacklist', '[]');

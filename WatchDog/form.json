@@ -739,7 +739,7 @@
         },
         {
           "type": "Button",
-          "caption": "Re-index variable position",
+          "caption": "Re-index position",
           "onClick": "HMWDG_ReindexVariablePosition($id);"
         },
         {
