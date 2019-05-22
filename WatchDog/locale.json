@@ -103,8 +103,10 @@
       "Variables were determined and assigned automatically!": "Variablen wurden automatisch ermittelt und zugewiesen!",
       "The position was successfully re-indexed!": "Die Position wurde erfolgreich neu indiziert.",
       "All assigned variables were deleted!": "Alle zugewiesenen Variablen wurden gelöscht!",
+      "<td style='padding: 5px; font-weight: bold;'>Address</td>": "<td style='padding: 5px; font-weight: bold;'>Adresse</td>",
       "<td style='padding: 5px; font-weight: bold;'>Last update</td>": "<td style='padding: 5px; font-weight: bold;'>Letzte Aktualisierung</td>",
-      "<td style='padding: 5px; font-weight: bold;'>Overdue since</td>": "<td style='padding: 5px; font-weight: bold;'>Überfällig seit</td>"
+      "<td style='padding: 5px; font-weight: bold;'>Overdue since</td>": "<td style='padding: 5px; font-weight: bold;'>Überfällig seit</td>",
+      " hours</td>": " Stunden</td>"
     }
   }
 }

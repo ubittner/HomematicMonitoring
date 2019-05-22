@@ -278,9 +278,11 @@ trait HMWDG_variables
         // Header
         $html = "<table style='width: 100%; border-collapse: collapse;'>";
         $html .= "<tr>";
-        $html .= "<td style='padding: 5px; font-weight: bold;'>Sensor</td>";
-        $html .= "<td style='padding: 5px; font-weight: bold;'>Letzte Aktualisierung</td>";
-        $html .= "<td style='padding: 5px; font-weight: bold;'>Überfällig seit</td>";
+        $html .= "<td style='padding: 5px; font-weight: bold;'>ID</td>";
+        $html .= "<td style='padding: 5px; font-weight: bold;'>Name</td>";
+        $html .= $this->Translate("<td style='padding: 5px; font-weight: bold;'>Address</td>");
+        $html .= $this->Translate("<td style='padding: 5px; font-weight: bold;'>Last update</td>");
+        $html .= $this->Translate("<td style='padding: 5px; font-weight: bold;'>Overdue since</td>");
         $html .= "</tr>";
         // Content
         $monitoredVariables = $this->GetMonitoredVariables();
@@ -288,12 +290,15 @@ trait HMWDG_variables
             $id = array_column($monitoredVariables, 'ID');
             $key = array_search($alertVariable['VariableID'], $id);
             $name = $monitoredVariables[$key]['Name'];
+            $address = $monitoredVariables[$key]['Address'];
             $timediff = time() - $alertVariable['LastUpdate'];
             $timestring = sprintf("%02d:%02d:%02d", (int)($timediff / 3600), (int)($timediff / 60) % 60, ($timediff) % 60);
             $html .= "<tr style='border-top: 1px solid rgba(255,255,255,0.10);'>";
+            $html .= "<td style='padding: 5px;'>" . $id . "</td>";
             $html .= "<td style='padding: 5px;'>" . $name . "</td>";
+            $html .= "<td style='padding: 5px;'>" . $address . "</td>";
             $html .= "<td style='padding: 5px;'>" . date("d.m.Y H:i:s", $alertVariable['LastUpdate']) . "</td>";
-            $html .= "<td style='padding: 5px;'>" . $timestring . " Stunden</td>";
+            $html .= "<td style='padding: 5px;'>" . $timestring . $this->Translate(" hours</td>");
             $html .= "</tr>";
         }
         $html .= "</table>";
