@@ -187,7 +187,7 @@ trait HMWDG_variables
      */
     public function GetAlertVariables(): array
     {
-        $variableIDs = $this->GetMonitoredVariables();
+        $variableIDs = array_column($this->GetMonitoredVariables(), 'ID');
         $watchTime = $this->GetWatchTime();
         $watchTimeBorder = time() - $watchTime;
         $alertVariables = [];
@@ -229,7 +229,8 @@ trait HMWDG_variables
                     if ($object['ObjectType'] == 2) {
                         // Check ident
                         if ($object['ObjectIdent'] == 'STATE') {
-                            $monitoredVariables[] = $variableID;
+                            $monitoredVariables[] = ['Position' => $variable->Position, 'ID' => $variableID, 'Name' => $variable->Name, 'Address' => $variable->Address, 'UseMonitoring' => $variable->UseMonitoring, 'LastMaintenance' => $variable->LastMaintenance];
+                            //$monitoredVariables[] = $variableID;
                         }
                     }
                 }
