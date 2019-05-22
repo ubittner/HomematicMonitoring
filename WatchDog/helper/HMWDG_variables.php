@@ -163,7 +163,7 @@ trait HMWDG_variables
         }
         $this->SetValue('Status', $actualStatus);
         $this->SetValue('LastCheck', time());
-        $this->UpdateAlertView($alertVariables);
+        $this->UpdateAlertView(json_encode($alertVariables));
         if ($actualStatus != $status) {
             // Execute Alerting
             $this->ExecuteAlerting($actualStatus);
@@ -278,8 +278,9 @@ trait HMWDG_variables
      *
      * @param $AlertVariables
      */
-    public function UpdateAlertView($AlertVariables)
+    public function UpdateAlertView(string $AlertVariables)
     {
+        $alertVariables = json_decode($AlertVariables, true);
         // Header
         $html = "<table style='width: 100%; border-collapse: collapse;'>";
         $html .= "<tr>";
@@ -291,7 +292,7 @@ trait HMWDG_variables
         $html .= "</tr>";
         // Content
         $monitoredVariables = $this->GetMonitoredVariables();
-        foreach ($AlertVariables as $alertVariable) {
+        foreach ($alertVariables as $alertVariable) {
             $ids = array_column($monitoredVariables, 'ID');
             $key = array_search($alertVariable['VariableID'], $ids);
             $id = $monitoredVariables[$key]['ID'];
