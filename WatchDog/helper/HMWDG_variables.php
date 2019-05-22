@@ -182,6 +182,7 @@ trait HMWDG_variables
         $whitelist = json_decode($this->ReadAttributeString('Whitelist'), true);
         $newWhitelist = [];
         $monitoredVariables = array_column($this->GetMonitoredVariables(), 'ID');
+        $this->SendDebug('MonitoredVariables', json_encode($monitoredVariables), 0);
         $watchTime = $this->GetWatchTime();
         $watchTimeBorder = time() - $watchTime;
         $notification = false;
