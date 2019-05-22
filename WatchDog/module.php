@@ -159,7 +159,7 @@ class Watchdog extends IPSModule
         // Set timer and check variables
         if (GetValue($this->GetIDForIdent('Monitoring'))) {
             $this->SetTimerInterval("CheckMonitoredVariablesTimer", $this->ReadPropertyInteger("MonitoringInterval") * 1000);
-            $this->CheckMonitoredVariables();
+            //$this->CheckMonitoredVariables();
         }
     }
 
