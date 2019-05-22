@@ -177,6 +177,7 @@ trait HMWDG_variables
      */
     public function GetAlertVariables(): array
     {
+        $this->SendDebug('GetAlertVariables', 'executed', 0);
         $blacklist = json_decode($this->ReadAttributeString('Blacklist'), true);
         $this->SendDebug('Blacklist', json_encode($blacklist), 0);
         $newBlacklist = [];
@@ -214,6 +215,7 @@ trait HMWDG_variables
                 }
             }
             if ($notification) {
+                $this->SendDebug('SN+ULM', $monitoredVariable, 0);
                 $this->UpdateLastMessage($monitoredVariable, $overdue);
                 $this->SendNotification($monitoredVariable, $overdue);
             }
