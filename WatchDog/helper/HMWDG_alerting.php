@@ -14,6 +14,7 @@ trait HMWDG_alerting
     {
         // Check monitoring
         if ($this->GetIDForIdent('Monitoring')) {
+            $this->SendDebug('ExecuteAlerting', 'State: ' . $State, 0);
             // Variables
             $variables = json_decode($this->ReadPropertyString('TargetVariables'));
             if (!empty($variables)) {

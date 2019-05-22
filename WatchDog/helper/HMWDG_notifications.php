@@ -54,7 +54,7 @@ trait HMWDG_notifications
         } else {
             $text = $variableName . ', ' . $statusText . "\n\n" . $timeStamp . ', ID: ' . $VariableID . ', ' . $variableName . ', ' . $this->Translate('Address') . ': ' . $address . ', ' . $statusText;
         }
-        IPS_LogMessage('SendNotification', $title . ' ' . $text);
+        $this->SendDebug('SendNotification', $title . ' ' . $text, 0);
         // Push notification
         $webFronts = json_decode($this->ReadPropertyString('WebFronts'));
         if (!empty($webFronts)) {
@@ -120,6 +120,7 @@ trait HMWDG_notifications
         } else {
             $text = $timeStamp . ', ID: ' . $VariableID . ', ' . $variableName . ', ' . $this->Translate('Address') . ': ' . $address . ', ' . $statusText;
         }
+        $this->SendDebug('UpdateLastMessage', $text, 0);
         $this->SetValue('LastMessage', $text);
     }
 }
