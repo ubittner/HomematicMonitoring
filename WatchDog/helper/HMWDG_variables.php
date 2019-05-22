@@ -178,7 +178,9 @@ trait HMWDG_variables
     public function GetAlertVariables(): array
     {
         $blacklist = json_decode($this->ReadAttributeString('Blacklist'), true);
+        $newBlacklist = [];
         $whitelist = json_decode($this->ReadAttributeString('Whitelist'), true);
+        $newWhitelist = [];
         $monitoredVariables = array_column($this->GetMonitoredVariables(), 'ID');
         $watchTime = $this->GetWatchTime();
         $watchTimeBorder = time() - $watchTime;
@@ -189,38 +191,30 @@ trait HMWDG_variables
             $variable = IPS_GetVariable($monitoredVariable);
             // Overdue
             if ($variable['VariableUpdated'] < $watchTimeBorder) {
-                IPS_LogMessage('Overdue', 'yes');
+                $newBlacklist[] = $monitoredVariable;
                 $alertVariables[] = ['VariableID' => $monitoredVariable, 'LastUpdate' => $variable['VariableUpdated']];
                 // Check notification
-                if (in_array($monitoredVariable, $whitelist) && !in_array($monitoredVariable, $blacklist)) {
-                    IPS_LogMessage('Overdue2', 'yes2');
+                if (in_array($monitoredVariable, $whitelist)) {
                     $notification = true;
                     $overdue = true;
-                    unset($whitelist[array_search($monitoredVariable, $whitelist)]);
-                    array_push($blacklist, $monitoredVariable);
                 }
             }
             // In time
             else {
-                IPS_LogMessage('InTime', 'yes');
-                if (!in_array($monitoredVariable, $whitelist) && in_array($monitoredVariable, $blacklist)) {
-                    IPS_LogMessage('InTime', 'yes2');
+                $newWhitelist[] = $monitoredVariable;
+                // Check notification
+                if (in_array($monitoredVariable, $blacklist)) {
                     $notification = true;
-                    $overdue = false;
-                    array_push($whitelist, $monitoredVariable);
-                    unset($blacklist[array_search($monitoredVariable, $blacklist)]);
+                    $overdue = true;
                 }
             }
             if ($notification) {
-                IPS_LogMessage('Noti', 'yes');
                 $this->UpdateLastMessage($monitoredVariable, $overdue);
                 $this->SendNotification($monitoredVariable, $overdue);
             }
         }
-        $blacklist = array_values($blacklist);
-        $this->WriteAttributeString('Blacklist', json_encode($blacklist));
-        $whitelist = array_values($whitelist);
-        $this->WriteAttributeString('Whitelist', json_encode($whitelist));
+        $this->WriteAttributeString('Blacklist', json_encode($newBlacklist));
+        $this->WriteAttributeString('Whitelist', json_encode($newWhitelist));
         return $alertVariables;
     }
 
