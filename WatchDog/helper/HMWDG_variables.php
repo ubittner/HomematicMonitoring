@@ -189,30 +189,36 @@ trait HMWDG_variables
             $variable = IPS_GetVariable($monitoredVariable);
             // Overdue
             if ($variable['VariableUpdated'] < $watchTimeBorder) {
+                IPS_LogMessage('Overdue', 'yes');
                 $alertVariables[] = ['VariableID' => $monitoredVariable, 'LastUpdate' => $variable['VariableUpdated']];
                 // Check notification
                 if (in_array($monitoredVariable, $whitelist) && !in_array($monitoredVariable, $blacklist)) {
+                    IPS_LogMessage('Overdue2', 'yes2');
                     $notification = true;
                     $overdue = true;
-                    array_unshift($whitelist, $monitoredVariable);
+                    unset($whitelist[array_search($monitoredVariable, $whitelist)]);
                     array_push($blacklist, $monitoredVariable);
                 }
             }
             // In time
             else {
+                IPS_LogMessage('InTime', 'yes');
                 if (!in_array($monitoredVariable, $whitelist) && in_array($monitoredVariable, $blacklist)) {
+                    IPS_LogMessage('InTime', 'yes2');
                     $notification = true;
                     $overdue = false;
                     array_push($whitelist, $monitoredVariable);
-                    array_unshift($blacklist, $monitoredVariable);
+                    unset($blacklist[array_search($monitoredVariable, $blacklist)]);
                 }
             }
-            if ($notification && $this->GetValue('Monitoring')) {
+            if ($notification) {
                 $this->UpdateLastMessage($monitoredVariable, $overdue);
                 $this->SendNotification($monitoredVariable, $overdue);
             }
         }
+        $blacklist = array_values($blacklist);
         $this->WriteAttributeString('Blacklist', json_encode($blacklist));
+        $whitelist = array_values($whitelist);
         $this->WriteAttributeString('Whitelist', json_encode($whitelist));
         return $alertVariables;
     }
