@@ -96,28 +96,26 @@ class Watchdog extends IPSModule
         $this->RegisterVariableBoolean('Monitoring', $this->Translate('Monitoring'), '~Switch');
         $this->EnableAction('Monitoring');
         IPS_SetPosition($this->GetIDForIdent('Monitoring'), 0);
-
         // Status
         $this->RegisterVariableBoolean('Status', 'Status', 'HMWDG.' . $this->InstanceID . '.Status');
         IPS_SetPosition($this->GetIDForIdent('Status'), 1);
-
         // Last check
         $this->RegisterVariableInteger('LastCheck', $this->Translate('Last check'), '~UnixTimestamp');
         IPS_SetPosition($this->GetIDForIdent('LastCheck'), 2);
         IPS_SetIcon($this->GetIDForIdent('LastCheck'), 'Clock');
-
         // Alert view
         $this->RegisterVariableString("AlertView", $this->Translate('Active alarms'), '~HTMLBox');
         IPS_SetPosition($this->GetIDForIdent('AlertView'), 3);
         IPS_SetIcon($this->GetIDForIdent('AlertView'), 'Database');
-
         // Last message
         $this->RegisterVariableString('LastMessage',  $this->Translate('Last message'), '~TextBox');
         IPS_SetPosition($this->GetIDForIdent('LastMessage'), 4);
         IPS_SetIcon($this->GetIDForIdent('LastMessage'), 'Database');
 
-        //#################### Register attribute
+        //#################### Register attributes
 
+        // Whitelist
+        $this->RegisterAttributeString('Whitelist', '[]');
         // Blacklist
         $this->RegisterAttributeString('Blacklist', '[]');
 
@@ -150,6 +148,13 @@ class Watchdog extends IPSModule
             return;
         }
 
+        // Set whitelist
+        $this->WriteAttributeString('Whitelist', json_encode($this->GetMonitoredVariables()));
+
+        // Set blacklist
+        $this->WriteAttributeString('Blacklist', '[]');
+
+        // Set timer and check variables
         if (GetValue($this->GetIDForIdent('Monitoring'))) {
             $this->SetTimerInterval("CheckVariablesTimer", $this->ReadPropertyInteger("MonitoringInterval") * 1000);
             $this->CheckVariables();

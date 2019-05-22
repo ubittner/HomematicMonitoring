@@ -6,16 +6,26 @@ declare(strict_types=1);
 trait HMWDG_variables
 {
     /**
+     * Gets the whitelist.
+     * The whitelist is used for variables with an actual status update.
+     *
+     * @return array
+     */
+    public function GetWhitelist(): array
+    {
+        return json_decode($this->ReadAttributeString('Whitelist'), true);
+    }
+
+    /**
      * Gets the blacklist.
      * The blacklist is used for variables with a status update overdue.
      *
-     * @return mixed
+     * @return array
      */
-    public function GetBlacklist()
+    public function GetBlacklist(): array
     {
         return json_decode($this->ReadAttributeString('Blacklist'), true);
     }
-
 
     //#################### Determine variables
 
@@ -123,12 +133,13 @@ trait HMWDG_variables
      * Get the assigned variables.
      *
      * @return array
-     */
+
     public function GetAssignedVariables(): array
     {
         $variables = json_decode($this->ReadPropertyString('MonitoredVariables'));
         return $variables;
     }
+     * */
 
     //#################### Delete variables
 
@@ -271,7 +282,7 @@ trait HMWDG_variables
         $html .= "<td style='padding: 5px; font-weight: bold;'>Überfällig seit</td>";
         $html .= "</tr>";
         // Content
-        $monitoredVariables = $this->GetAssignedVariables();
+        $monitoredVariables = $this->GetMonitoredVariables();
         foreach ($AlertVariables as $alertVariable) {
             $id = array_column($monitoredVariables, 'ID');
             $key = array_search($alertVariable['VariableID'], $id);

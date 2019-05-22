@@ -743,9 +743,19 @@
           "onClick": "HMWDG_ReindexVariablePosition($id);"
         },
         {
-          "type": "Button",
-          "caption": "Show blacklist",
-          "onClick": "$blacklist = HMWDG_GetBlacklist($id); print_r($blacklist);"
+          "type": "RowLayout",
+          "items": [
+            {
+              "type": "Button",
+              "caption": "Show whitelist",
+              "onClick": "$whitelist = HMWDG_GetWhitelist($id); print_r($whitelist);"
+            },
+            {
+              "type": "Button",
+              "caption": "Show blacklist",
+              "onClick": "$blacklist = HMWDG_GetBlacklist($id); print_r($blacklist);"
+            }
+          ]
         },
         {
           "type": "Label",
