@@ -212,6 +212,7 @@ trait HMWDG_variables
                 }
             }
             if ($notification) {
+                IPS_LogMessage('Noti', 'yes');
                 $this->UpdateLastMessage($monitoredVariable, $overdue);
                 $this->SendNotification($monitoredVariable, $overdue);
             }

@@ -19,6 +19,7 @@ trait HMWDG_notifications
         if (!$this->ReadPropertyBoolean('UseNotification') || !$this->GetValue('Monitoring')) {
             return;
         }
+        IPS_LogMessage('Noti1', 'yes');
         $timeStamp = date('d.m.Y, H:i:s');
         // Get title
         $title = substr($this->ReadPropertyString('TitleDescription'), 0, 32);
