@@ -114,15 +114,16 @@ class Watchdog extends IPSModule
 
         //#################### Register attributes
 
-        // Whitelist
-        $this->RegisterAttributeString('Whitelist', '[]');
         // Blacklist
         $this->RegisterAttributeString('Blacklist', '[]');
+
+        // Whitelist
+        $this->RegisterAttributeString('Whitelist', '[]');
 
         //#################### Register timer
 
         // Timer
-        $this->RegisterTimer("CheckVariablesTimer", 0, 'HMWDG_CheckVariables($_IPS[\'TARGET\']);');
+        $this->RegisterTimer("CheckMonitoredVariablesTimer", 0, 'HMWDG_CheckMonitoredVariables($_IPS[\'TARGET\']);');
     }
 
     public function Destroy()
@@ -157,8 +158,8 @@ class Watchdog extends IPSModule
 
         // Set timer and check variables
         if (GetValue($this->GetIDForIdent('Monitoring'))) {
-            $this->SetTimerInterval("CheckVariablesTimer", $this->ReadPropertyInteger("MonitoringInterval") * 1000);
-            $this->CheckVariables();
+            $this->SetTimerInterval("CheckMonitoredVariablesTimer", $this->ReadPropertyInteger("MonitoringInterval") * 1000);
+            $this->CheckMonitoredVariables();
         }
     }
 
@@ -212,11 +213,11 @@ class Watchdog extends IPSModule
     {
         if ($State) {
             // When activating the simulation, fetch actual data for a day and activate timer for updating variables
-            $this->CheckVariables();
-            $this->SetTimerInterval("CheckVariablesTimer", $this->ReadPropertyInteger("MonitoringInterval") * 1000);
+            $this->CheckMonitoredVariables();
+            $this->SetTimerInterval("CheckMonitoredVariablesTimer", $this->ReadPropertyInteger("MonitoringInterval") * 1000);
         } else {
             // When deactivating the simulation, kill data for simulation and deactivate timer for updating variables
-            $this->SetTimerInterval("CheckVariablesTimer", 0);
+            $this->SetTimerInterval("CheckMonitoredVariablesTimer", 0);
             $this->SetValue('AlertView', $this->Translate('Watchdog disabled'));
         }
         $this->SetValue('Monitoring', $State);

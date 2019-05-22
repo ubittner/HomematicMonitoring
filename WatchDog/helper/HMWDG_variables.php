@@ -5,16 +5,7 @@ declare(strict_types=1);
 
 trait HMWDG_variables
 {
-    /**
-     * Gets the whitelist.
-     * The whitelist is used for variables with an actual status update.
-     *
-     * @return array
-     */
-    public function GetWhitelist(): array
-    {
-        return json_decode($this->ReadAttributeString('Whitelist'), true);
-    }
+    //#################### Black- and Whitelist
 
     /**
      * Gets the blacklist.
@@ -25,6 +16,17 @@ trait HMWDG_variables
     public function GetBlacklist(): array
     {
         return json_decode($this->ReadAttributeString('Blacklist'), true);
+    }
+
+    /**
+     * Gets the whitelist.
+     * The whitelist is used for variables with an actual status update.
+     *
+     * @return array
+     */
+    public function GetWhitelist(): array
+    {
+        return json_decode($this->ReadAttributeString('Whitelist'), true);
     }
 
     //#################### Determine variables
@@ -105,8 +107,11 @@ trait HMWDG_variables
         echo $this->Translate('Variables were determined and assigned automatically!');
     }
 
-    //#################### Reindex variables
+    //#################### Reindex variable position
 
+    /**
+     * Re-indexes the position of the monitored variable list.
+     */
     public function ReindexVariablePosition()
     {
         $monitoredVariables = json_decode($this->ReadPropertyString('MonitoredVariables'));
@@ -127,20 +132,6 @@ trait HMWDG_variables
         }
     }
 
-    //#################### Get assigned variables
-
-    /**
-     * Get the assigned variables.
-     *
-     * @return array
-
-    public function GetAssignedVariables(): array
-    {
-        $variables = json_decode($this->ReadPropertyString('MonitoredVariables'));
-        return $variables;
-    }
-     * */
-
     //#################### Delete variables
 
     /**
@@ -155,7 +146,6 @@ trait HMWDG_variables
             IPS_ApplyChanges($this->InstanceID);
         }
         echo $this->Translate('All assigned variables were deleted!');
-
     }
 
     //#################### Check monitored variables
@@ -163,7 +153,7 @@ trait HMWDG_variables
     /**
      * Checks the monitored variables.
      */
-    public function CheckVariables()
+    public function CheckMonitoredVariables()
     {
         $status = $this->GetValue('Status');
         $alertVariables = $this->GetAlertVariables();
@@ -187,27 +177,43 @@ trait HMWDG_variables
      */
     public function GetAlertVariables(): array
     {
-        $variableIDs = array_column($this->GetMonitoredVariables(), 'ID');
+        $blacklist = json_decode($this->ReadAttributeString('Blacklist'), true);
+        $whitelist = json_decode($this->ReadAttributeString('Blacklist'), true);
+        $monitoredVariables = array_column($this->GetMonitoredVariables(), 'ID');
         $watchTime = $this->GetWatchTime();
         $watchTimeBorder = time() - $watchTime;
+        $notification = false;
+        $overdue = false;
         $alertVariables = [];
-        foreach ($variableIDs as $variableID) {
-            $variable = IPS_GetVariable($variableID);
+        foreach ($monitoredVariables as $monitoredVariable) {
+            $variable = IPS_GetVariable($monitoredVariable);
+            // Overdue
             if ($variable['VariableUpdated'] < $watchTimeBorder) {
-                $alertVariables[] = ['VariableID' => $variableID, 'LastUpdate' => $variable['VariableUpdated']];
-                //$notification = $this->CheckNotificationThresholdReached($variableID);
-                $threshold = true;
-            } else {
-                //$notification = $this->CheckNotificationBelowThreshold($variableID);
-                $threshold = false;
+                $alertVariables[] = ['VariableID' => $monitoredVariable, 'LastUpdate' => $variable['VariableUpdated']];
+                // Check notification
+                if (in_array($whitelist, $monitoredVariable) && !in_array($blacklist, $monitoredVariable)) {
+                    $notification = true;
+                    $overdue = true;
+                    array_unshift($whitelist, $monitoredVariable);
+                    array_push($blacklist, $monitoredVariable);
+                }
             }
-            /*
+            // In time
+            else {
+                if (!in_array($whitelist, $monitoredVariable) && in_array($blacklist, $monitoredVariable)) {
+                    $notification = true;
+                    $overdue = false;
+                    array_push($whitelist, $monitoredVariable);
+                    array_unshift($blacklist, $monitoredVariable);
+                }
+            }
             if ($notification && $this->GetValue('Monitoring')) {
-                $this->UpdateLastMessage($variableID, $threshold);
-                $this->SendNotification($variableID, $threshold);
+                $this->UpdateLastMessage($monitoredVariable, $overdue);
+                $this->SendNotification($monitoredVariable, $overdue);
             }
-            */
         }
+        $this->WriteAttributeString('Blacklist', json_encode($blacklist));
+        $this->WriteAttributeString('Whitelist', json_encode($whitelist));
         return $alertVariables;
     }
 
@@ -230,7 +236,6 @@ trait HMWDG_variables
                         // Check ident
                         if ($object['ObjectIdent'] == 'STATE') {
                             $monitoredVariables[] = ['Position' => $variable->Position, 'ID' => $variableID, 'Name' => $variable->Name, 'Address' => $variable->Address, 'UseMonitoring' => $variable->UseMonitoring, 'LastMaintenance' => $variable->LastMaintenance];
-                            //$monitoredVariables[] = $variableID;
                         }
                     }
                 }
@@ -244,12 +249,12 @@ trait HMWDG_variables
      *
      * @return float|int
      */
-    private function GetWatchTime()
+    public function GetWatchTime()
     {
         $time = 0;
         $timeBase = $this->ReadPropertyInteger("TimeBase");
         $timeValue = $this->ReadPropertyInteger("TimeValue");
-        switch($timeBase) {
+        switch ($timeBase) {
             case 0:
                 $time = $timeValue;
                 break;
@@ -273,7 +278,7 @@ trait HMWDG_variables
      *
      * @param $AlertVariables
      */
-    private function UpdateAlertView($AlertVariables)
+    public function UpdateAlertView($AlertVariables)
     {
         // Header
         $html = "<table style='width: 100%; border-collapse: collapse;'>";

@@ -5,162 +5,6 @@ declare(strict_types=1);
 
 trait HMWDG_notifications
 {
-    //#################### Check notification
-
-    /**
-     * Checks the notification of a variable, if the actual value is below the threshold value.
-     *
-     * @param int $VariableID
-     *
-     * @return bool
-     */
-    protected function CheckNotificationBelowThreshold(int $VariableID): bool
-    {
-        $notification = false;
-        if (empty($VariableID)) {
-            return $notification;
-        }
-        if ($VariableID != 0 && IPS_ObjectExists($VariableID)) {
-            // Check top / down notification variants
-            $useMessageDayLimit = $this->ReadPropertyBoolean('UseMessageDayLimitBelowThreshold');
-            $useNotifyOnce = $this->ReadPropertyBoolean('NotifyOnceBelowThreshold');
-            $useAlwaysNotify = $this->ReadPropertyBoolean('AlwaysNotifyBelowThreshold');
-            $blockedVariablesForToday = json_decode($this->GetBuffer('BlockedVariablesForTodayBelowThreshold'), true);
-            $blockedForToday = in_array($VariableID, $blockedVariablesForToday);
-            $variablesBelowThreshold = json_decode($this->GetBuffer('VariablesBelowThreshold'), true);
-            $belowThreshold = in_array($VariableID, $variablesBelowThreshold);
-            // Check limitation of messages per day
-            if ($useMessageDayLimit) {
-                // Not blocked for today
-                if (!$blockedForToday) {
-                    // Block variable for today
-                    array_push($blockedVariablesForToday, $VariableID);
-                    $this->SetBuffer('BlockedVariablesForTodayBelowThreshold', json_encode($blockedVariablesForToday));
-                    // Check notify once
-                    if ($useNotifyOnce) {
-                        if (!$belowThreshold) {
-                            $notification = true;
-                            array_push($variablesBelowThreshold, $VariableID);
-                        }
-                    }
-                    // Check always notify
-                    if ($useAlwaysNotify) {
-                        $notification = true;
-                    }
-                    // No notification is used
-                    if (!$useNotifyOnce && !$useAlwaysNotify) {
-                        array_push($variablesBelowThreshold, $VariableID);
-                    }
-                }
-            } // No limitation of messages per day
-            else {
-                // Check notify once
-                if ($useNotifyOnce) {
-                    if (!$belowThreshold) {
-                        $notification = true;
-                        array_push($variablesBelowThreshold, $VariableID);
-                    }
-                }
-                // Check always notify
-                if ($useAlwaysNotify) {
-                    $notification = true;
-                }
-                // No notification is used
-                if (!$useNotifyOnce && !$useAlwaysNotify) {
-                    array_push($variablesBelowThreshold, $VariableID);
-                }
-            }
-            // Set variables below threshold buffer
-            $variablesBelowThreshold = array_unique($variablesBelowThreshold);
-            $this->SetBuffer('VariablesBelowThreshold', json_encode($variablesBelowThreshold));
-            // Remove variable from threshold reached buffer
-            $variablesThresholdReached = json_decode($this->GetBuffer('VariablesThresholdReached'), true);
-            if (in_array($VariableID, $variablesThresholdReached)) {
-                unset($variablesThresholdReached[array_search($VariableID, $variablesThresholdReached)]);
-                // Rebase
-                $variablesThresholdReached = array_values($variablesThresholdReached);
-                $this->SetBuffer('VariablesThresholdReached', json_encode($variablesThresholdReached));
-            }
-        }
-        return $notification;
-    }
-
-    /**
-     * Checks the notification of a variable, if the actual value has reached the threshold value or is exceeded.
-     *
-     * @param int $VariableID
-     *
-     * @return bool
-     */
-    protected function CheckNotificationThresholdReached(int $VariableID): bool
-    {
-        $notification = false;
-        if (empty($VariableID)) {
-            return $notification;
-        }
-        if ($VariableID != 0 && IPS_ObjectExists($VariableID)) {
-            $useMessageDayLimit = $this->ReadPropertyBoolean('UseMessageDayLimitThresholdReached');
-            $useNotifyOnce = $this->ReadPropertyBoolean('NotifyOnceThresholdReached');
-            $useAlwaysNotify = $this->ReadPropertyBoolean('AlwaysNotifyThresholdReached');
-            $blockedVariablesForToday = json_decode($this->GetBuffer('BlockedVariablesForTodayThresholdReached'), true);
-            $blockedForToday = in_array($VariableID, $blockedVariablesForToday);
-            $variablesThresholdReached = json_decode($this->GetBuffer('VariablesThresholdReached'), true);
-            $thresholdReached = in_array($VariableID, $variablesThresholdReached);
-            // Check limitation of messages per day
-            if ($useMessageDayLimit) {
-                // Not blocked for today
-                if (!$blockedForToday) {
-                    // Block variable for today
-                    array_push($blockedVariablesForToday, $VariableID);
-                    $this->SetBuffer('BlockedVariablesForTodayThresholdReached', json_encode($blockedVariablesForToday));
-                    // Check notify once
-                    if ($useNotifyOnce) {
-                        if (!$thresholdReached) {
-                            $notification = true;
-                            array_push($variablesThresholdReached, $VariableID);
-                        }
-                    }
-                    // Check always notify
-                    if ($useAlwaysNotify) {
-                        $notification = true;
-                    }
-                    // No notification is used
-                    if (!$useNotifyOnce && !$useAlwaysNotify) {
-                        array_push($variablesThresholdReached, $VariableID);
-                    }
-                }
-            } // No limitation of messages per day
-            else {
-                // Check notify once
-                if ($useNotifyOnce) {
-                    if (!$thresholdReached) {
-                        $notification = true;
-                        array_push($variablesThresholdReached, $VariableID);
-                    }
-                }
-                // Check always notify
-                if ($useAlwaysNotify) {
-                    $notification = true;
-                }
-                // No notification is used
-                if (!$useNotifyOnce && !$useAlwaysNotify) {
-                    array_push($variablesThresholdReached, $VariableID);
-                }
-            }
-            // Set variables threshold reached buffer
-            $variablesThresholdReached = array_unique($variablesThresholdReached);
-            $this->SetBuffer('VariablesThresholdReached', json_encode($variablesThresholdReached));
-            // Remove variable from below threshold buffer
-            $variablesBelowThreshold = json_decode($this->GetBuffer('VariablesBelowThreshold'), true);
-            if (in_array($VariableID, $variablesBelowThreshold)) {
-                unset($variablesBelowThreshold[array_search($VariableID, $variablesBelowThreshold)]);
-                // Rebase
-                $variablesBelowThreshold = array_values($variablesBelowThreshold);
-                $this->SetBuffer('VariablesBelowThreshold', json_encode($variablesBelowThreshold));
-            }
-        }
-        return $notification;
-    }
 
     //#################### Send notification
 
@@ -168,11 +12,11 @@ trait HMWDG_notifications
      * Sends a push or an e-mail notification.
      *
      * @param int  $VariableID
-     * @param bool $Threshold
+     * @param bool $Overdue
      */
-    protected function SendNotification(int $VariableID, bool $Threshold)
+    protected function SendNotification(int $VariableID, bool $Overdue)
     {
-        if (!$this->ReadPropertyBoolean('UseNotification')) {
+        if (!$this->ReadPropertyBoolean('UseNotification') || !$this->GetValue('Monitoring')) {
             return;
         }
         $timeStamp = date('d.m.Y, H:i:s');
@@ -187,7 +31,7 @@ trait HMWDG_notifications
         $messageTexts = json_decode($this->ReadPropertyString('MessageTexts'));
         if (!empty($messageTexts)) {
             foreach ($messageTexts as $messageText) {
-                if ($messageText->Status == $Threshold) {
+                if ($messageText->Status == $Overdue) {
                     $statusText = $messageText->MessageText;
                     $sound = $messageText->Sound;
                 }
@@ -210,6 +54,7 @@ trait HMWDG_notifications
         } else {
             $text = $variableName . ', ' . $statusText . "\n\n" . $timeStamp . ', ID: ' . $VariableID . ', ' . $variableName . ', ' . $this->Translate('Address') . ': ' . $address . ', ' . $statusText;
         }
+        IPS_LogMessage('SendNotification', $title . ' ' . $text);
         // Push notification
         $webFronts = json_decode($this->ReadPropertyString('WebFronts'));
         if (!empty($webFronts)) {
@@ -240,9 +85,9 @@ trait HMWDG_notifications
      * Updates the last message.
      *
      * @param int  $VariableID
-     * @param bool $Threshold
+     * @param bool $Overdue
      */
-    protected function UpdateLastMessage(int $VariableID, bool $Threshold)
+    protected function UpdateLastMessage(int $VariableID, bool $Overdue)
     {
         $timeStamp = date('d.m.Y, H:i:s');
         // Get location designation
@@ -253,7 +98,7 @@ trait HMWDG_notifications
         $messageTexts = json_decode($this->ReadPropertyString('MessageTexts'));
         if (!empty($messageTexts)) {
             foreach ($messageTexts as $messageText) {
-                if ($messageText->Status == $Threshold) {
+                if ($messageText->Status == $Overdue) {
                     $statusText = $messageText->MessageText;
                 }
             }
