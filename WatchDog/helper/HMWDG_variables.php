@@ -178,7 +178,7 @@ trait HMWDG_variables
     public function GetAlertVariables(): array
     {
         $blacklist = json_decode($this->ReadAttributeString('Blacklist'), true);
-        $whitelist = json_decode($this->ReadAttributeString('Blacklist'), true);
+        $whitelist = json_decode($this->ReadAttributeString('Whitelist'), true);
         $monitoredVariables = array_column($this->GetMonitoredVariables(), 'ID');
         $watchTime = $this->GetWatchTime();
         $watchTimeBorder = time() - $watchTime;
