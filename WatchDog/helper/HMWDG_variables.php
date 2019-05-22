@@ -200,7 +200,7 @@ trait HMWDG_variables
                 }
             }
             // In time
-            else {
+            if ($variable['VariableUpdated'] >= $watchTimeBorder) {
                 $newWhitelist[] = $monitoredVariable;
                 // Check notification
                 if (in_array($monitoredVariable, $blacklist)) {
