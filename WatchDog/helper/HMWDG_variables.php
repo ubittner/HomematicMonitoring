@@ -287,8 +287,9 @@ trait HMWDG_variables
         // Content
         $monitoredVariables = $this->GetMonitoredVariables();
         foreach ($AlertVariables as $alertVariable) {
-            $id = array_column($monitoredVariables, 'ID');
-            $key = array_search($alertVariable['VariableID'], $id);
+            $ids = array_column($monitoredVariables, 'ID');
+            $key = array_search($alertVariable['VariableID'], $ids);
+            $id = $monitoredVariables[$key]['ID'];
             $name = $monitoredVariables[$key]['Name'];
             $address = $monitoredVariables[$key]['Address'];
             $timediff = time() - $alertVariable['LastUpdate'];
