@@ -96,7 +96,7 @@
       "Last check": "Letzte Überprüfung",
       "Last message": "Letzte Meldung",
       "Active alarms": "Aktive Alarme",
-      "Watchdog disabled": "Watchdog deaktiviert",
+      "Watchdog is disabled!": "Watchdog ist deaktiviert!",
       "Configuration": "Konfiguration",
       "The configuration was successfully saved!": "Die Konfiguration wurde erfolgreich gesichert!",
       "The configuration was successfully restored!": "Die Konfiguration wurde erfolgreich wiederhergestellt!",
