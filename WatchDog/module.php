@@ -213,13 +213,13 @@ class Watchdog extends IPSModule
     {
         if ($State) {
             // When activating the simulation, fetch actual data for a day and activate timer for updating variables
-            $this->CheckMonitoredVariables();
             $this->SetTimerInterval("CheckMonitoredVariablesTimer", $this->ReadPropertyInteger("MonitoringInterval") * 1000);
         } else {
             // When deactivating the simulation, kill data for simulation and deactivate timer for updating variables
             $this->SetTimerInterval("CheckMonitoredVariablesTimer", 0);
-            $this->SetValue('AlertView', $this->Translate('Watchdog disabled'));
+            $this->SetValue('AlertView', $this->Translate('Watchdog is disabled!'));
         }
+        $this->CheckMonitoredVariables();
         $this->SetValue('Monitoring', $State);
     }
 }
