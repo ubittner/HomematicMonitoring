@@ -51,9 +51,9 @@ class Watchdog extends IPSModule
         //#################### Register properties
 
         // Monitoring parameters
-        $this->RegisterPropertyInteger("TimeBase", 0);
-        $this->RegisterPropertyInteger("TimeValue", 60);
-        $this->RegisterPropertyInteger("MonitoringInterval", 60);
+        $this->RegisterPropertyInteger("TimeBase", 1);
+        $this->RegisterPropertyInteger("TimeValue", 120);
+        $this->RegisterPropertyInteger("MonitoringInterval", 300);
         // Monitored variables
         $this->RegisterPropertyString('MonitoredVariables', '[]');
         // Notification
