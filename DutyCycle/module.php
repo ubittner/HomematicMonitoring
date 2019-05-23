@@ -13,19 +13,20 @@
  * @license     CC BY-NC-SA 4.0
  *              https://creativecommons.org/licenses/by-nc-sa/4.0/
  *
- * @version     1.01-2
+ * @version     1.02-3
  * @date        2019-01-11, 09:00
- * @lastchange  2019-05-17, 18:00
+ * @lastchange  2019-05-20, 18:00
  *
  * @see         https://git.ubittner.de/ubittner/HomematicMonitoring
  *
  * @guids       Library
  *              {302A78C0-FBAA-4EE7-AD4C-CD2C4C9AF99A}
  *
- *              Homematic DutyCycle Monitoring
+ *              Homematic Duty Cycle Monitoring
  *             	{40589A8F-E978-4C18-B18D-3346CA80E850}
  *
- * @changelog   2019-05-17, 18:00, update to version 1.01-2
+ * @changelog   2019-05-20, 18:00, update to version 1.02-3
+ *              2019-05-17, 18:00, update to version 1.01-2
  *              2019-01-11, 09:00, initial version 1.00-1
  *
  */

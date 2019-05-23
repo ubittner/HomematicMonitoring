@@ -2,7 +2,7 @@
   "id": "{590AB9CB-F3EE-466E-97E0-75FF966489C0}",
   "name": "Socket Connection",
   "type": 3,
-  "vendor": "Homematic",
+  "vendor": "UBS3",
   "aliases": [
     "Homematic Socket Connection Monitoring"
   ],
