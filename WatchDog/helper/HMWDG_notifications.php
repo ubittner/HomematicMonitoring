@@ -33,9 +33,9 @@ trait HMWDG_notifications
             // Create text
             $statusText = GetValueFormatted($this->GetIDForIdent('Status'));
             if (!empty($locationDesignation)) {
-                $text = $locationDesignation . ', ' . $title . ' ' . $statusText . "\n\n" . $timeStamp . ', '. $title . ', ' . $statusText;
+                $text = $locationDesignation . ', ' . $title . ' ' . $statusText . "\n\n" . $timeStamp . ', '. $title . ' ' . $statusText;
             } else {
-                $text = $title . ' ' . $statusText . "\n\n" . $timeStamp . ', '. $title . ', ' . $statusText;
+                $text = $title . ' ' . $statusText . "\n\n" . $timeStamp . ', '. $title . ' ' . $statusText;
             }
         }
         if ($NotificationVariant == 'Variable') {
@@ -74,7 +74,7 @@ trait HMWDG_notifications
                 if ($webFront->UseNotification) {
                     $moduleID = IPS_GetInstance($webFront->ID)['ModuleInfo']['ModuleID'];
                     if ($webFront->ID != 0 && IPS_ObjectExists($webFront->ID) && $moduleID == WEBFRONT_GUID) {
-                        WFC_PushNotification($webFront->ID, $title, "\n" . $text, (string) $sound, 0);
+                        WFC_PushNotification($webFront->ID, $title, "\n\n" . $text, (string) $sound, 0);
                     }
                 }
             }
