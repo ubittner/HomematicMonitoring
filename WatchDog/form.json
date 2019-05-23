@@ -425,6 +425,10 @@
         },
         {
           "type": "Label",
+          "caption": " "
+        },
+        {
+          "type": "Label",
           "caption": "(3.2) Push notification"
         },
         {
