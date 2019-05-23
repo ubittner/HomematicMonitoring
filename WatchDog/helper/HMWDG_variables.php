@@ -324,13 +324,13 @@ trait HMWDG_variables
         $archive = IPS_GetInstanceListByModuleID(ARCHIVE_CONTROL_GUID)[0];
         AC_SetLoggingStatus($archive, $this->GetIDForIdent('LastMessage'), $State);
         IPS_ApplyChanges($archive);
-        $notification = 'An error has occurred!';
+        $notification = $this->Translate('An error has occurred!');
         switch ($State) {
             case false:
-                $notification = 'No more data will be archived!';
+                $notification = $this->Translate('No more data will be archived!');
                 break;
             case true:
-                $notification = 'Data will be archived now!';
+                $notification = $this->Translate('Data will be archived now!');
                 break;
         }
         echo $notification;
@@ -352,13 +352,13 @@ trait HMWDG_variables
                 }
             }
         }
-        $notification = 'An error has occurred!';
+        $notification = $this->Translate('An error has occurred!');
         switch ($state) {
             case false:
-                $notification = 'No data will be archived!';
+                $notification = $this->Translate('No data will be archived!');
                 break;
             case true:
-                $notification = 'Data will be archived!';
+                $notification = $this->Translate('Data will be archived!');
                 break;
         }
         echo $notification;
