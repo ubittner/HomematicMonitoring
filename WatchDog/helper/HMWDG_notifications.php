@@ -38,7 +38,7 @@ trait HMWDG_notifications
                 $text = $title . ', ' . $statusText . "\n\n" . $timeStamp . ', '. $title . ', ' . $statusText;
             }
         }
-        if ($NotificationVariant = 'Variable') {
+        if ($NotificationVariant == 'Variable') {
             $messageTexts = json_decode($this->ReadPropertyString('MessageTexts'));
             if (!empty($messageTexts)) {
                 foreach ($messageTexts as $messageText) {
