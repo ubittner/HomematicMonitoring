@@ -60,8 +60,8 @@ class Watchdog extends IPSModule
         $this->RegisterPropertyBoolean('UseNotification', false);
         $this->RegisterPropertyString('TitleDescription', $this->Translate('Homematic Watchdog'));
         $this->RegisterPropertyString('LocationDesignation', '');
-        $this->RegisterPropertyString('MessageTexts', '[{"Status":false,"MessageText":"' . $this->Translate('Status update ok') . '"},{"Status":true,"MessageText":"' . $this->Translate('Status update overdue') . '"}]');
         $this->RegisterPropertyString('NotificationVariant', 'Variable');
+        $this->RegisterPropertyString('MessageTexts', '[{"Status":false,"MessageText":"' . $this->Translate('Status update ok') . '"},{"Status":true,"MessageText":"' . $this->Translate('Status update overdue') . '"}]');
         $this->RegisterPropertyString('WebFronts', '[]');
         $this->RegisterPropertyString('EmailRecipients', '[]');
         // Alerting

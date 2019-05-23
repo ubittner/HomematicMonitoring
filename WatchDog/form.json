@@ -26,15 +26,15 @@
     },
     {
       "type": "Label",
-      "caption": "With this instance you can monitor the status update (variable) of Homematic sensors present in IP-Symcon."
+      "caption": "This instance can be used to monitor the status update (variable with an ident 'STATE') of Homematic/Homematic IP sensors/actuators present in IP-Symcon."
     },
     {
       "type": "Label",
-      "caption": "If the status is not updated in a predefined time, a notification and/or alarm can be initiated."
+      "caption": "If the status is not updated within the specified time, a notification and/or alarm can be triggered."
     },
     {
       "type": "Label",
-      "caption": "In case of an alarm you can switch further variables and/or execute scripts."
+      "caption": "In case of a status change of the overall monitoring, variables can be switched and/or scripts can be executed."
     },
     {
       "type": "Label",
@@ -84,7 +84,7 @@
       "items": [
         {
           "type": "Label",
-          "caption": "Time until a state update of a sensor is overdue and activates the alarm. The time is added to the time of the last state update."
+          "caption": "Time until a state update of a sensor is overdue and activates the alarm."
         },
         {
           "type": "Label",
@@ -124,6 +124,10 @@
         },
         {
           "type": "Label",
+          "label": " "
+        },
+        {
+          "type": "Label",
           "label": "Please enter the monitoring interval in seconds:"
         },
         {
@@ -138,6 +142,18 @@
       "type": "ExpansionPanel",
       "caption": "(2) Monitored variables",
       "items": [
+        {
+          "type": "Label",
+          "caption": "Hint:"
+        },
+        {
+          "type": "Label",
+          "caption": "You can automatically determine and assign the variables to be monitored to this instance. After accepting the CHANGES, press under actions the (2) DETERMINE AND ASSIGN VARIABLES AUTOMATICALLY button!"
+        },
+        {
+          "type": "Label",
+          "caption": " "
+        },
         {
           "type": "Label",
           "caption": "Please add the status variables of the sensors you want to monitor or delete entries you no longer need:"
@@ -261,7 +277,34 @@
         },
         {
           "type": "Label",
-          "caption": "Please enter your desired message texts:"
+          "caption": "Please select a notification variant:"
+        },
+        {
+          "type": "Select",
+          "name": "NotificationVariant",
+          "caption": "Notification variant",
+          "options": [
+            {
+              "caption": "Please select",
+              "value": "Please select"
+            },
+            {
+              "caption": "Status",
+              "value": "Status"
+            },
+            {
+              "caption": "Variable",
+              "value": "Variable"
+            }
+          ]
+        },
+        {
+          "type": "Label",
+          "caption": " "
+        },
+        {
+          "type": "Label",
+          "caption": "Please enter your desired message texts for the variable variant:"
         },
         {
           "type": "List",
@@ -398,33 +441,6 @@
         },
         {
           "type": "Label",
-          "caption": " "
-        },
-        {
-          "type": "Label",
-          "caption": "Please select a notification variant:"
-        },
-        {
-          "type": "Select",
-          "name": "NotificationVariant",
-          "caption": "Notification variant",
-          "options": [
-            {
-              "caption": "Please select",
-              "value": "Please select"
-            },
-            {
-              "caption": "Status",
-              "value": "Status"
-            },
-            {
-              "caption": "Variable",
-              "value": "Variable"
-            }
-          ]
-        },
-        {
-          "type": "Label",
           "caption": "(3.2) Push notification"
         },
         {
@@ -512,7 +528,7 @@
             },
             {
               "name": "Name",
-              "caption": "Name",
+              "caption": "Name E-mail recipient",
               "width": "300px",
               "add": "",
               "edit": {
@@ -564,7 +580,7 @@
         },
         {
           "type": "Label",
-          "caption": "If the status variable changes, the target variable is switched if the function is activated."
+          "caption": "If the status of the overall monitoring changes, the target variable is switched when the function is activated."
         },
         {
           "type": "Label",
@@ -621,7 +637,7 @@
         },
         {
           "type": "Label",
-          "caption": "If the status variable changes, the target script will be executed if the function is activated."
+          "caption": "If the status of the overall monitoring changes, the target script will be executed if the function is activated."
         },
         {
           "type": "Label",
@@ -701,7 +717,7 @@
         },
         {
           "type": "Label",
-          "caption": "Accept the changes now and press under actions the button (5) CREATE BACKUP!"
+          "caption": "Please accept possible changes and press under actions the button (5) CREATE BACKUP!"
         },
         {
           "type": "Label",
@@ -726,7 +742,7 @@
         },
         {
           "type": "Label",
-          "caption": "Accept the changes now and press under actions the button (5) RESTORE CONFIGURATION!"
+          "caption": "Please accept possible changes and press under actions the button (5) RESTORE CONFIGURATION!"
         }
       ]
     }
