@@ -1,8 +1,8 @@
 # DutyCycle
 
 [![Version](https://img.shields.io/badge/Symcon_Version-5.1>-red.svg)](https://www.symcon.de/service/dokumentation/entwicklerbereich/sdk-tools/sdk-php/)
-![Version](https://img.shields.io/badge/Modul_Version-1.01-blue.svg)
-![Version](https://img.shields.io/badge/Modul_Build-2-blue.svg)
+![Version](https://img.shields.io/badge/Modul_Version-1.02-blue.svg)
+![Version](https://img.shields.io/badge/Modul_Build-3-blue.svg)
 ![Version](https://img.shields.io/badge/Code-PHP-blue.svg)
 [![License](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-green.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)  
 
@@ -52,7 +52,7 @@ Der Nutzer stimmt den o.a. Bedingungen, sowie den Lizenzbedingungen ausdrücklic
 
 ### 4. Einrichten der Instanzen in IP-Symcon
 
-- In IP-Symcon an beliebiger Stelle `Instanz hinzufügen` auswählen und `Homematic Duty Cycle Monitoring` auswählen, welches unter dem Hersteller `Homematic` aufgeführt ist. Es wird eine Instanz angelegt, in der die Eigenschaften zur Überwachung festgelegt werden können.
+- In IP-Symcon an beliebiger Stelle `Instanz hinzufügen` auswählen und `Homematic Duty Cycle Monitoring` auswählen, welches unter dem Hersteller `UBS3` aufgeführt ist. Es wird eine Instanz angelegt, in der die Eigenschaften zur Überwachung festgelegt werden können.
 
 __Konfigurationsseite__:
 

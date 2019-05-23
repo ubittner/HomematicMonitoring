@@ -13,9 +13,9 @@
  * @license     CC BY-NC-SA 4.0
  *              https://creativecommons.org/licenses/by-nc-sa/4.0/
  *
- * @version     1.01-2
+ * @version     1.02-3
  * @date        2019-05-17, 18:00
- * @lastchange  2019-05-17, 18:00
+ * @lastchange  2019-05-20, 18:00
  *
  * @see         https://git.ubittner.de/ubittner/HomematicMonitoring
  *
@@ -25,7 +25,8 @@
  *              Homematic Socket Connection Monitoring
  *             	{590AB9CB-F3EE-466E-97E0-75FF966489C0}
  *
- * @changelog   2019-05-17, 18:00, initial version 1.01-2
+ * @changelog   2019-05-20, 18:00, update to version 1.02-3
+ *              2019-05-17, 18:00, initial version 1.01-2
  *
  */
 
