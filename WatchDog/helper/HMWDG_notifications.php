@@ -31,7 +31,7 @@ trait HMWDG_notifications
         $address = '-';
         if ($NotificationVariant == 'Status') {
             // Create text
-            $statusText = GetValueFormatted($this->GetValue('Status'));
+            $statusText = GetValueFormatted($this->GetIDForIdent('Status'));
             if (!empty($locationDesignation)) {
                 $text = $locationDesignation . ', ' . $title . ', ' . $statusText . "\n\n" . $timeStamp . ', '. $title . ', ' . $statusText;
             } else {
