@@ -33,9 +33,9 @@ trait HMWDG_notifications
             // Create text
             $statusText = GetValueFormatted($this->GetIDForIdent('Status'));
             if (!empty($locationDesignation)) {
-                $text = $locationDesignation . ', ' . $title . ', ' . $statusText . "\n\n" . $timeStamp . ', '. $title . ', ' . $statusText;
+                $text = $locationDesignation . ', ' . $title . ' ' . $statusText . "\n\n" . $timeStamp . ', '. $title . ', ' . $statusText;
             } else {
-                $text = $title . ', ' . $statusText . "\n\n" . $timeStamp . ', '. $title . ', ' . $statusText;
+                $text = $title . ' ' . $statusText . "\n\n" . $timeStamp . ', '. $title . ', ' . $statusText;
             }
         }
         if ($NotificationVariant == 'Variable') {
