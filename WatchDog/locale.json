@@ -86,6 +86,12 @@
       "Create backup": "Sicherung erstellen",
       "Restore configuration": "Konfiguration wiederherstellen",
       "Really restore configuration?": "Konfiguration wirklich wiederherstellen?",
+      "Archiving": "Archivierung",
+      "You can archive the data of the last message.": "Sie können die Daten der letzten Meldung archivieren.",
+      "Deactivate": "Deaktivieren",
+      "Really deactivate archiving?": "Archivierung wirklich deaktivieren?",
+      "Show state": "Status anzeigen",
+      "Activate": "Aktivieren",
       "Manual": "Bedienungsanleitung",
       "Homematic Watchdog will be created": "Homematic Watchdog wird erstellt",
       "Homematic Watchdog is active": "Homematic Watchdog ist aktiv",
@@ -106,7 +112,12 @@
       "<td style='padding: 5px; font-weight: bold;'>Address</td>": "<td style='padding: 5px; font-weight: bold;'>Adresse</td>",
       "<td style='padding: 5px; font-weight: bold;'>Last update</td>": "<td style='padding: 5px; font-weight: bold;'>Letzte Aktualisierung</td>",
       "<td style='padding: 5px; font-weight: bold;'>Overdue since</td>": "<td style='padding: 5px; font-weight: bold;'>Überfällig seit</td>",
-      " hours</td>": " Stunden</td>"
+      " hours</td>": " Stunden</td>",
+      "An error has occurred!": "Es ist ein Fehler aufgetreten!",
+      "No more data will be archived!": "Es werden keine Daten mehr archiviert!",
+      "Data will be archived now!": "Die Daten werden jetzt archiviert!",
+      "No data will be archived!": "Es werden keine Daten archiviert",
+      "Data will be archived!": "Daten werden archiviert!"
     }
   }
 }

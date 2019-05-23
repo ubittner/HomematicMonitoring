@@ -788,6 +788,45 @@
       ]
     },
     {
+      "type": "ExpansionPanel",
+      "caption": "Archiving",
+      "items": [
+        {
+          "type": "Label",
+          "caption": "You can archive the data of the last message."
+        },
+        {
+          "type": "RowLayout",
+          "items": [
+            {
+              "type": "PopupButton",
+              "caption": "Deactivate",
+              "popup": {
+                "caption": "Really deactivate archiving?",
+                "items": [
+                  {
+                    "type": "Button",
+                    "caption": "Deactivate",
+                    "onClick": "HMWDG_SetLastMessageArchiving($id, false);"
+                  }
+                ]
+              }
+            },
+            {
+              "type": "Button",
+              "caption": "Show state",
+              "onClick": "HMWDG_ShowLastMessageArchivingState($id);"
+            },
+            {
+              "type": "Button",
+              "caption": "Activate",
+              "onClick": "HMWDG_SetLastMessageArchiving($id, true);"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "type": "Label",
       "caption": " "
     },

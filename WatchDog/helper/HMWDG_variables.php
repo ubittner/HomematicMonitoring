@@ -314,4 +314,53 @@ trait HMWDG_variables
         $html .= "</table>";
         SetValue($this->GetIDForIdent("AlertView"), $html);
     }
+
+    /**
+     * De- and activates the archiving of last message.
+     * @param bool $State
+     */
+    public function SetLastMessageArchiving(bool $State)
+    {
+        $archive = IPS_GetInstanceListByModuleID(ARCHIVE_CONTROL_GUID)[0];
+        AC_SetLoggingStatus($archive, $this->GetIDForIdent('LastMessage'), $State);
+        IPS_ApplyChanges($archive);
+        $notification = 'An error has occurred!';
+        switch ($State) {
+            case false:
+                $notification = 'No more data will be archived!';
+                break;
+            case true:
+                $notification = 'Data will be archived now!';
+                break;
+        }
+        echo $notification;
+    }
+
+    /**
+     * Shows the state of last message archiving.
+     */
+    public function ShowLastMessageArchivingState()
+    {
+        $archive = IPS_GetInstanceListByModuleID(ARCHIVE_CONTROL_GUID)[0];
+        $variables = AC_GetAggregationVariables($archive, false);
+        $state = false;
+        if (!empty($variables)) {
+            foreach ($variables as $variable) {
+                $variableID = $variable['VariableID'];
+                if ($variableID == $this->GetIDForIdent('LastMessage')) {
+                    $state = true;
+                }
+            }
+        }
+        $notification = 'An error has occurred!';
+        switch ($state) {
+            case false:
+                $notification = 'No data will be archived!';
+                break;
+            case true:
+                $notification = 'Data will be archived!';
+                break;
+        }
+        echo $notification;
+    }
 }
