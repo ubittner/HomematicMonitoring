@@ -398,6 +398,33 @@
         },
         {
           "type": "Label",
+          "caption": " "
+        },
+        {
+          "type": "Label",
+          "caption": "Please select a notification variant:"
+        },
+        {
+          "type": "Select",
+          "name": "NotificationVariant",
+          "caption": "Notification variant",
+          "options": [
+            {
+              "caption": "Please select",
+              "value": "Please select"
+            },
+            {
+              "caption": "Status",
+              "value": "Status"
+            },
+            {
+              "caption": "Variable",
+              "value": "Variable"
+            }
+          ]
+        },
+        {
+          "type": "Label",
           "caption": "(3.2) Push notification"
         },
         {

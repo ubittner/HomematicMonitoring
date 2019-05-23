@@ -164,7 +164,11 @@ trait HMWDG_variables
         $this->SetValue('Status', $actualStatus);
         $this->SetValue('LastCheck', time());
         $this->UpdateAlertView(json_encode($alertVariables));
+        $notificationVariant = $this->ReadPropertyString('NotificationVariant');
         if ($actualStatus != $status) {
+            if ($notificationVariant == 'Status') {
+                $this->SendNotification(0, $actualStatus, 'Status');
+            }
            // Execute Alerting
             $this->ExecuteAlerting($actualStatus);
         }
@@ -189,6 +193,9 @@ trait HMWDG_variables
         $watchTime = $this->GetWatchTime();
         $watchTimeBorder = time() - $watchTime;
         $alertVariables = [];
+
+        $notificationVariant = $this->ReadPropertyString('NotificationVariant');
+
         foreach ($monitoredVariables as $monitoredVariable) {
             $variable = IPS_GetVariable($monitoredVariable);
             // Overdue
@@ -200,7 +207,9 @@ trait HMWDG_variables
                 if (in_array($monitoredVariable, $whitelist)) {
                     $this->SendDebug('Overdue', 'Notification and last message for: ' . $monitoredVariable, 0);
                     $this->UpdateLastMessage($monitoredVariable, true);
-                    $this->SendNotification($monitoredVariable, true);
+                    if ($notificationVariant == 'Variable') {
+                        $this->SendNotification($monitoredVariable, true, 'Variable');
+                    }
                 }
             }
             // In time
@@ -211,7 +220,9 @@ trait HMWDG_variables
                 if (in_array($monitoredVariable, $blacklist)) {
                     $this->SendDebug('In time', 'Notification and last message for: ' . $monitoredVariable, 0);
                     $this->UpdateLastMessage($monitoredVariable, false);
-                    $this->SendNotification($monitoredVariable, false);
+                    if ($notificationVariant == 'Variable') {
+                        $this->SendNotification($monitoredVariable, false, 'Variable');
+                    }
                 }
             }
         }
