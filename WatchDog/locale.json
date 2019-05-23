@@ -3,9 +3,9 @@
     "de": {
       "Homematic Channel Parameter Monitoring": "Homematic Channel Parameter Monitoring",
       "Description:": "Beschreibung:",
-      "This instance can be used to monitor the status update (variable with an ident 'STATE') of Homematic/Homematic IP sensors/actuators present in IP-Symcon.": "Mit dieser Instanz kann die Statusaktualisierung (Variable mit dem Ident 'STATE') von in IP-Symcon vorhandenen Homematic/Homematic IP Sensoren/Aktoren überwacht werden.",
-      "If the status is not updated within the specified time, a notification and/or alarm can be triggered.": "Wird der Status nicht innerhalb der vorgegebenen Zeit aktualisiert, so kann eine Benachrichtigung und/oder ein Alarm ausgelöst werden.",
-      "In case of a status change of the overall monitoring, variables can be switched and/or scripts can be executed.": "Bei einer einer Statusänderung der Gesamtüberwachung können Variablen geschaltet werden und/oder Skripte ausgeführt werden.",
+      "This instance can be used to monitor the status update (variable with an ident 'STATE') of Homematic/Homematic IP sensors and actuators present in IP-Symcon.": "Mit dieser Instanz kann die Statusaktualisierung (Variable mit dem Ident 'STATE') von in IP-Symcon vorhandenen Homematic/Homematic IP Sensoren und Aktoren überwacht werden.",
+      "If the status is not updated within the specified time, a notification and/or alarm can be triggered.": "Wird der Status nicht innerhalb der vorgegebenen Zeit aktualisiert, so kann eine Benachrichtigung und/oder ein Alarmierung ausgelöst werden.",
+      "In case of a status change of the overall monitoring, variables can be switched and/or scripts can be executed.": "Bei einer einer Statusänderung der Gesamtüberwachung können Variablen geschaltet und/oder Skripte ausgeführt werden.",
       "For further information, please refer to the documentation or the notes here in the configuration.": "Weitere Informationen entnehmen Sie bitte der Dokumentation oder den Hinweisen hier in der Konfiguration.",
       "Configuration:": "Konfiguration:",
       "(0) Instance information": "(0) Instanzinformationen",

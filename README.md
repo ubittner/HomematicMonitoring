@@ -13,7 +13,8 @@ Ein Projekt von Ulrich Bittner - Smart System Solutions
 Folgende Module beinhaltet das Homematic Monitoring Repository:
 
 - __Channel Parameter__ ([Dokumentation](ChannelParameter))  
-	Überwacht einen Kanalparameter von in IP-Symcon vorhandenen Homematic / Homematic IP Sensoren und Aktoren.
+	Überwacht einen Kanalparameter von in IP-Symcon vorhandenen Homematic/Homematic IP Sensoren und Aktoren.  
+	(Beispiel: Batterieüberwachung, Sabotageüberwachung, etc.)
 	
 - __Duty Cycle__ ([Dokumentation](DutyCycle))  
 	Überwacht den DutyCycle einer Homematic CCU in IP-Symcon.
@@ -22,4 +23,4 @@ Folgende Module beinhaltet das Homematic Monitoring Repository:
 	Überwacht die Erreichbarkeit einer Homematic CCU in IP-Symcon.
 	
 - __Watchdog__ ([Dokumentation](WatchDog))  
-	Überwacht die Statusaktualisierung von Homematic / Homematic IP Aktoren / Sensoren in IP-Symcon.
+	Überwacht die Statusaktualisierung von Homematic/Homematic IP Sensoren und Aktoren in IP-Symcon.

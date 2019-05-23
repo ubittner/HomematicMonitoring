@@ -10,7 +10,7 @@
 
 Ein Projekt von Ulrich Bittner - Smart System Solutions  
 
-Dieses Modul überwacht die Statusaktualisierung von [HomeMatic](https://www.homematic.com/) und [homematic IP](https://www.homematic-ip.com/start.html) Sensoren / Aktoren in [IP-Symcon](https://www.symcon.de).
+Dieses Modul überwacht die Statusaktualisierung von [Homematic](https://www.homematic.com/) und [Homematic IP](https://www.homematic-ip.com/start.html) Sensoren und Aktoren in [IP-Symcon](https://www.symcon.de).
 
 Für dieses Modul besteht kein Anspruch auf Fehlerfreiheit, Weiterentwicklung, sonstige Unterstützung oder Support.
 
@@ -32,17 +32,21 @@ Der Nutzer stimmt den o.a. Bedingungen, sowie den Lizenzbedingungen ausdrücklic
 
 ### 1. Funktionsumfang
 
-* Überwacht die Statusaktualisierung (Variablenüberwachung) von Homematic / Homematic IP Sensoren / Aktoren
+* Überwacht die Statusaktualisierung (Variable mit dem Ident `State`) von Homematic/Homematic IP Sensoren und Aktoren
 * Bei Überfälligkeit der Statusaktualisierung können individuelle Aktionen festgesetzt werden:
   * Push-Nachrichten verschicken
+    * Bei Änderung des Gesamtstatus
+    * Bei Statusänderung der überwachten Variable
   * E-Mail Nachrichten verschicken
+    * Bei Änderung des Gesamtstatus
+    * Bei Statusänderung der überwachten Variable
   * Variablen schalten
   * Skripte ausführen
   
 ### 2. Voraussetzungen
 
 - IP-Symcon ab Version 5.1
-- Homematic / Homematic IP Sensoren
+- Homematic/Homematic IP Sensoren und Aktoren
 
 ### 3. Software-Installation
 
@@ -59,13 +63,13 @@ __Konfigurationsseite__:
 Name                                | Beschreibung
 ----------------------------------- | ---------------------------------
 (0) Instanzinformationen            | Informationen zu der Instanz
-(1) Überwachungsparameter           | Legen Sie den Zeitwert und den Überwachungsintervall fest 
-(2) Überwachte Variablen            | Diese Liste beinhaltet die Variablen, welche überwacht werden sollen
-(3) Benachrichtigungen              | Legen Sie die Benachrichtigungsvarianten fest
-(4) Alarmierungen                   | Wenn sich der allgemeine Status ändert, können Variablen geschaltet oder Skripte ausgeführt werden
-(5) Sicherung / Wiederherstellung   | Die Instanzkonfiguration kann in einem Skript gespeichert und wiederhergestellt werden
+(1) Überwachungsparameter           | Zeitwert und den Überwachungsintervall 
+(2) Überwachte Variablen            | Liste der überwachten Variablen
+(3) Benachrichtigungen              | Benachrichtigungsvarianten
+(4) Alarmierungen                   | Zielvariablen und Zielskripte für die Alarmierung
+(5) Sicherung / Wiederherstellung   | Sicherung / Wiederherstellung der Instanzkonfiguration
 
-___Skript___: Wenn Sie unter (4) Alarmierungen ein Skript angebenen haben, so können während des Aufrufs folgende Systemvariablen verwendet werden:
+___Skript___: Wenn Sie unter (4) Alarmierungen ein Skript angegeben haben, so können während des Aufrufs folgende Systemvariablen verwendet werden:
 
 Name                                | Beschreibung
 ----------------------------------- | ---------------------------------
@@ -73,17 +77,17 @@ $_IPS['Status']                     | Übergibt den Status der `Status` Variable
 
 ### 5. Statusvariablen und Profile
 
-Die Statusvariablen / Kategorien werden automatisch angelegt. Das Löschen einzelner kann zu Fehlfunktionen führen.
+Die Statusvariablen werden automatisch angelegt. Das Löschen einzelner kann zu Fehlfunktionen führen.
 
 ##### Statusvariablen
 
 Name         | Typ       | Beschreibung
 ------------ | --------- | ----------------
 Monitoring   | Boolean   | De- / Aktiviert die Überwachung 
-Status       | Boolean   | Zeigt den Status der Überwachung an (`OK` / `Alarm`)
-LastCheck    | String    | Zeigt die letzte Überprüfung an
-LastMessage  | String    | Zeigt die letzte Meldung an
-AlertView    | String    | Zeigt die Übersicht der Variablen an, welche überfällig sind
+Status       | Boolean   | Status der Überwachung an (`OK` / `Alarm`)
+LastCheck    | String    | Letzte Überprüfung
+AlertView    | String    | Übersicht der Variablen, welche überfällig sind
+LastMessage  | String    | Letzte Meldung
 
 ##### Profile:
 

@@ -26,7 +26,7 @@
     },
     {
       "type": "Label",
-      "caption": "This instance can be used to monitor the status update (variable with an ident 'STATE') of Homematic/Homematic IP sensors/actuators present in IP-Symcon."
+      "caption": "This instance can be used to monitor the status update (variable with an ident 'STATE') of Homematic/Homematic IP sensors and actuators present in IP-Symcon."
     },
     {
       "type": "Label",
