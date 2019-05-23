@@ -348,7 +348,7 @@ trait HMWDG_variables
             foreach ($variables as $variable) {
                 $variableID = $variable['VariableID'];
                 if ($variableID == $this->GetIDForIdent('LastMessage')) {
-                    $state = true;
+                    $state = AC_GetLoggingStatus ($archive, $variableID);
                 }
             }
         }
