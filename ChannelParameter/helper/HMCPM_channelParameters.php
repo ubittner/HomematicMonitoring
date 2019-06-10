@@ -277,6 +277,15 @@ trait HMCPM_channelParameters
                 IPS_SetVariableProfileAssociation($profile, 0, 'OK', 'Information', 0x00FF00);
                 IPS_SetVariableProfileAssociation($profile, 1, 'Sabotage', 'Warning', 0xFF0000);
                 break;
+            case 'DUTY_CYCLE':
+                // Variable type for Homematic IP is boolean
+                $profile = 'HMCPM.DutyCycle';
+                if (!IPS_VariableProfileExists($profile)) {
+                    IPS_CreateVariableProfile($profile, 0);
+                }
+                IPS_SetVariableProfileAssociation($profile, 0, 'OK', 'Information', 0x00FF00);
+                IPS_SetVariableProfileAssociation($profile, 1, 'DutyCycle', 'Warning', 0xFF0000);
+                break;
         }
         // Assign profile only for listed variables
         $variables = json_decode($this->ReadPropertyString('MonitoredVariables'));
@@ -330,7 +339,8 @@ trait HMCPM_channelParameters
     {
         $useDisplayOverview = $this->ReadPropertyBoolean('UseOverview');
         if ($useDisplayOverview && $this->GetIDForIdent('Overview')) {
-            $string = "<table width='90%' align='center'>";
+            $string = "<table style='width: 100%; border-collapse: collapse;'>";
+            // old version: $string = "<table width='90%' align='center'>";
             $string .= $this->Translate('<tr><td><b>ID</b></td><td><b>Name</b></td><td><b>Address</b></td><td><b>Last Maintenance</b></td><td><b>State</b></td></tr>');
             $variables = json_decode($this->ReadPropertyString('MonitoredVariables'));
             if (!empty($variables)) {
