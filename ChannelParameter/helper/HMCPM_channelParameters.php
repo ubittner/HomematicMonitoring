@@ -310,6 +310,12 @@ trait HMCPM_channelParameters
                             $profileName = 'HMCPM.HM.Sabotage';
                         }
                         break;
+                    case 'DUTY_CYCLE':
+                        // Boolean variable
+                        if ($variableType == 0) {
+                            $profileName = 'HMCPM.DutyCycle';
+                        }
+                        break;
 
                 }
                 // Always assign profile
